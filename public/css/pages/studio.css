@@ -1,0 +1,3682 @@
+/* ==========================================================================
+   TIKIM Event Studio Booking Wizard Stylesheet
+   ========================================================================== */
+
+.studio-page {
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+/* --------------------------------------------------------------------------
+   Slim Auto-Resume Notification Strip (Part 2.2)
+   -------------------------------------------------------------------------- */
+/* --------------------------------------------------------------------------
+   TIKIM Revision 17A: One Tab Tracker Band (Part 3)
+   -------------------------------------------------------------------------- */
+.studio-tab-tracker-band {
+  background: #212e34;
+  width: 100%;
+  height: var(--tabs-h, 68px);
+  min-height: 68px;
+  max-height: 68px;
+  border-bottom: 1px solid rgba(250, 247, 242, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  z-index: 45;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tracker-band-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 8px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.tracker-tabs-scroll {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  flex: 1 1 auto;
+  min-width: 0;
+  height: 52px;
+}
+
+.tracker-tabs-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.tracker-tab {
+  width: 220px;
+  min-width: 220px;
+  max-width: 220px;
+  height: 52px;
+  min-height: 52px;
+  max-height: 52px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  text-align: left;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Completed Tabs */
+.tracker-tab.is-completed {
+  background: #2d3d44;
+  color: #faf7f2;
+  border: 1px solid rgba(250, 247, 242, 0.4);
+  cursor: pointer;
+}
+
+.tracker-tab.is-completed:hover {
+  border-color: rgba(250, 247, 242, 0.75);
+}
+
+.tracker-tab.is-completed:hover .tracker-tab-title {
+  text-decoration: underline;
+}
+
+/* Current Tab */
+.tracker-tab.is-current {
+  background: #faf7f2;
+  color: #212e34;
+  border: 2px solid transparent;
+  border-top: 3px solid #4fa49d;
+  cursor: default;
+}
+
+.tracker-tab-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1.1;
+  overflow: hidden;
+  width: 100%;
+}
+
+.tracker-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  font-size: 13px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.tracker-tab.is-current .tracker-tab-badge {
+  background: #4fa49d;
+  color: #212e34;
+}
+
+.tracker-tab.is-completed .tracker-tab-badge {
+  background: transparent;
+  color: #4fa49d;
+  width: 24px;
+  height: 24px;
+}
+
+.tracker-tab.is-completed .tracker-tab-badge svg {
+  width: 18px;
+  height: 18px;
+  stroke: #4fa49d;
+}
+
+.tracker-tab-title {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  width: 100%;
+}
+
+.tracker-tab.is-current .tracker-tab-title {
+  color: #212e34;
+}
+
+.tracker-tab.is-completed .tracker-tab-title {
+  color: #faf7f2;
+}
+
+.tracker-tab-value {
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 1.1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-left: 32px;
+  font-style: normal !important;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.tracker-tab.is-current .tracker-tab-value {
+  color: rgba(33, 46, 52, 0.85);
+  font-style: normal !important;
+}
+
+.tracker-tab.is-completed .tracker-tab-value {
+  color: #faf7f2;
+  font-style: normal;
+}
+
+.tracker-step-counter {
+  width: 120px;
+  min-width: 120px;
+  max-width: 120px;
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 17px;
+  font-weight: 700;
+  color: #faf7f2;
+  white-space: nowrap;
+  text-align: right;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .tracker-band-inner {
+    padding: 8px 16px;
+    gap: 8px;
+  }
+  .tracker-step-counter {
+    width: 120px;
+    min-width: 120px;
+    max-width: 120px;
+    font-size: 15px;
+  }
+  .tracker-tab {
+    width: 168px;
+    min-width: 168px;
+    max-width: 168px;
+    height: 52px;
+    min-height: 52px;
+    max-height: 52px;
+    padding: 4px 8px;
+  }
+  .tracker-tab-title {
+    font-size: 17px;
+    line-height: 1.1;
+  }
+  .tracker-tab-value {
+    font-size: 17px;
+    line-height: 1.1;
+    padding-left: 28px;
+    font-style: normal !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   TIKIM Revision 17D: Return to Current Booking Modal (Part 1)
+   -------------------------------------------------------------------------- */
+.return-booking-backdrop {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(33, 46, 52, 0.65);
+  z-index: 20000;
+  box-sizing: border-box;
+}
+
+.return-booking-card {
+  width: min(520px, calc(100vw - 32px));
+  padding: 32px;
+  border-radius: 16px;
+  background: #faf7f2;
+  color: #212e34;
+  border: 2px solid rgba(33, 46, 52, 0.15);
+  box-sizing: border-box;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  text-align: left;
+}
+
+@media (max-width: 480px) {
+  .return-booking-card {
+    padding: 24px;
+  }
+}
+
+.return-booking-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0;
+  color: #212e34;
+}
+
+.return-booking-diff-pkg {
+  margin: 8px 0 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #ab4b2e;
+  line-height: 1.4;
+}
+
+.return-booking-rule {
+  border: none;
+  border-top: 1px solid #e4dbcf;
+  margin: 16px 0;
+  padding: 0;
+}
+
+.return-booking-summary-box {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.return-booking-pkg-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212e34;
+  line-height: 1.3;
+}
+
+.return-booking-step-info {
+  font-size: 17px;
+  font-weight: 400;
+  color: #212e34;
+  line-height: 1.4;
+}
+
+.return-booking-price-so-far {
+  font-size: 17px;
+  font-weight: 400;
+  color: #212e34;
+  line-height: 1.4;
+}
+
+.return-booking-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 12px;
+  align-items: stretch;
+  margin: 0;
+  padding: 0;
+}
+
+@media (max-width: 440px) {
+  .return-booking-footer {
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+  }
+  #btnReturnContinue {
+    order: 1;
+  }
+  #btnReturnStartNew {
+    order: 2;
+  }
+}
+
+.return-booking-btn {
+  min-height: 52px;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 8px 16px;
+  box-sizing: border-box;
+  line-height: 1.25;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#btnReturnContinue.return-booking-btn {
+  background: #4fa49d;
+  color: #212e34;
+  border: 2px solid #4fa49d;
+}
+
+#btnReturnContinue.return-booking-btn:hover {
+  background: #3d8a84;
+}
+
+#btnReturnStartNew.return-booking-btn {
+  background: transparent;
+  color: #212e34;
+  border: 2px solid #212e34;
+}
+
+#btnReturnStartNew.return-booking-btn:hover {
+  background: #e4dbcf;
+}
+
+#paxRangeInput,
+.pax-slider-card,
+.pax-stepper-box {
+  touch-action: pan-y;
+}
+
+.btn-return-continue:hover {
+  background: #212e34;
+}
+
+.btn-return-start-new {
+  background: transparent;
+  color: #ab4b2e;
+  border: 1.5px solid #ab4b2e;
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-return-start-new:hover {
+  background: #ab4b2e;
+  color: #faf7f2;
+}
+
+/* --------------------------------------------------------------------------
+   Studio Layout (Revision 17B Part 1: .studio-grid, .quote-rail, .quote-panel)
+   -------------------------------------------------------------------------- */
+.studio-layout-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 6rem;
+  overflow: visible !important;
+  transform: none !important;
+  height: auto !important;
+}
+
+@media (min-width: 1100px) {
+  .studio-layout-container {
+    padding-top: 0;
+  }
+  .wizard-content-column {
+    padding-top: 2.5rem;
+  }
+  .studio-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 360px;
+    gap: 32px;
+    align-items: start;
+  }
+  .quote-rail,
+  .wizard-quote-sidebar {
+    margin-top: 0 !important;
+  }
+}
+
+@media (max-width: 1099px) {
+  .studio-grid {
+    display: block;
+  }
+  .quote-rail,
+  .wizard-quote-sidebar {
+    display: none !important;
+  }
+}
+
+.studio-layout-container.is-review-mode,
+.studio-layout-container.is-floorplan-mode {
+  display: block !important;
+  max-width: 100% !important;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.studio-layout-container.is-review-mode .quote-rail,
+.studio-layout-container.is-review-mode .wizard-quote-sidebar,
+.studio-layout-container.is-floorplan-mode .quote-rail,
+.studio-layout-container.is-floorplan-mode .wizard-quote-sidebar {
+  display: none !important;
+}
+
+.studio-layout-container.is-review-mode .wizard-content-column,
+.studio-layout-container.is-floorplan-mode .wizard-content-column {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+.review,
+.pane-review-centered {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.wizard-content-column {
+  min-width: 0;
+}
+
+.step-pane-header {
+  margin-bottom: 2rem;
+}
+
+.pane-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-slate);
+  margin: 0.5rem 0 0.25rem;
+}
+
+.pane-desc {
+  font-size: var(--text-sm);
+  color: var(--color-slate-70);
+  line-height: 1.5;
+}
+
+.ducky-tip-bubble {
+  background: rgba(171, 75, 46, 0.08);
+  border: 1px dashed var(--color-rust);
+  color: var(--color-rust);
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.step-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-slate-10);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(33, 46, 52, 0.04);
+}
+
+.step-subheading {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-slate);
+  margin-bottom: 0.75rem;
+}
+
+/* Calendar embed */
+.calendar-embed-wrap {
+  margin-top: 1rem;
+}
+
+.tikim-calendar-wrap {
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  background: #ffffff;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.cal-month-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-slate);
+}
+
+.cal-nav-btn {
+  background: var(--color-slate-05);
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-full);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cal-nav-btn:hover {
+  background: var(--color-teal);
+  color: var(--color-slate);
+}
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  color: var(--color-slate-60);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.calendar-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+}
+
+.cal-day-cell {
+  aspect-ratio: 1;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-sm);
+  background: #ffffff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  position: relative;
+  transition: all var(--transition-fast);
+}
+
+.cal-day-cell.status-available {
+  background: rgba(79, 164, 157, 0.08);
+  border-color: rgba(79, 164, 157, 0.3);
+  color: var(--color-slate);
+}
+
+.cal-day-cell.status-available:hover {
+  background: rgba(79, 164, 157, 0.25);
+}
+
+.cal-day-cell.status-hold {
+  background: repeating-linear-gradient(45deg, #fff, #fff 5px, rgba(171, 75, 46, 0.1) 5px, rgba(171, 75, 46, 0.1) 10px);
+  border-color: var(--color-rust);
+  color: var(--color-rust);
+}
+
+.cal-day-cell.status-booked {
+  background: var(--color-slate-10);
+  color: var(--color-slate-40);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.cal-day-cell.status-blocked {
+  background: var(--color-slate-15);
+  color: var(--color-slate-40);
+  cursor: not-allowed;
+}
+
+.cal-day-cell.status-past {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.cal-day-cell.selected {
+  background: var(--color-slate) !important;
+  color: #ffffff !important;
+  border-color: var(--color-slate) !important;
+  box-shadow: 0 4px 10px rgba(33, 46, 52, 0.3);
+}
+
+.cal-peak-star {
+  position: absolute;
+  top: 2px;
+  right: 4px;
+  font-size: 9px;
+  color: var(--color-rust);
+}
+
+.cal-hold-badge {
+  font-size: 8px;
+  color: var(--color-rust);
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.calendar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-slate-10);
+  font-size: var(--text-2xs);
+  color: var(--color-slate-70);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: var(--radius-full);
+}
+
+.dot-avail { background: var(--color-teal); }
+.dot-hold { background: var(--color-rust); }
+.dot-booked { background: var(--color-slate-40); }
+.dot-blocked { background: var(--color-slate-20); }
+.dot-peak { background: #d97706; }
+
+.selected-date-alert {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: rgba(79, 164, 157, 0.12);
+  border: 1px solid var(--color-teal);
+  border-radius: var(--radius-md);
+  font-size: var(--text-sm);
+  color: var(--color-slate);
+}
+
+/* Event Type Picker */
+.event-type-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+}
+
+.event-tile {
+  background: var(--color-slate-05);
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all var(--transition-fast);
+}
+
+.event-tile:hover {
+  background: var(--color-slate-10);
+}
+
+.event-tile.active {
+  background: var(--color-slate);
+  color: #ffffff;
+  border-color: var(--color-slate);
+}
+
+.event-tile-icon {
+  font-size: 1.5rem;
+}
+
+.event-tile-name {
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+/* Pax Slider & Stepper */
+.pax-control-row {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+.pax-slider {
+  flex: 1;
+  accent-color: var(--color-teal);
+}
+
+.pax-stepper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-stepper {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-slate-20);
+  background: #ffffff;
+  font-weight: 700;
+  font-size: var(--text-base);
+  cursor: pointer;
+}
+
+.pax-number {
+  width: 70px;
+  padding: 0.4rem;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid var(--color-slate-20);
+  border-radius: var(--radius-sm);
+}
+
+.pax-unit {
+  font-size: var(--text-xs);
+  color: var(--color-slate-60);
+  font-weight: 600;
+}
+
+/* Package Step */
+.recommend-banner {
+  background: rgba(79, 164, 157, 0.15);
+  border: 1px solid var(--color-teal);
+  color: var(--color-slate);
+  padding: 0.85rem 1.25rem;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.package-options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.studio-pkg-card {
+  background: #ffffff;
+  border: 2px solid var(--color-slate-10);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.studio-pkg-card:hover {
+  border-color: rgba(79, 164, 157, 0.4);
+}
+
+.studio-pkg-card.selected {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(79, 164, 157, 0.25);
+}
+
+.custom-package-card {
+  background: var(--color-slate-05);
+  border: 1px dashed var(--color-slate-20);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Step 3: Menu */
+.service-style-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.service-style-tile {
+  background: #ffffff;
+  border: 2px solid var(--color-slate-10);
+  border-radius: var(--radius-lg);
+  padding: 1rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-fast);
+}
+
+.service-style-tile.active {
+  border-color: var(--color-teal);
+  background: rgba(79, 164, 157, 0.05);
+}
+
+.service-style-name {
+  font-weight: 700;
+  font-size: var(--text-sm);
+  color: var(--color-slate);
+}
+
+.service-style-desc {
+  font-size: var(--text-2xs);
+  color: var(--color-slate-60);
+  margin-top: 0.25rem;
+}
+
+.menu-progress-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.menu-progress-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-slate-60);
+  margin-bottom: 0.5rem;
+}
+
+.course-badges-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.course-badge {
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  border: 1px solid var(--color-slate-20);
+}
+
+.course-badge.fulfilled {
+  background: rgba(79, 164, 157, 0.15);
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+.course-badge.pending {
+  background: var(--color-slate-05);
+  color: var(--color-slate);
+}
+
+.dish-selection-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.dish-group-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-slate);
+  margin-bottom: 0.75rem;
+}
+
+.studio-dish-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.studio-dish-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.studio-dish-card.selected {
+  border-color: var(--color-teal);
+  background: rgba(79, 164, 157, 0.04);
+}
+
+/* Step 4: Addons */
+.addons-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.25rem;
+}
+
+.studio-addon-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.studio-addon-card.selected {
+  border-color: var(--color-teal);
+}
+
+.addon-card-top {
+  margin-bottom: 1rem;
+}
+
+.addon-card-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-slate);
+  margin-bottom: 0.25rem;
+}
+
+.addon-card-price {
+  font-size: var(--text-sm);
+  color: var(--color-rust);
+  font-weight: 700;
+}
+
+.addon-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px dashed var(--color-slate-10);
+  padding-top: 0.75rem;
+}
+
+/* Step 5: Floorplan */
+.floorplan-mount-wrap {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.floor-planner-wrap {
+  display: flex;
+  flex-direction: column;
+}
+
+.planner-toolbar {
+  padding: 0.75rem 1.25rem;
+  background: var(--color-slate-05);
+  border-bottom: 1px solid var(--color-slate-10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.toolbar-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.toolbar-label {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-slate-70);
+}
+
+.seat-meter-badge {
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: 800;
+  border: 1px solid transparent;
+}
+
+.planner-workspace {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 480px;
+}
+
+@media (max-width: 768px) {
+  .planner-workspace {
+    grid-template-columns: 1fr;
+  }
+}
+
+.planner-palette {
+  background: #ffffff;
+  border-right: 1px solid var(--color-slate-10);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.palette-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-slate-60);
+}
+
+.palette-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.4rem;
+}
+
+.palette-btn {
+  background: var(--color-slate-05);
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.65rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.palette-btn:hover {
+  background: var(--color-teal);
+  color: var(--color-slate);
+}
+
+.selected-item-box {
+  background: var(--color-slate-05);
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-md);
+  padding: 0.75rem;
+}
+
+.item-control-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.planner-canvas-wrap {
+  position: relative;
+  background: #f4efe6;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 480px;
+}
+
+.planner-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.planner-scale-bar {
+  position: absolute;
+  bottom: 0.75rem;
+  right: 0.75rem;
+  background: rgba(33, 46, 52, 0.75);
+  color: #ffffff;
+  font-size: 10px;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-sm);
+}
+
+/* Step 7: Review & Agreement */
+.review-summary-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.review-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+}
+
+.review-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.review-label {
+  font-size: var(--text-2xs);
+  color: var(--color-slate-60);
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.review-val {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 700;
+  color: var(--color-slate);
+}
+
+.agreement-checklist-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-10);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.checklist-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.agree-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-size: var(--text-xs);
+  color: var(--color-slate-80);
+  cursor: pointer;
+  line-height: 1.5;
+}
+
+.agree-item input[type="checkbox"] {
+  accent-color: var(--color-teal);
+  width: 18px;
+  height: 18px;
+  margin-top: 1px;
+}
+
+.reserve-actions-block {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.share-tools-row {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+/* Wizard Navigation Footer */
+.wizard-nav-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-slate-10);
+}
+
+/* --------------------------------------------------------------------------
+   Sticky Live Quote Sidebar (Revision 17B Part 1: Middle of right side, always following)
+   -------------------------------------------------------------------------- */
+.quote-rail,
+.wizard-quote-sidebar {
+  position: sticky;
+  top: var(--chrome-h);
+  height: calc(100dvh - var(--chrome-h));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-items: safe center;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  box-sizing: border-box;
+  margin-top: 0 !important;
+  width: 360px;
+  flex-shrink: 0;
+  z-index: 40;
+}
+
+.quote-panel,
+.quote-sidebar-card {
+  width: 100%;
+  max-height: none;
+  overflow: visible;
+  margin-top: auto;
+  margin-bottom: auto;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1.5px solid rgba(33, 46, 52, 0.2);
+  box-shadow: 0 8px 30px rgba(33, 46, 52, 0.08);
+  display: flex;
+  flex-direction: column;
+}
+
+.quote-sidebar-header {
+  padding: 1rem 1.25rem;
+  background: #212e34;
+  color: #faf7f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+}
+
+.quote-sidebar-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: var(--fs-h3, 20px);
+  font-weight: 700;
+  color: #faf7f2;
+  margin: 0;
+}
+
+.quote-pax-badge {
+  background: rgba(79, 164, 157, 0.25);
+  color: #4fa49d;
+  padding: 0.2rem 0.65rem;
+  border-radius: 9999px;
+  font-size: var(--fs-body, 17px);
+  font-weight: 500;
+}
+
+.quote-lines-body {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.quote-line-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: var(--fs-body, 17px);
+  line-height: 1.35;
+  color: #212e34;
+  gap: 0.5rem;
+}
+
+.quote-line-name {
+  color: #212e34;
+  font-weight: 500;
+  flex: 1;
+}
+
+.quote-line-amt {
+  font-weight: 500;
+  color: #212e34;
+  white-space: nowrap;
+}
+
+.btn-link-breakdown {
+  background: none;
+  border: none;
+  padding: 0;
+  color: #4fa49d;
+  font-size: var(--fs-body, 17px);
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.btn-link-breakdown:hover {
+  color: #2f6f69;
+}
+
+.quote-totals-footer {
+  padding: 1rem 1.25rem;
+  background: #faf7f2;
+  border-top: 1.5px solid rgba(33, 46, 52, 0.15);
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quote-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-body, 17px);
+  color: #212e34;
+}
+
+.quote-grand-total {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: var(--fs-total, 32px) !important;
+  font-weight: 700;
+  color: #212e34;
+  line-height: 1.1;
+  padding: 0.25rem 0;
+  border-top: 1px dashed rgba(33, 46, 52, 0.2);
+}
+
+.quote-grand-total #quoteGrandTotalVal {
+  color: #212e34;
+  font-size: var(--fs-total, 32px) !important;
+  font-weight: 700;
+}
+
+.quote-dp-balance-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--fs-body, 17px);
+  color: #212e34;
+  background: rgba(79, 164, 157, 0.12);
+  border: 1px solid #4fa49d;
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-top: 2px;
+}
+
+.quote-dp-balance-row strong {
+  color: #ab4b2e;
+  font-weight: 500;
+}
+
+/* 360 viewer modal in studio */
+.studio-viewer-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(33, 46, 52, 0.85);
+  backdrop-filter: blur(6px);
+}
+
+.viewer-modal-card {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 800px;
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}
+
+.viewer-mount-body {
+  height: 480px;
+  background: #f4efe6;
+  position: relative;
+}
+
+/* --------------------------------------------------------------------------
+   Revision 7 & 8: Plan Cards, Food Levels & Slot Customization
+   -------------------------------------------------------------------------- */
+.plan-choice-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.plan-card {
+  background: #ffffff;
+  border: 2px solid var(--color-slate-15);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  cursor: pointer;
+  position: relative;
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.plan-card:hover {
+  border-color: rgba(79, 164, 157, 0.5);
+  box-shadow: 0 8px 24px rgba(33, 46, 52, 0.08);
+}
+
+.plan-card.active {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(79, 164, 157, 0.3), 0 8px 24px rgba(33, 46, 52, 0.08);
+  background: rgba(79, 164, 157, 0.02);
+}
+
+.plan-badge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--color-teal);
+  color: var(--color-slate);
+  font-size: 10px;
+  font-weight: 800;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+}
+
+.plan-badge-secondary {
+  background: var(--color-slate-10);
+  color: var(--color-slate);
+}
+
+.plan-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-slate);
+  margin-bottom: 0.5rem;
+  padding-right: 4rem;
+}
+
+.plan-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  margin-bottom: 0.25rem;
+}
+
+.plan-price {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: var(--color-slate);
+}
+
+.plan-pax {
+  font-size: var(--text-xs);
+  color: var(--color-slate-60);
+  font-weight: 600;
+}
+
+.plan-extra-rate {
+  font-size: var(--text-xs);
+  color: var(--color-rust);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.plan-desc {
+  font-size: var(--text-xs);
+  color: var(--color-slate-70);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex: 1;
+}
+
+.plan-inclusions-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--color-slate-15);
+  font-size: 11px;
+  color: var(--color-slate-70);
+}
+
+/* Food Level Grid */
+.food-level-section {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.food-level-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.food-level-card {
+  background: var(--color-slate-05);
+  border: 2px solid var(--color-slate-15);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.food-level-card:hover {
+  border-color: rgba(79, 164, 157, 0.5);
+}
+
+.food-level-card.selected {
+  border-color: var(--color-teal);
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(79, 164, 157, 0.2);
+}
+
+.level-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.level-name {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 800;
+  color: var(--color-slate);
+}
+
+.level-rate-display {
+  font-size: var(--text-sm);
+  font-weight: 800;
+  color: var(--color-rust);
+  margin-bottom: 0.25rem;
+}
+
+.level-upgrade-hint {
+  font-size: 11px;
+  color: var(--color-teal);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.level-slots-desc {
+  font-size: 11px;
+  color: var(--color-slate-70);
+  line-height: 1.4;
+  border-top: 1px dashed var(--color-slate-15);
+  padding-top: 0.5rem;
+}
+
+.compare-toggle-bar {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Slot Progress Meter */
+.progress-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.quota-pill {
+  background: var(--color-slate);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-full);
+}
+
+.slot-pill {
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 11px;
+  font-weight: 700;
+  border: 1px solid var(--color-slate-20);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.slot-pill.fulfilled {
+  background: rgba(79, 164, 157, 0.15);
+  border-color: var(--color-teal);
+  color: var(--color-teal);
+}
+
+.slot-pill.pending {
+  background: var(--color-slate-05);
+  color: var(--color-slate-70);
+}
+
+/* Included Staples Grid */
+.included-choices-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.included-choices-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1rem;
+}
+
+.included-choice-box {
+  background: var(--color-slate-05);
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+}
+
+.choice-box-title {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-slate);
+  margin-bottom: 0.5rem;
+}
+
+/* Inclusions Checklist with Skip Toggles */
+.inclusions-checklist-card {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-15);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.inclusions-checklist-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.inclusion-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background: var(--color-slate-05);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-slate-10);
+  transition: all var(--transition-fast);
+}
+
+.inclusion-row.skipped {
+  opacity: 0.6;
+  background: #fdf2ef;
+  border-color: rgba(171, 75, 46, 0.2);
+}
+
+.inc-info {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: var(--text-xs);
+  font-weight: 600;
+  color: var(--color-slate);
+}
+
+.inc-info.skipped-text {
+  text-decoration: line-through;
+  color: var(--color-slate-60);
+}
+
+.skip-toggle-btn {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-20);
+  border-radius: var(--radius-sm);
+  padding: 0.25rem 0.6rem;
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.skip-toggle-btn.is-skipped {
+  background: var(--color-rust);
+  color: #ffffff;
+  border-color: var(--color-rust);
+}
+
+.stage-variants-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.stage-variant-tile {
+  background: #ffffff;
+  border: 2px solid var(--color-slate-15);
+  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  transition: all var(--transition-fast);
+}
+
+.stage-variant-tile.active {
+  border-color: var(--color-teal);
+  background: rgba(79, 164, 157, 0.05);
+}
+
+.variant-name {
+  font-weight: 700;
+  font-size: var(--text-xs);
+  color: var(--color-slate);
+}
+
+.variant-price {
+  font-size: 11px;
+  font-weight: 800;
+  color: var(--color-rust);
+}
+
+/* Quote Line Items & Delta Chips */
+.quote-line-item {
+  padding: 0.65rem 0;
+  border-bottom: 1px dashed var(--color-slate-10);
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.quote-line-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--text-xs);
+  font-weight: 700;
+  color: var(--color-slate);
+}
+
+.quote-line-formula {
+  font-size: 11px;
+  color: var(--color-slate-60);
+  font-style: italic;
+}
+
+.quote-tbc-badge {
+  background: rgba(171, 75, 46, 0.12);
+  color: var(--color-rust);
+  border: 1px solid rgba(171, 75, 46, 0.3);
+  font-size: 10px;
+  font-weight: 700;
+  padding: 0.1rem 0.45rem;
+  border-radius: var(--radius-full);
+}
+
+.quote-tbc-notice {
+  background: #fdf2ef;
+  border: 1px solid rgba(171, 75, 46, 0.3);
+  border-radius: var(--radius-md);
+  padding: 0.5rem 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 11px;
+  color: var(--color-rust);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ==========================================================================
+   TIKIM Revision 11: One Booking Engine Studio Styles
+   ========================================================================== */
+
+/* Step 0: What would you like to book? (Chooser) */
+.studio-chooser-wrap {
+  padding: 2rem 0;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+/* ==========================================================================
+   PART 3: CLEARER "START YOUR RESERVATION" SCREEN (TWO-SCREEN FLOW)
+   ========================================================================== */
+.studio-chooser-container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+
+/* 3.2 Screen 1: What are you booking? */
+.chooser-main-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+  text-align: center;
+  margin: 0 0 8px;
+}
+
+.chooser-subtitle {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ink, #212e34);
+  opacity: 0.85;
+  text-align: center;
+  margin: 0 0 32px;
+}
+
+.start-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  align-items: stretch;
+}
+
+.start-card {
+  min-height: 200px;
+  padding: 24px;
+  border: 2px solid rgba(33, 46, 52, 0.20);
+  border-radius: 12px;
+  background: var(--paper, #faf7f2);
+  color: var(--ink, #212e34);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.start-card:hover {
+  border-color: var(--ink, #212e34);
+  background: #ffffff;
+  box-shadow: 0 8px 24px rgba(33, 46, 52, 0.08);
+}
+
+.start-card:focus-visible {
+  outline: 3px solid var(--teal, #4fa49d);
+  outline-offset: 3px;
+}
+
+.start-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.start-card-title {
+  font-family: var(--font-display, 'Fraunces', serif);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.start-card-text {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink, #212e34);
+  opacity: 0.85;
+  margin-bottom: 16px;
+  display: block;
+  flex: 1;
+}
+
+.start-card-price {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink, #212e34);
+  display: block;
+}
+
+.start-card-arrow {
+  align-self: flex-end;
+  color: var(--rust, #ab4b2e);
+  display: inline-flex;
+  transition: transform 0.2s ease;
+  margin-top: 8px;
+}
+
+.start-card:hover .start-card-arrow {
+  transform: translateX(4px);
+}
+
+/* 3.3 & 3.4 Screen 2: Pick your package */
+.screen2-header-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.btn-back-to-type {
+  background: transparent;
+  border: 1.5px solid rgba(33, 46, 52, 0.3);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink, #212e34);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-back-to-type:hover {
+  background: var(--paper, #faf7f2);
+  border-color: var(--ink, #212e34);
+}
+
+.btn-back-to-type:focus-visible {
+  outline: 3px solid var(--teal, #4fa49d);
+  outline-offset: 2px;
+}
+
+.screen2-heading {
+  font-family: var(--font-display, 'Fraunces', serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+  margin: 0;
+}
+
+.screen2-columns-layout {
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 28px;
+  align-items: start;
+}
+
+.screen2-rows-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.screen2-row {
+  min-height: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border: 2px solid rgba(33, 46, 52, 0.20);
+  border-radius: 10px;
+  background: var(--paper, #faf7f2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+  text-align: left;
+  width: 100%;
+}
+
+.screen2-row:hover {
+  border-color: rgba(33, 46, 52, 0.5);
+  background: #ffffff;
+}
+
+.screen2-row:focus-visible {
+  outline: 3px solid var(--teal, #4fa49d);
+  outline-offset: 2px;
+}
+
+.screen2-row.is-selected {
+  border-color: var(--ink, #212e34);
+  border-left: 3px solid var(--teal, #4fa49d);
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(33, 46, 52, 0.08);
+}
+
+.screen2-row-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.screen2-radio-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid var(--ink, #212e34);
+  flex: 0 0 22px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper, #faf7f2);
+  transition: all 0.2s ease;
+}
+
+.screen2-row.is-selected .screen2-radio-circle {
+  border-color: var(--teal-deep, #2f6f69);
+  background: var(--teal-deep, #2f6f69);
+  box-shadow: inset 0 0 0 4px #ffffff;
+}
+
+.screen2-row-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.screen2-row-name {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+}
+
+.screen2-row-pax {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--ink, #212e34);
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+.screen2-row-price-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.screen2-row-price {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+  white-space: nowrap;
+}
+
+.screen2-est-badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(171, 75, 46, 0.15);
+  color: var(--rust, #ab4b2e);
+}
+
+/* Right Sticky "Your Choice" Preview Panel */
+.screen2-preview-panel {
+  position: sticky;
+  top: 110px;
+  width: 100%;
+  max-width: 400px;
+  box-sizing: border-box;
+}
+
+.preview-panel-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(33, 46, 52, 0.25);
+  border-radius: 12px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: 0 8px 30px rgba(33, 46, 52, 0.08);
+}
+
+.preview-pkg-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--ink, #212e34);
+  margin: 0;
+}
+
+.preview-pkg-price {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 28px;
+  font-weight: 800;
+  line-height: 1.2;
+  color: var(--rust, #ab4b2e);
+  margin: 0;
+}
+
+.preview-price-sub {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--ink, #212e34);
+  opacity: 0.9;
+}
+
+.preview-fact-line {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink, #212e34);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  opacity: 0.9;
+}
+
+.preview-fact-icon {
+  color: var(--teal-deep, #2f6f69);
+  flex: 0 0 16px;
+  margin-top: 2px;
+}
+
+.preview-inclusions-wrap {
+  border-top: 1px solid rgba(33, 46, 52, 0.15);
+  padding-top: 12px;
+}
+
+.preview-inclusions-label {
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #64748b;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.preview-inclusions-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  color: var(--ink, #212e34);
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.preview-inclusion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.preview-inclusion-item svg {
+  color: var(--teal-deep, #2f6f69);
+  flex: 0 0 16px;
+  margin-top: 3px;
+}
+
+.btn-screen2-continue {
+  height: 52px;
+  min-height: 52px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+  background: var(--rust, #ab4b2e);
+  color: #faf7f2;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease;
+  margin-top: 6px;
+}
+
+.btn-screen2-continue:hover {
+  background: #8e3d24;
+}
+
+.btn-screen2-continue:focus-visible {
+  outline: 3px solid var(--teal, #4fa49d);
+  outline-offset: 2px;
+}
+
+/* Responsive queries */
+@media (max-width: 860px) {
+  .screen2-columns-layout {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  .screen2-preview-panel {
+    position: relative;
+    top: auto;
+    max-width: 100%;
+  }
+  .btn-screen2-continue {
+    position: sticky;
+    bottom: 16px;
+    z-index: 10;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  }
+}
+
+@media (max-width: 768px) {
+  .start-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  .start-card {
+    min-height: 120px;
+  }
+  .chooser-main-title {
+    font-size: 32px;
+  }
+}
+
+
+/* Menu Step Redesign (Part 4) */
+.menu-toolbar-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--color-slate-15);
+}
+.menu-quota-badge {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: var(--color-slate);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.menu-level-tabs {
+  display: inline-flex;
+  background: var(--color-slate-10);
+  border-radius: 8px;
+  padding: 3px;
+  gap: 3px;
+}
+.menu-level-tab {
+  background: transparent;
+  border: none;
+  padding: 0.4rem 0.85rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-slate-70);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.menu-level-tab.active {
+  background: #ffffff;
+  color: var(--color-slate);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+.menu-saved-dropdown {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-20);
+  border-radius: 6px;
+  padding: 0.4rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-slate);
+}
+
+/* Stone-coloured slot panels */
+.slot-stone-panel {
+  background: #e4dbcf;
+  border: 1px solid rgba(33, 46, 52, 0.14);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(33, 46, 52, 0.04);
+}
+.slot-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.85rem;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.slot-panel-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  color: #212e34;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.slot-panel-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #212e34;
+  color: #ffffff;
+  font-size: 12px;
+}
+.slot-segmented-toggle {
+  display: inline-flex;
+  background: rgba(33, 46, 52, 0.12);
+  border-radius: 6px;
+  padding: 2px;
+  gap: 2px;
+  margin-bottom: 0.85rem;
+}
+.slot-seg-btn {
+  background: transparent;
+  border: none;
+  padding: 0.35rem 0.85rem;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #212e34;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.slot-seg-btn.active {
+  background: #212e34;
+  color: #faf7f2;
+}
+
+/* 2-column mobile, 3-column desktop dish tiles */
+.slot-dish-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+@media (min-width: 860px) {
+  .slot-dish-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.dish-tile-card {
+  background: #ffffff;
+  border: 1.5px solid rgba(33, 46, 52, 0.18);
+  border-radius: 10px;
+  padding: 14px 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  font-size: 17px;
+  font-weight: 600;
+  box-sizing: border-box;
+}
+.dish-tile-card:hover {
+  border-color: #212e34;
+  box-shadow: 0 4px 12px rgba(33, 46, 52, 0.1);
+}
+.dish-tile-card.selected {
+  background: #212e34 !important;
+  color: #faf7f2 !important;
+  border-color: #212e34 !important;
+  box-shadow: 0 4px 14px rgba(33, 46, 52, 0.25);
+}
+.dish-tile-card.selected .dish-tile-name {
+  color: #faf7f2 !important;
+}
+.dish-tile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+.dish-tile-name {
+  font-weight: 600;
+  font-size: 17px;
+  color: #212e34;
+  line-height: 1.3;
+}
+.dish-tile-check {
+  display: none;
+  font-weight: 800;
+  color: #4fa49d;
+  font-size: 18px;
+}
+.dish-tile-check::after {
+  content: '\2713';
+}
+.dish-tile-card.selected .dish-tile-check {
+  display: inline-block;
+}
+.slot-panel-title,
+.slot-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #212e34;
+}
+.slot-stone-panel.is-invalid-slot {
+  border: 2px solid var(--color-rust, #ab4b2e) !important;
+}
+
+/* Staples Row */
+.staples-section {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-15);
+  border-radius: 14px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.staples-title {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--color-slate);
+  margin-bottom: 0.85rem;
+}
+.staples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+}
+.staple-box {
+  background: var(--color-slate-05);
+  border-radius: 8px;
+  padding: 0.85rem;
+  border: 1px solid var(--color-slate-10);
+}
+.staple-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--color-slate-70);
+  margin-bottom: 0.5rem;
+}
+
+/* Extra Dishes Accordion */
+.extra-dishes-details {
+  background: #ffffff;
+  border: 1px solid var(--color-slate-15);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.5rem;
+}
+.extra-dishes-summary {
+  font-family: var(--font-heading);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-slate);
+  cursor: pointer;
+  padding: 0.35rem 0;
+}
+.extra-dishes-content {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--color-slate-15);
+}
+
+/* Missing slots notice in step */
+.slots-missing-warning {
+  background: #fdf2ef;
+  border: 1px solid rgba(171, 75, 46, 0.3);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  color: var(--color-rust);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Guest stepper snapping message */
+.guests-snap-msg {
+  color: var(--color-rust);
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin-top: 0.35rem;
+}
+
+/* Fixed-height Planner Container */
+.floorplan-mount-wrap {
+  height: min(78dvh, 720px);
+  max-height: 720px;
+  border: 1px solid var(--color-slate-15);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #182227;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Food Trays step editor */
+.trays-editor-container {
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+/* Trays Catalog in Booking Step 2 */
+.trays-section {
+  margin-bottom: 1.75rem;
+  background: #ffffff;
+  border: 1px solid rgba(33, 46, 52, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.trays-section-header {
+  background: #f3ede2;
+  padding: 0.85rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid rgba(33, 46, 52, 0.1);
+}
+
+.trays-section-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 20px;
+  font-weight: 700;
+  color: #212e34;
+  margin: 0;
+}
+
+.trays-section-rate {
+  font-size: 17px;
+  font-weight: 700;
+  color: #ab4b2e;
+}
+
+.trays-dishes-grid {
+  display: flex;
+  flex-direction: column;
+}
+
+.tray-catalog-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.85rem 1.25rem;
+  border-bottom: 1px solid rgba(33, 46, 52, 0.08);
+  gap: 1rem;
+}
+
+.tray-catalog-row:last-child {
+  border-bottom: none;
+}
+
+.tray-row-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.tray-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: #faf7f2;
+  border: 1px solid rgba(33, 46, 52, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.tray-thumb img, .tray-thumb svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tray-details {
+  min-width: 0;
+}
+
+.tray-dish-name {
+  font-size: 17px;
+  font-weight: 700;
+  color: #212e34;
+  line-height: 1.3;
+  margin-bottom: 2px;
+}
+
+.tray-dish-price {
+  font-size: 15px;
+  color: rgba(33, 46, 52, 0.7);
+}
+
+.tray-row-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.tray-stepper-ctrl {
+  display: inline-flex;
+  align-items: center;
+  border: 1.5px solid rgba(33, 46, 52, 0.25);
+  border-radius: 8px;
+  background: #faf7f2;
+}
+
+.btn-tray-step {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  font-weight: 700;
+  color: #212e34;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+}
+
+.btn-tray-step:hover:not(:disabled) {
+  background: #e4dbcf;
+}
+
+.btn-tray-step:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.tray-step-qty {
+  min-width: 36px;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 700;
+  color: #212e34;
+}
+
+.tray-row-subtotal {
+  font-weight: 700;
+  font-size: 17px;
+  color: #212e34;
+  min-width: 80px;
+  text-align: right;
+}
+
+/* ==========================================================================
+   TIKIM Revision 12: Studio Recap Bar, Earlier Selections & Mobile Quote Bar
+   ========================================================================== */
+
+
+
+/* Mobile Bottom Quote Summary Bar */
+.mobile-quote-bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 990;
+  background: #212e34;
+  border-top: 2px solid #4fa49d;
+  box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.mobile-quote-inner {
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.mobile-quote-info {
+  display: flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.mobile-quote-label {
+  font-size: 0.85rem;
+  color: rgba(250, 247, 242, 0.75);
+  font-weight: 600;
+}
+
+.mobile-quote-total {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #4fa49d;
+}
+
+.mobile-quote-dp {
+  font-size: 0.75rem;
+  color: #faf7f2;
+  opacity: 0.8;
+}
+
+.mobile-quote-details-btn {
+  background: transparent;
+  color: #faf7f2;
+  border: 1px solid rgba(250, 247, 242, 0.35);
+  border-radius: 6px;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mobile-quote-details-btn:hover {
+  background: rgba(250, 247, 242, 0.15);
+  color: #ffffff;
+}
+
+/* Mobile Quote Sheet Overlay */
+.mobile-quote-sheet-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.mobile-quote-sheet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(33, 46, 52, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.mobile-quote-sheet-card {
+  position: relative;
+  z-index: 2;
+  background: #ffffff;
+  border-radius: 16px 16px 0 0;
+  width: 100%;
+  max-width: 600px;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.35);
+  animation: slideUpSheet 0.25s ease-out;
+}
+
+@keyframes slideUpSheet {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.mobile-quote-sheet-header {
+  padding: 1rem 1.25rem;
+  background: #212e34;
+  color: #faf7f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quote-sheet-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #faf7f2;
+  margin: 0;
+}
+
+.quote-sheet-close {
+  background: transparent;
+  border: none;
+  color: #faf7f2;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
+.mobile-quote-sheet-body {
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.mobile-quote-sheet-footer {
+  padding: 1rem 1.25rem;
+  background: #faf7f2;
+  border-top: 1px solid rgba(33, 46, 52, 0.15);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+/* Validation and disabled state styles */
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#btnWizardNext {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.field-inline-error {
+  color: var(--color-rust);
+  font-size: 0.78rem;
+  font-weight: 700;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.form-input.is-invalid,
+.form-select.is-invalid,
+.form-textarea.is-invalid {
+  border-color: var(--color-rust) !important;
+  background-color: #fdf2ef !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Start reservation confirmation dialog styles. */
+.confirm-reservation-card {
+  max-width: 560px;
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.35);
+}
+
+.confirm-pkg-summary {
+  background: #fdfbf7;
+  border: 1px solid rgba(33, 46, 52, 0.15);
+  border-radius: 12px;
+  padding: 1.15rem 1.25rem;
+}
+
+.confirm-pkg-summary h3 {
+  font-family: var(--font-heading);
+}
+
+.confirm-pkg-summary ul {
+  list-style: disc;
+  margin: 0.5rem 0 0 1.25rem;
+  padding: 0;
+}
+
+.confirm-pkg-summary li {
+  margin-bottom: 0.35rem;
+}
+
+.selected-date-alert.has-chosen-date {
+  background: rgba(47, 111, 105, 0.15);
+  border-color: #245853;
+  color: #212e34;
+}
+
+@media (max-width: 992px) {
+  .wizard-quote-sidebar {
+    display: none !important;
+  }
+  .mobile-quote-bottom-bar {
+    display: block;
+  }
+  .studio-page {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+.pane-review-centered {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+}
+
+/* ==========================================================================
+   Part 1: Booking Confirmation Screen (All Types)
+   ========================================================================== */
+.booking-confirmation-screen {
+  min-height: calc(100dvh - 96px);
+  display: grid;
+  place-items: center;
+  padding: 2.5rem 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.confirmation-card {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1.5px solid rgba(33, 46, 52, 0.2);
+  box-shadow: 0 12px 40px rgba(33, 46, 52, 0.1);
+  padding: 2.25rem 2rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.confirmation-back-btn {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1.5px solid rgba(33, 46, 52, 0.25);
+  border-radius: 8px;
+  padding: 0.45rem 0.95rem;
+  color: #212e34;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 40px;
+}
+
+.confirmation-back-btn:hover {
+  background: rgba(33, 46, 52, 0.06);
+  border-color: #212e34;
+}
+
+.confirmation-hero {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.confirmation-success-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.25rem;
+}
+
+.confirmation-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 800;
+  color: #212e34;
+  margin: 0;
+}
+
+.confirmation-lead {
+  font-size: 15px;
+  color: #475569;
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+.confirmation-ref-box {
+  background: #faf7f2;
+  border: 1.5px solid #4fa49d;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  text-align: center;
+}
+
+.ref-box-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: #4fa49d;
+  margin-bottom: 0.25rem;
+}
+
+.ref-box-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.ref-box-code {
+  font-family: var(--font-heading, monospace);
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-weight: 800;
+  color: #212e34;
+  letter-spacing: 0.05em;
+}
+
+.btn-copy-ref {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 13px;
+  border-radius: 6px;
+  cursor: pointer;
+  min-height: 36px;
+}
+
+.confirmation-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+  background: #faf7f2;
+  border: 1px solid rgba(33, 46, 52, 0.15);
+  border-radius: 10px;
+  padding: 1.25rem;
+}
+
+.summary-tile {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.summary-tile-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.summary-tile strong {
+  font-size: 15px;
+  color: #212e34;
+}
+
+.confirmation-steps-block {
+  border-top: 1px solid rgba(33, 46, 52, 0.12);
+  padding-top: 1.25rem;
+}
+
+.confirmation-steps-heading {
+  font-size: 16px;
+  font-weight: 700;
+  color: #212e34;
+  margin: 0 0 0.75rem 0;
+}
+
+.confirmation-steps-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 14px;
+  color: #334155;
+  line-height: 1.5;
+}
+
+.confirmation-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.confirmation-btn-track,
+.confirmation-btn-home {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 15px;
+  border-radius: 8px;
+}
+
+@media (max-width: 640px) {
+  .confirmation-card {
+    padding: 1.5rem 1.25rem;
+    gap: 1.25rem;
+  }
+  .confirmation-summary-grid {
+    grid-template-columns: 1fr;
+    gap: 0.65rem;
+  }
+  .confirmation-actions-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   Breakdown Dialog Modal (Part 2.5)
+   ========================================================================== */
+.quote-breakdown-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+  z-index: 2200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+
+.quote-breakdown-card {
+  background: #ffffff;
+  border-radius: 14px;
+  max-width: 540px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+}
+
+.quote-breakdown-header {
+  padding: 1.15rem 1.5rem;
+  background: #212e34;
+  color: #faf7f2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.quote-breakdown-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #faf7f2;
+  margin: 0;
+}
+
+.quote-breakdown-close {
+  background: transparent;
+  border: none;
+  color: #faf7f2;
+  font-size: 1.75rem;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.quote-breakdown-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.breakdown-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 14px;
+  color: #212e34;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.breakdown-name {
+  font-weight: 600;
+  color: #212e34;
+}
+
+.breakdown-formula {
+  font-size: 12px;
+  color: #64748b;
+  display: block;
+}
+
+.breakdown-amt {
+  font-weight: 700;
+  color: #212e34;
+  white-space: nowrap;
+}
+
+.quote-breakdown-footer {
+  padding: 1rem 1.5rem;
+  background: #faf7f2;
+  border-top: 1px solid rgba(33, 46, 52, 0.15);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ==========================================================================
+   TIKIM Revision 17B: Type Scale, Floor Plan Confirm Bar, Centred Review
+   ========================================================================== */
+
+/* Part 3: Type Scale Tokens */
+:root {
+  --fs-body: 17px;
+  --fs-h3: 20px;
+  --fs-h2: 28px;
+  --fs-total: 32px;
+  --fs-h1: 40px;
+}
+
+body[data-page="studio"],
+body.studio-page,
+.studio-page {
+  --fs-body: 17px;
+  --fs-h3: 20px;
+  --fs-h2: 28px;
+  --fs-total: 32px;
+  --fs-h1: 40px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: var(--fs-body) !important;
+  color: var(--color-slate, #212e34);
+}
+
+/* 40px Page Titles */
+body[data-page="studio"] h1,
+.studio-page h1,
+.studio-page .chooser-main-title {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: var(--fs-h1, 40px) !important;
+  font-weight: 700 !important;
+  line-height: 1.2 !important;
+}
+
+/* 28px Step Headings */
+body[data-page="studio"] h2,
+.studio-page h2,
+.studio-page .pane-title,
+.studio-page .screen2-heading,
+.studio-page .step-heading {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: var(--fs-h2, 28px) !important;
+  font-weight: 700 !important;
+  line-height: 1.25 !important;
+}
+
+/* 20px Legends, Tab Names, Slot Titles, Quote Group Titles */
+body[data-page="studio"] h3,
+body[data-page="studio"] legend,
+.studio-page h3,
+.studio-page legend,
+.studio-page .tracker-tab-title,
+.studio-page .slot-title,
+.studio-page .quote-sidebar-title,
+.studio-page .step-subheading,
+.studio-page .staples-title,
+.studio-page .start-card-title,
+.studio-page .quote-breakdown-title,
+.studio-page .confirm-pkg-name {
+  font-size: var(--fs-h3, 20px) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+}
+
+/* 32px Total */
+body[data-page="studio"] .quote-grand-total,
+body[data-page="studio"] .quote-grand-total #quoteGrandTotalVal,
+body[data-page="studio"] .review-grand-total,
+body[data-page="studio"] #reviewTotalVal,
+body[data-page="studio"] .price-grand-total,
+.studio-page .quote-grand-total,
+.studio-page .quote-grand-total #quoteGrandTotalVal,
+.studio-page .review-grand-total,
+.studio-page #reviewTotalVal,
+.studio-page .price-grand-total {
+  font-family: var(--font-heading, 'Fraunces', serif);
+  font-size: var(--fs-total, 32px) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+}
+
+/* 17px ALL non-heading text: labels, inputs, tiles, chips, quote lines, hints, buttons, tab values, errors */
+body[data-page="studio"] p,
+body[data-page="studio"] span,
+body[data-page="studio"] label,
+body[data-page="studio"] input,
+body[data-page="studio"] select,
+body[data-page="studio"] textarea,
+body[data-page="studio"] button,
+body[data-page="studio"] a,
+body[data-page="studio"] div,
+body[data-page="studio"] li,
+body[data-page="studio"] strong,
+body[data-page="studio"] em,
+body[data-page="studio"] small,
+body[data-page="studio"] summary,
+body[data-page="studio"] .btn,
+body[data-page="studio"] .form-hint,
+body[data-page="studio"] .hint,
+body[data-page="studio"] .field-error,
+body[data-page="studio"] .error-msg,
+body[data-page="studio"] .skip-link,
+body[data-page="studio"] .header-link,
+body[data-page="studio"] .dropdown-item,
+body[data-page="studio"] .site-nav a,
+body[data-page="studio"] .site-nav button,
+.studio-page p,
+.studio-page span,
+.studio-page label,
+.studio-page input,
+.studio-page select,
+.studio-page textarea,
+.studio-page button,
+.studio-page a,
+.studio-page div,
+.studio-page li,
+.studio-page strong,
+.studio-page em,
+.studio-page small,
+.studio-page summary,
+.studio-page .btn,
+.studio-page .form-hint,
+.studio-page .hint,
+.studio-page .field-error,
+.studio-page .error-msg,
+.studio-page .quote-line-name,
+.studio-page .quote-line-amt,
+.studio-page .quote-line-formula,
+.studio-page .quote-pax-badge,
+.studio-page .quote-total-row,
+.studio-page .quote-dp-balance-row,
+.studio-page .quote-dp-balance-row *,
+.studio-page .quote-hold-status-note,
+.studio-page .quote-estimate-notice,
+.studio-page .tracker-step-counter,
+.studio-page .tracker-tab-val,
+.studio-page .tracker-tab-badge,
+.studio-page .menu-level-tab,
+.studio-page .start-card-text,
+.studio-page .start-card-price,
+.studio-page .chooser-subtitle,
+.studio-page .package-option-row,
+.studio-page .package-option-row *,
+.studio-page .dish-card,
+.studio-page .dish-card *,
+.studio-page .addon-card,
+.studio-page .addon-card *,
+.studio-page .tray-order-row,
+.studio-page .tray-order-row *,
+.studio-page .breakdown-row,
+.studio-page .breakdown-row *,
+.studio-page .floorplan-seat-summary,
+.studio-page .floorplan-confirm-note,
+.studio-page .btn-text-skip,
+.studio-page .review-label,
+.studio-page .review-val,
+.studio-page .slots-missing-warning {
+  font-size: var(--fs-body, 17px);
+}
+
+/* Override all child elements from smaller sizes to 17px */
+body[data-page="studio"] .hint,
+body[data-page="studio"] .form-hint,
+body[data-page="studio"] .field-error,
+body[data-page="studio"] .error-msg,
+body[data-page="studio"] .slots-missing-warning,
+body[data-page="studio"] .quote-estimate-notice,
+body[data-page="studio"] .quote-hold-status-note,
+body[data-page="studio"] .tracker-tab-badge,
+body[data-page="studio"] .tracker-step-counter,
+body[data-page="studio"] .tracker-tab-val,
+body[data-page="studio"] .quote-pax-badge,
+body[data-page="studio"] .badge,
+.studio-page .hint,
+.studio-page .form-hint,
+.studio-page .field-error,
+.studio-page .error-msg,
+.studio-page .slots-missing-warning,
+.studio-page .quote-estimate-notice,
+.studio-page .quote-hold-status-note,
+.studio-page .tracker-tab-badge,
+.studio-page .tracker-step-counter,
+.studio-page .tracker-tab-val,
+.studio-page .quote-pax-badge,
+.studio-page .badge {
+  font-size: var(--fs-body, 17px) !important;
+}
+
+/* Weight rule:
+   Regular weight 400 to 500 for body text;
+   weight 600 to 700 ONLY for headings, tab names, buttons and the total.
+   Any bold (>= 600) element that is 17px must be a button! */
+body[data-page="studio"] strong:not(button strong):not(.btn strong):not([role="button"] strong):not(.quote-grand-total strong):not(.review-grand-total strong),
+body[data-page="studio"] b:not(button b):not(.btn b):not([role="button"] b),
+body[data-page="studio"] span:not(button span):not(.btn span):not([role="button"] span):not(.tracker-tab-title):not(.quote-grand-total span):not(.review-grand-total span):not(.price-grand-total):not(.quote-sidebar-title span):not(.pane-title span):not(.screen2-heading span),
+body[data-page="studio"] div:not(button div):not(.btn div):not([role="button"] div):not(.tracker-tab-title):not(.quote-grand-total):not(.review-grand-total):not(.price-grand-total),
+body[data-page="studio"] label,
+body[data-page="studio"] p,
+body[data-page="studio"] li,
+body[data-page="studio"] small,
+body[data-page="studio"] em,
+body[data-page="studio"] td,
+body[data-page="studio"] th:not(button th),
+.studio-page strong:not(button strong):not(.btn strong):not([role="button"] strong):not(.quote-grand-total strong):not(.review-grand-total strong),
+.studio-page b:not(button b):not(.btn b):not([role="button"] b),
+.studio-page span:not(button span):not(.btn span):not([role="button"] span):not(.tracker-tab-title):not(.quote-grand-total span):not(.review-grand-total span):not(.price-grand-total):not(.quote-sidebar-title span):not(.pane-title span):not(.screen2-heading span),
+.studio-page div:not(button div):not(.btn div):not([role="button"] div):not(.tracker-tab-title):not(.quote-grand-total):not(.review-grand-total):not(.price-grand-total),
+.studio-page label,
+.studio-page p,
+.studio-page li,
+.studio-page small,
+.studio-page em,
+.studio-page td,
+.studio-page th:not(button th),
+.studio-page .quote-line-name,
+.studio-page .quote-line-amt,
+.studio-page .quote-pax-badge,
+.studio-page .tracker-tab-badge,
+.studio-page .tracker-tab-val,
+.studio-page .tracker-step-counter,
+.studio-page .start-card-price,
+.studio-page .start-card-text {
+  font-weight: 500 !important;
+}
+
+/* Buttons and button descendants can be bold (700) */
+body[data-page="studio"] button,
+body[data-page="studio"] .btn,
+body[data-page="studio"] [role="button"],
+body[data-page="studio"] button *,
+body[data-page="studio"] .btn *,
+body[data-page="studio"] [role="button"] *,
+.studio-page button,
+.studio-page .btn,
+.studio-page [role="button"],
+.studio-page button *,
+.studio-page .btn *,
+.studio-page [role="button"] * {
+  font-weight: 700;
+}
+
+/* Part 5.2: Floor Plan Confirmation Bar */
+.floorplan-confirm-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1rem 1.25rem;
+  background: #faf7f2;
+  border: 1.5px solid #212e34;
+  border-radius: 8px;
+  margin-top: 1.5rem;
+}
+
+.floorplan-seat-summary {
+  font-size: var(--fs-body, 17px) !important;
+  font-weight: 500 !important;
+  color: #212e34;
+}
+
+.floorplan-confirm-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.floorplan-confirm-note {
+  margin-top: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(79, 164, 157, 0.15);
+  border: 1px solid #4fa49d;
+  border-radius: 6px;
+  color: #212e34;
+  font-size: var(--fs-body, 17px) !important;
+  font-weight: 500 !important;
+}
+
+.btn-text-skip {
+  background: none;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  color: #212e34;
+  font-family: inherit;
+  font-size: var(--fs-body, 17px) !important;
+  font-weight: 700 !important;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-text-skip:hover {
+  color: #ab4b2e;
+}
+
+/* Part 6: Review Step (Single Centred Column) */
+.review,
+.pane-review-centered {
+  max-width: 760px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.review-quote-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1.5px solid rgba(33, 46, 52, 0.2);
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  box-shadow: 0 4px 16px rgba(33, 46, 52, 0.06);
+}
+
+.review-quote-totals {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 2px solid rgba(33, 46, 52, 0.15);
+}
+
+.review-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: var(--fs-body, 17px);
+  color: #212e34;
+  margin-bottom: 0.5rem;
+}
+
+.action-row-split {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* Enforce type scale across all header, nav, and footer elements on studio-page */
+/* Revision 17B Part 3: Type scale strictly {17, 20, 28, 32, 40} */
+body[data-page="studio"] * {
+  font-size: var(--fs-body, 17px) !important;
+}
+
+body[data-page="studio"] h1,
+body[data-page="studio"] .chooser-main-title {
+  font-size: var(--fs-h1, 40px) !important;
+  font-weight: 700 !important;
+}
+
+body[data-page="studio"] h2,
+body[data-page="studio"] .pane-title,
+body[data-page="studio"] .screen2-heading,
+body[data-page="studio"] .footer-centered-title,
+body[data-page="studio"] .modal-title {
+  font-size: var(--fs-h2, 28px) !important;
+  font-weight: 700 !important;
+}
+
+body[data-page="studio"] h3,
+body[data-page="studio"] .step-subheading,
+body[data-page="studio"] .slot-panel-title,
+body[data-page="studio"] .preview-pkg-title,
+body[data-page="studio"] .quote-sidebar-title,
+body[data-page="studio"] .quote-sheet-title,
+body[data-page="studio"] summary,
+body[data-page="studio"] legend {
+  font-size: var(--fs-h3, 20px) !important;
+  font-weight: 700 !important;
+}
+
+body[data-page="studio"] .tracker-tab-title {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+body[data-page="studio"] .tracker-tab-value {
+  font-size: 17px !important;
+  font-weight: 400 !important;
+}
+
+body[data-page="studio"] .tracker-step-counter {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+body[data-page="studio"] .quote-total-value,
+body[data-page="studio"] #quoteGrandTotalVal,
+body[data-page="studio"] #mobileQuoteTotalVal,
+body[data-page="studio"] #reviewTotalVal,
+body[data-page="studio"] .review-total-amount,
+body[data-page="studio"] .quote-grand-total span:last-child {
+  font-size: var(--fs-total, 32px) !important;
+  font-weight: 700 !important;
+}
+
+/* Any 17px element that is not a button must be 500 */
+body[data-page="studio"] *:not(h1):not(h2):not(h3):not(.pane-title):not(.screen2-heading):not(.step-subheading):not(.slot-panel-title):not(.preview-pkg-title):not(.quote-sidebar-title):not(.tracker-tab-title):not(.tracker-step-counter):not(summary):not(legend):not(button):not(.btn):not([role="button"]):not(#quoteGrandTotalVal):not(#mobileQuoteTotalVal):not(#reviewTotalVal):not(.review-total-amount) {
+  font-weight: 500 !important;
+}
+
+body[data-page="studio"] button,
+body[data-page="studio"] .btn,
+body[data-page="studio"] [role="button"],
+body[data-page="studio"] summary {
+  font-weight: 700 !important;
+}
+
+
+
+
+

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shareable Event Quotation | Dack's Catering Services · TIKIM</title>
+  <meta name="description" content="Official read-only event proposal and itemized cost breakdown from Dack's Catering Services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <style>
+    .quote-page {
+      padding: calc(var(--header-height) + 2rem) 1.5rem 6rem;
+      min-height: 100vh;
+      background: var(--color-bg);
+    }
+    .quote-card-container {
+      max-width: 860px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-slate-10);
+      box-shadow: 0 12px 36px rgba(33, 46, 52, 0.08);
+      overflow: hidden;
+    }
+    .quote-banner-header {
+      background: var(--color-slate);
+      color: #ffffff;
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .quote-doc-title {
+      font-family: var(--font-heading);
+      font-size: var(--text-2xl);
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 0.25rem;
+    }
+    .quote-badge-val {
+      font-size: var(--text-xs);
+      color: var(--color-teal);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .quote-body-pad {
+      padding: 2.5rem;
+    }
+    .quote-meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px dashed var(--color-slate-15);
+    }
+    .meta-kpi-label {
+      font-size: var(--text-2xs);
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--color-slate-60);
+      margin-bottom: 0.25rem;
+    }
+    .meta-kpi-val {
+      font-family: var(--font-heading);
+      font-size: var(--text-base);
+      font-weight: 700;
+      color: var(--color-slate);
+    }
+    .quote-items-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    .quote-items-table th, .quote-items-table td {
+      padding: 0.85rem 1rem;
+      border-bottom: 1px solid var(--color-slate-10);
+      text-align: left;
+      font-size: var(--text-xs);
+    }
+    .quote-items-table th {
+      background: var(--color-slate-05);
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--color-slate-70);
+    }
+    .quote-calc-box {
+      margin-left: auto;
+      max-width: 380px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      padding: 1.5rem;
+      background: var(--color-slate-05);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-slate-15);
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: var(--text-xs);
+      color: var(--color-slate-70);
+    }
+    .calc-total {
+      font-family: var(--font-heading);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--color-slate);
+      border-top: 1px dashed var(--color-slate-20);
+      padding-top: 0.5rem;
+    }
+    .calc-dp {
+      background: rgba(79, 164, 157, 0.15);
+      border: 1px solid var(--color-teal);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      font-weight: 700;
+      color: var(--color-slate);
+    }
+    .quote-share-panel {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--color-slate-15);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    .qr-code-box {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    #qrcodeTarget img {
+      border: 1px solid var(--color-slate-15);
+      border-radius: var(--radius-sm);
+    }
+    .share-btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body data-page="quote">
+  <div id="tikim-header-slot"></div>
+
+  <main class="quote-page">
+    <div class="quote-card-container" id="quoteDocCard">
+      <div class="quote-banner-header">
+        <div>
+          <span class="quote-badge-val">Official Event Proposal</span>
+          <h1 class="quote-doc-title">Dack's Catering Proposal</h1>
+          <p style="font-size: var(--text-xs); color: rgba(255,255,255,0.7); margin: 0;">
+            Transaction, Inventory & Katering Information Management (TIKIM)
+          </p>
+        </div>
+        <div style="text-align: right;">
+          <a href="studio.html" id="btnBookThisQuote" class="btn btn-primary">
+            Book / Customize This Quote &rarr;
+          </a>
+        </div>
+      </div>
+
+      <div class="quote-body-pad">
+        <div class="quote-meta-grid">
+          <div>
+            <div class="meta-kpi-label">Event Type</div>
+            <div class="meta-kpi-val" id="quoteEventType">Grand Wedding</div>
+          </div>
+          <div>
+            <div class="meta-kpi-label">Target Date</div>
+            <div class="meta-kpi-val" id="quoteEventDate">Dec 25, 2026</div>
+          </div>
+          <div>
+            <div class="meta-kpi-label">Guest Count</div>
+            <div class="meta-kpi-val" id="quotePax">100 Pax</div>
+          </div>
+          <div>
+            <div class="meta-kpi-label">Package Tier</div>
+            <div class="meta-kpi-val" id="quotePackageName">Royal Wedding</div>
+          </div>
+          <div id="quoteBoardNameGroup" style="display: none;">
+            <div class="meta-kpi-label" id="quoteBoardNameLabel">Name on Board</div>
+            <div class="meta-kpi-val" id="quoteBoardNameVal">Not provided</div>
+          </div>
+          <div id="quoteThemeGroup" style="display: none;">
+            <div class="meta-kpi-label" id="quoteThemeLabel">Theme / Palette</div>
+            <div class="meta-kpi-val" id="quoteThemeVal">Not provided</div>
+          </div>
+        </div>
+
+        <table class="quote-items-table">
+          <thead>
+            <tr>
+              <th>Item / Inclusions Description</th>
+              <th>Qty</th>
+              <th>Unit Rate</th>
+              <th style="text-align: right;">Total</th>
+            </tr>
+          </thead>
+          <tbody id="quoteTableRows">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+
+        <div class="quote-calc-box">
+          <div class="calc-row">
+            <span>Subtotal:</span>
+            <span id="quoteSubtotal">₱0</span>
+          </div>
+          <div class="calc-row calc-total">
+            <span>Estimated Total:</span>
+            <span id="quoteTotal" style="color: var(--color-rust);">₱0</span>
+          </div>
+          <div class="calc-row calc-dp">
+            <span id="quoteDpLabel">Downpayment (50%):</span>
+            <span id="quoteDownpayment">₱0</span>
+          </div>
+          <div style="font-size: 11px; color: var(--color-slate-60); text-align: center;">
+            Valid for 48 hours upon official hold. 50% downpayment locks date.
+          </div>
+        </div>
+
+        <!-- CATERING POLICIES & TERMS -->
+        <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px dashed var(--color-slate-15);">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
+            <h3 style="font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-slate-70); margin: 0;">
+              Catering Terms &amp; Policies
+            </h3>
+            <span id="quotePolicyVerBadge" style="font-size: 10px; font-weight: 700; color: var(--color-teal); background: rgba(79,164,157,0.12); padding: 2px 6px; border-radius: 4px;">
+              Policy v1
+            </span>
+          </div>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+            <div style="background: var(--color-slate-05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-slate-10);">
+              <h4 style="font-size: 12px; font-weight: 700; color: var(--color-slate); margin: 0 0 0.5rem;">Cancellation &amp; Refund Policy</h4>
+              <div id="quoteCancelPolicyBody" style="font-size: 11px; line-height: 1.6; color: var(--color-slate-70);"></div>
+            </div>
+            <div style="background: var(--color-slate-05); padding: 1rem; border-radius: var(--radius-md); border: 1px solid var(--color-slate-10);">
+              <h4 style="font-size: 12px; font-weight: 700; color: var(--color-slate); margin: 0 0 0.5rem;">Equipment Care, Damage &amp; Loss Policy</h4>
+              <div id="quoteDamagePolicyBody" style="font-size: 11px; line-height: 1.6; color: var(--color-slate-70);"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-share-panel">
+          <div class="qr-code-box">
+            <div id="qrcodeTarget"></div>
+            <div>
+              <strong style="font-size: var(--text-xs); color: var(--color-slate);">Scan on Mobile</strong>
+              <div style="font-size: 11px; color: var(--color-slate-60);">Opens this exact proposal</div>
+            </div>
+          </div>
+
+          <div class="share-btn-row">
+            <button type="button" class="btn btn-sm btn-outline" id="btnCopyQuoteLink">Copy Link</button>
+            <a href="#" target="_blank" class="btn btn-sm btn-outline" id="btnMessengerShare">Messenger</a>
+            <button type="button" class="btn btn-sm btn-outline" id="btnPrintPdf">Save as PDF</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module">
+    import { computeQuote, formatPeso } from './js/pricing.js?v=r8';
+    import { formatPolicyHtml, DEFAULT_CANCELLATION_POLICY, DEFAULT_DAMAGE_POLICY } from './js/policyHelper.js';
+    import { mockApi } from './js/mockApi.js';
+
+
+    async function loadQuoteData() {
+      const hash = window.location.hash;
+      let state = null;
+
+      if (hash.startsWith('#q=')) {
+        try {
+          const raw = hash.slice(3);
+          const decoded = decodeURIComponent(atob(raw));
+          state = JSON.parse(decoded);
+        } catch (e) {
+          console.warn('Could not decode quote hash:', e);
+        }
+      }
+
+      // Fallback to draft or default if hash is missing
+      if (!state) {
+        const savedDraft = localStorage.getItem('tikim.draft');
+        if (savedDraft) {
+          state = JSON.parse(savedDraft);
+        } else {
+          state = {
+            eventType: 'party',
+            pax: 100,
+            date: '2026-12-25',
+            plan: 'allin',
+            level: 1,
+            packageId: 'party',
+            selectedDishes: [],
+            occasionAddOns: [],
+            commonAddOns: [],
+            specialDishes: [],
+            skippedInclusions: []
+          };
+        }
+      }
+
+      let packages = [];
+      try {
+        const res = await fetch('data/packages.json');
+        packages = await res.json();
+      } catch (e) {}
+
+      const pkgObj = packages.find(p => p.id === state.packageId) || null;
+
+      const breakdown = computeQuote({
+        eventType: state.eventType || 'party',
+        pax: state.pax || 100,
+        plan: state.plan || (pkgObj ? 'allin' : 'catering'),
+        packageId: state.packageId,
+        level: state.level || 1,
+        dishes: state.selectedDishes || state.dishes || [],
+        extraDishes: state.extraDishes || [],
+        stageVariant: state.stageVariant || 'none',
+        special: state.specialDishes || state.special || [],
+        requested: state.commonAddOns || state.addons || [],
+        addOns: state.occasionAddOns || state.addOns || [],
+        skippedInclusions: Array.isArray(state.skippedInclusions) ? state.skippedInclusions : []
+      });
+
+      document.getElementById('quoteEventType').textContent = (state.eventType || 'Party').toUpperCase();
+      document.getElementById('quoteEventDate').textContent = state.date || 'To be confirmed';
+      document.getElementById('quotePackageName').textContent = pkgObj?.name || (state.type === 'food' ? `Food Package ${state.level || 1}` : 'Event Package');
+
+      const quoteBoardGroup = document.getElementById('quoteBoardNameGroup');
+      const quoteThemeGroup = document.getElementById('quoteThemeGroup');
+      if (quoteBoardGroup && quoteThemeGroup) {
+        if (state.type === 'event' || state.packageId || state.stageText) {
+          quoteBoardGroup.style.display = 'block';
+          quoteThemeGroup.style.display = 'block';
+          document.getElementById('quoteBoardNameVal').textContent = state.stageText?.name?.trim() || 'Not provided';
+          document.getElementById('quoteThemeVal').textContent = state.stageText?.character?.trim() || 'Not provided';
+        } else {
+          quoteBoardGroup.style.display = 'none';
+          quoteThemeGroup.style.display = 'none';
+        }
+      }
+
+      const tableBody = document.getElementById('quoteTableRows');
+      tableBody.innerHTML = breakdown.lines.map(l => `
+        <tr>
+          <td>
+            <strong>${l.name}</strong>
+            <div style="font-size: 11px; color: var(--color-slate-60);">${l.formula || ''}</div>
+          </td>
+          <td>${l.quantity || 1}</td>
+          <td>${l.isTbc ? 'Price on request' : (l.unitPrice ? formatPeso(l.unitPrice) : 'Included')}</td>
+          <td style="text-align: right; font-weight: 700;">
+            ${l.isTbc ? '<span class="badge badge-rust" style="font-size: 10px;">To be quoted</span>' : (l.amount === 0 ? '₱0' : formatPeso(l.amount))}
+          </td>
+        </tr>
+      `).join('');
+
+      document.getElementById('quoteSubtotal').textContent = formatPeso(breakdown.knownTotal);
+      document.getElementById('quoteTotal').textContent = formatPeso(breakdown.knownTotal);
+      document.getElementById('quoteDownpayment').textContent = formatPeso(breakdown.downpayment);
+      if (breakdown.downpaymentLabel && document.getElementById('quoteDpLabel')) {
+        document.getElementById('quoteDpLabel').textContent = `${breakdown.downpaymentLabel}:`;
+      }
+
+      if (breakdown.flags && breakdown.flags.hasTbc) {
+        const titleEl = document.querySelector('.quote-banner-header div');
+        if (titleEl && !document.getElementById('awaitingBadgeQuoteDoc')) {
+          const badge = document.createElement('span');
+          badge.id = 'awaitingBadgeQuoteDoc';
+          badge.className = 'badge badge-rust';
+          badge.style.marginLeft = '0.5rem';
+          badge.textContent = 'Awaiting final quote';
+          titleEl.appendChild(badge);
+        }
+      }
+
+      if (breakdown.flags && breakdown.flags.usesEstimates) {
+        const calcBox = document.querySelector('.quote-calc-box');
+        if (calcBox && !document.getElementById('quoteDocEstimateNotice')) {
+          const estNotice = document.createElement('div');
+          estNotice.id = 'quoteDocEstimateNotice';
+          estNotice.className = 'quote-estimate-notice';
+          estNotice.style.cssText = 'font-size: 11px; color: var(--color-rust); text-align: center; margin-top: 0.5rem; font-weight: 600;';
+          estNotice.textContent = "Includes estimated prices, to be confirmed by Dack's";
+          calcBox.appendChild(estNotice);
+        }
+      }
+
+      // Populate official catering policies
+      try {
+        const settings = await mockApi.getSettings();
+        const cancelPolicy = settings.cancellationPolicy || DEFAULT_CANCELLATION_POLICY;
+        const damagePolicy = settings.damagePolicy || DEFAULT_DAMAGE_POLICY;
+        const policyVer = settings.policyVersion || 1;
+
+        const badgeEl = document.getElementById('quotePolicyVerBadge');
+        if (badgeEl) badgeEl.textContent = `Policy v${policyVer}`;
+
+        const cancelEl = document.getElementById('quoteCancelPolicyBody');
+        if (cancelEl) cancelEl.innerHTML = formatPolicyHtml(cancelPolicy);
+
+        const damageEl = document.getElementById('quoteDamagePolicyBody');
+        if (damageEl) damageEl.innerHTML = formatPolicyHtml(damagePolicy);
+      } catch (err) {
+        console.warn('Could not load policy details:', err);
+      }
+
+
+      // QR Code generation
+      if (window.qrcode) {
+        const qr = qrcode(0, 'M');
+        qr.addData(window.location.href);
+        qr.make();
+        document.getElementById('qrcodeTarget').innerHTML = qr.createImgTag(3, 4);
+      }
+
+      // Actions
+      const btnBook = document.getElementById('btnBookThisQuote');
+      btnBook.addEventListener('click', (e) => {
+        localStorage.setItem('tikim.draft', JSON.stringify(state));
+      });
+
+      const copyBtn = document.getElementById('btnCopyQuoteLink');
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(window.location.href);
+        alert('Proposal link copied to clipboard!');
+      });
+
+      const msgBtn = document.getElementById('btnMessengerShare');
+      msgBtn.href = `fb-messenger://share?link=${encodeURIComponent(window.location.href)}`;
+
+      const printBtn = document.getElementById('btnPrintPdf');
+      printBtn.addEventListener('click', () => window.print());
+    }
+
+    document.addEventListener('DOMContentLoaded', loadQuoteData);
+  </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Story &amp; FAQ | Dack's Catering Services</title>
+  <meta name="description" content="Learn about Dack's Catering Services in San Ildefonso, Bulacan.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png">
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background: var(--paper, #faf7f2);
+      margin: 0;
+    }
+    .blank-page-main {
+      flex: 1 0 auto;
+      min-height: calc(100vh - 180px);
+    }
+  </style>
+</head>
+<body data-page="about">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="tikim-header-slot"></div>
+
+  <main id="main-content" class="blank-page-main">
+    <h1 class="sr-only">Our story</h1>
+    <div id="faq" class="sr-only" aria-hidden="true"></div>
+  </main>
+
+  <div id="tikim-footer-slot"></div>
+  <script type="module">
+    import { initLayout } from './js/layout.js';
+    initLayout('about');
+  </script>
+  <script type="module" src="js/search.js"></script>
+</body>
+</html>

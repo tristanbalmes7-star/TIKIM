@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organizer Dashboard | TIKIM · Dack's Catering Services</title>
+  <meta name="description" content="Central event customization, inventory, quotations, and schedule management dashboard for Dack's Catering Services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/pages/admin.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body class="admin-body">
+  <div class="admin-app-layout">
+    <!-- COLLAPSIBLE SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-brand">
+        <a href="../index.html" class="brand-link" title="Visit Public Site">
+          <img src="../assets/img/logo-main.png" alt="Dack's Logo" class="sidebar-logo">
+          <div class="brand-text">
+            <span class="brand-title">DACK'S</span>
+            <span class="brand-sub">TIKIM Organizer</span>
+          </div>
+        </a>
+        <button type="button" class="sidebar-toggle-btn" id="sidebarCollapseBtn" aria-label="Toggle Sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Organizer Navigation">
+        <a href="#/dashboard" class="nav-item active" data-route="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="#/bookings" class="nav-item" data-route="bookings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Bookings</span>
+          <span class="nav-badge" id="navBadgeBookings">0</span>
+        </a>
+        <a href="#/calendar" class="nav-item" data-route="calendar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          <span>Calendar & Schedules</span>
+        </a>
+        <a href="#/payments" class="nav-item" data-route="payments">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+          <span>Payments</span>
+          <span class="nav-badge badge-rust" id="navBadgePayments">0</span>
+        </a>
+        <a href="#/packages-menu" class="nav-item" data-route="packages-menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+          <span>Packages & Menu</span>
+        </a>
+        <a href="#/inventory" class="nav-item" data-route="inventory">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+          <span>Inventory</span>
+        </a>
+        <a href="#/vendors" class="nav-item" data-route="vendors">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <span>Vendors</span>
+        </a>
+        <a href="#/messages" class="nav-item" data-route="messages">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Messages</span>
+        </a>
+        <a href="#/settings" class="nav-item" data-route="settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-user-footer">
+        <div class="user-avatar">OC</div>
+        <div class="user-details">
+          <strong class="user-name">Coordinator</strong>
+          <span class="user-role">Organizer Admin</span>
+        </div>
+        <button type="button" class="btn-logout" id="btnLogout" title="Log Out">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <div class="admin-main-wrap">
+      <!-- TOP BAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button type="button" class="btn-icon mobile-menu-btn" id="mobileMenuBtn" aria-label="Open Navigation">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="admin-search-wrap">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="adminGlobalSearch" class="admin-search-input" placeholder="Search reference, customer, dish, vendor...">
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="topbar-chip sync-active" id="syncStatusChip">
+            <span class="sync-dot"></span> Live Tab Sync Active
+          </div>
+          <button type="button" class="btn-icon" id="btnNotificationsBell" title="Notifications">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="bell-badge" id="bellBadge">0</span>
+          </button>
+          <a href="../index.html" class="btn btn-xs btn-outline" target="_blank">View Site &rarr;</a>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER (Dynamic Hash Routing) -->
+      <main class="admin-view-content" id="adminViewContainer">
+        <!-- Injected via admin.js based on hash -->
+      </main>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div id="adminToastContainer" class="admin-toast-container"></div>
+
+  <!-- GLOBAL DETAIL DRAWER -->
+  <div id="adminDrawer" class="admin-drawer-overlay" style="display: none;">
+    <div class="drawer-backdrop" id="adminDrawerBackdrop"></div>
+    <div class="admin-drawer-panel" id="adminDrawerPanel">
+      <div class="drawer-header">
+        <h3 id="drawerTitle">Booking Details</h3>
+        <button class="drawer-close" id="adminDrawerClose">&times;</button>
+      </div>
+      <div class="drawer-body" id="adminDrawerBody">
+        <!-- Injected dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT PROOF LIGHTBOX MODAL (Zero 404, loads Blob from IndexedDB) -->
+  <div id="proofLightboxModal" class="admin-modal-overlay" style="display: none;">
+    <div class="admin-modal-backdrop" id="proofLightboxBackdrop"></div>
+    <div class="proof-lightbox-card">
+      <div class="proof-lightbox-header">
+        <div class="proof-lightbox-title" id="proofLightboxTitle" style="font-weight: 700; font-size: 14px; color: var(--color-slate);">Payment Proof Inspection</div>
+        <div class="proof-lightbox-actions">
+          <button type="button" class="btn btn-xs btn-outline" id="btnLightboxZoomOut" title="Zoom Out">−</button>
+          <span id="lightboxZoomLevel" style="font-size: 11px; font-weight: 600; min-width: 36px; text-align: center;">100%</span>
+          <button type="button" class="btn btn-xs btn-outline" id="btnLightboxZoomIn" title="Zoom In">+</button>
+          <button type="button" class="btn btn-xs btn-outline" id="btnLightboxRotate" title="Rotate 90 degrees">Rotate</button>
+          <a id="btnLightboxDownload" href="#" download="payment-proof" class="btn btn-xs btn-outline">Download</a>
+          <a id="btnLightboxNewTab" href="#" target="_blank" class="btn btn-xs btn-outline">Open in new tab</a>
+          <button type="button" class="drawer-close" id="btnCloseLightbox" style="font-size: 1.5rem; line-height: 1; margin-left: 0.5rem; cursor: pointer;">&times;</button>
+        </div>
+      </div>
+      <div class="proof-lightbox-viewport" id="proofLightboxViewport">
+        <div id="proofLightboxNotFound" style="display: none; color: var(--color-rust); font-weight: 600; font-size: 14px; text-align: center; padding: 3rem 1rem;">
+          Proof image not found
+        </div>
+        <img id="proofLightboxImage" src="" alt="Payment Receipt" style="display: none; max-width: 95%; max-height: 95%; object-fit: contain; transition: transform 0.15s ease;">
+        <iframe id="proofLightboxPdf" src="" style="display: none; width: 100%; height: 100%; border: none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYMENT REJECTION DIALOG (Preset choices + free text) -->
+  <div id="paymentRejectModal" class="admin-modal-overlay" style="display: none;">
+    <div class="admin-modal-backdrop" id="paymentRejectBackdrop"></div>
+    <div class="payment-reject-card">
+      <div class="drawer-header">
+        <h3 id="paymentRejectTitle">Reject Payment Submission</h3>
+        <button type="button" class="drawer-close" id="btnCloseRejectModal">&times;</button>
+      </div>
+      <div style="padding: 1.25rem;">
+        <p style="font-size: 13px; color: var(--color-slate-60); margin: 0 0 1rem;">
+          Select a required reason for rejection. The customer will be informed and allowed to re-upload.
+        </p>
+        <div class="reject-presets-group" style="display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1rem;">
+          <label class="choice choice--radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 13px;">
+            <input type="radio" name="rejectReasonPreset" value="Amount does not match">
+            <span>Amount does not match</span>
+          </label>
+          <label class="choice choice--radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 13px;">
+            <input type="radio" name="rejectReasonPreset" value="Transaction number not found">
+            <span>Transaction number not found</span>
+          </label>
+          <label class="choice choice--radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 13px;">
+            <input type="radio" name="rejectReasonPreset" value="Unclear image">
+            <span>Unclear image</span>
+          </label>
+          <label class="choice choice--radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 13px;">
+            <input type="radio" name="rejectReasonPreset" value="Wrong account">
+            <span>Wrong account</span>
+          </label>
+          <label class="choice choice--radio" style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 13px;">
+            <input type="radio" name="rejectReasonPreset" value="Other">
+            <span>Other reason (specify below)</span>
+          </label>
+        </div>
+        <div class="form-group" style="margin-bottom: 0.75rem;">
+          <label class="form-label" for="rejectFreeText">Additional Explanation / Note</label>
+          <textarea id="rejectFreeText" class="form-textarea" rows="2" placeholder="Optional details for customer..." style="width: 100%; box-sizing: border-box;"></textarea>
+        </div>
+        <div id="rejectErrorMsg" style="display: none; color: var(--color-rust); font-size: 12px; margin-bottom: 0.75rem; font-weight: 600;"></div>
+        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; margin-top: 1rem; border-top: 1px solid var(--color-slate-10); padding-top: 1rem;">
+          <button type="button" class="btn btn-sm btn-outline" id="btnCancelReject">Cancel</button>
+          <button type="button" class="btn btn-sm btn-rust" id="btnConfirmReject">Reject payment</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLICY PREVIEW MODAL -->
+  <div id="policyPreviewModal" class="admin-modal-overlay" style="display: none;">
+    <div class="admin-modal-backdrop" id="policyPreviewBackdrop"></div>
+    <div class="policy-preview-card" style="position: relative; background: #ffffff; border-radius: 12px; max-width: 620px; width: 100%; max-height: 85vh; display: flex; flex-direction: column; box-shadow: 0 16px 48px rgba(33,46,52,0.25); border: 1px solid var(--color-slate-15); z-index: 2; overflow: hidden;">
+      <div class="drawer-header" style="background: var(--color-slate-05); padding: 1.25rem 1.5rem; border-bottom: 1px solid var(--color-slate-10); display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 id="policyPreviewTitle" style="margin: 0; font-size: 16px; font-weight: 700; color: var(--color-slate);">Policy Preview</h3>
+          <span id="policyPreviewVersion" style="font-size: 11px; color: var(--color-teal); font-weight: 600; text-transform: uppercase;"></span>
+        </div>
+        <button type="button" class="drawer-close" id="btnClosePolicyPreview" style="font-size: 1.5rem; line-height: 1; cursor: pointer; background: none; border: none; color: var(--color-slate);">&times;</button>
+      </div>
+      <div id="policyPreviewContent" style="padding: 1.5rem; overflow-y: auto; font-size: 13px; line-height: 1.6; max-height: 60vh;">
+      </div>
+      <div style="display: flex; justify-content: flex-end; padding: 1rem 1.5rem; border-top: 1px solid var(--color-slate-10); background: var(--color-slate-05);">
+        <button type="button" class="btn btn-sm btn-outline" id="btnClosePolicyPreviewFooter">Close</button>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script type="module" src="../js/mockApi.js"></script>
+  <script type="module" src="../js/sms.js"></script>
+  <script type="module" src="../js/pages/admin.js?v=r8"></script>
+  <script type="module">
+    if (window.location.search.includes('contrast=1')) {
+      import('../js/contrast-audit.js?v=' + Date.now()).then(m => m.runContrastAudit());
+    }
+  </script>
+</body>
+</html>

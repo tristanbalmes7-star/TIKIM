@@ -1,0 +1,44 @@
+{
+  "wedding": {
+    "file": "assets/img/event-packages/weddings.jpg",
+    "width": 2048,
+    "height": 1536,
+    "alt": "Dack's Real Wedding Setup",
+    "objectPosition": "center center"
+  },
+  "birthday": {
+    "file": "assets/img/event-packages/birthdays.jpg",
+    "width": 2048,
+    "height": 1155,
+    "alt": "Dack's Real Birthday Setup",
+    "objectPosition": "center center"
+  },
+  "corporate": {
+    "file": "assets/img/event-packages/corporate.jpg",
+    "width": 1632,
+    "height": 1224,
+    "alt": "Dack's Real Corporate Seminar Setup",
+    "objectPosition": "center center"
+  },
+  "reunion": {
+    "file": "assets/img/event-packages/reunion.jpg",
+    "width": 2048,
+    "height": 1154,
+    "alt": "Dack's Real Grand Reunion Setup",
+    "objectPosition": "center center"
+  },
+  "party": {
+    "file": "assets/img/event-packages/party.jpg",
+    "width": 2048,
+    "height": 1152,
+    "alt": "Dack's Real Celebration Buffet Setup",
+    "objectPosition": "center center"
+  },
+  "other": {
+    "file": "assets/img/event-packages/other occassion.jpg",
+    "width": 720,
+    "height": 960,
+    "alt": "Dack's Real Celebration Feast Spread",
+    "objectPosition": "center center"
+  }
+}

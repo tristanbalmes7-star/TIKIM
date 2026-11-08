@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Catering & Event Packages | Dack's Catering Services</title>
+  <meta name="description" content="Explore turnkey event packages and catering buffet packages with transparent inclusions and priced add-ons by Dack's Catering Services.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/packages.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png" />
+</head>
+<body data-page="packages" data-nav="fixed">
+  <a href="#main-content" class="skip-link">Skip to packages</a>
+
+  <div id="tikim-header-slot"></div>
+
+  <!-- Shared Subheader Component: Sticky Navigation -->
+  <nav class="subheader packages-subnav" aria-label="Packages sub navigation" id="packagesSubheader">
+    <div class="subheader-inner">
+      <div class="subheader-scroll" id="packagesSubnavScroll">
+        <a href="#event-packages" class="subheader-tab active">Event packages</a>
+        <a href="#food-packages" class="subheader-tab">Food Packages</a>
+        <a href="#addons-board" class="subheader-tab">Add-ons</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main-content" class="packages-page">
+    <div class="packages-container">
+      
+      <!-- SECTION 1: EVENT PACKAGES (6 POSTERS) -->
+      <section id="event-packages" class="posters-section" aria-labelledby="heading-event-packages">
+        <div class="posters-section-header">
+          <span class="section-script-tag">Exclusive Deals</span>
+          <h1 id="heading-event-packages" class="posters-main-title">Dack&rsquo;s Event Packages</h1>
+        </div>
+
+        <!-- DARK BOARD SECTION -->
+        <div class="dark-board-box">
+          <div class="posters-grid" id="eventPostersGrid">
+            <!-- Dynamic posters rendered from data/pricing.json -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: FOOD PACKAGES (3 POSTERS) -->
+      <section id="food-packages" class="posters-section" aria-labelledby="heading-food-packages">
+        <div class="posters-section-header">
+          <span class="section-script-tag">Food &amp; Service</span>
+          <h2 id="heading-food-packages" class="posters-main-title">Food Packages</h2>
+          <p class="posters-main-desc">
+            Our signature buffet catering for events with existing venue styling. Utensils, waiters, food attendants, tables, chairs, and complete service included.
+          </p>
+        </div>
+
+        <!-- DARK BOARD SECTION -->
+        <div class="dark-board-box">
+          <div class="posters-grid catering-posters-grid" id="cateringPostersGrid">
+            <!-- Dynamic posters rendered from data/pricing.json -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: ADD-ONS BOARD (Leader Dots Price List) -->
+      <section id="addons-board" class="addons-price-board" aria-labelledby="heading-addons-board">
+        <div class="addons-board-inner">
+          <div class="addons-board-header">
+            <span class="section-script-tag" style="color: #2f6f69;">A la Carte Enhancements</span>
+            <h2 id="heading-addons-board" class="addons-board-title">Priced Add-ons &amp; Extras</h2>
+            <p class="addons-board-desc">
+              Enhance your package with specialized services and equipment. All estimated prices can be confirmed in your quote.
+            </p>
+          </div>
+
+          <div class="addons-menu-layout" id="addonsMenuLayout">
+            <!-- Dynamic restaurant-style leader dot menu -->
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Add-ons Quick Drawer Modal -->
+  <div id="addonModal" class="addon-modal" role="dialog" aria-modal="true" aria-label="Package Add-ons" style="display: none;">
+    <div class="addon-modal-backdrop" id="addonModalBackdrop"></div>
+    <div class="addon-modal-content">
+      <div class="addon-modal-header">
+        <div>
+          <h3 id="addonModalTitle" class="addon-modal-heading">Customize Package</h3>
+          <span class="addon-modal-sub" id="addonModalSubtitle">Select menu tier and optional add-ons</span>
+        </div>
+        <button type="button" id="closeAddonModal" class="addon-modal-close" aria-label="Close add-ons">&times;</button>
+      </div>
+      <div class="addon-modal-body" id="addonModalBody">
+        <!-- Injected list of add-ons -->
+      </div>
+    </div>
+  </div>
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/pages/packages.js"></script>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Your Booking | Dack's Catering Services · TIKIM</title>
+  <meta name="description" content="Check your live booking status, monitor your 48-hour date hold, upload payment proof, and view event agreements.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/track.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+</head>
+<body data-page="track">
+  <a href="#main-content" class="skip-link">Skip to booking tracker</a>
+
+  <div id="tikim-header-slot"></div>
+
+  <main id="main-content" class="track-page">
+    <div class="track-container">
+      <!-- LOOKUP HEADER: CLAIM-TICKET STUB (A6 Reuse) -->
+      <section class="claim-ticket-band" id="sectionTrackLookup" aria-label="Booking Reference Lookup">
+        <div class="claim-ticket-container">
+          <div class="claim-ticket-stub">
+            <div class="ticket-stub-left">
+              <h1 class="ticket-stub-title">Already booked?</h1>
+              <p class="ticket-stub-helper">Your reference number came by SMS.</p>
+            </div>
+            
+            <div class="ticket-stub-perforation" aria-hidden="true">
+              <div class="ticket-notch notch-top"></div>
+              <div class="ticket-notch notch-bottom"></div>
+            </div>
+            
+            <div class="ticket-stub-right">
+              <form class="claim-ticket-form" id="claimTrackForm" novalidate style="display: contents;">
+                <div class="ticket-field-group">
+                  <label class="ticket-field-label" for="trackRefInput">Reference no.</label>
+                  <input type="text" id="trackRefInput" class="ticket-field-input" placeholder="TK-241122-001" required autocomplete="off" />
+                </div>
+                <div class="ticket-field-group" style="max-width: 200px;">
+                  <label class="ticket-field-label" for="trackPhoneInput">Last 4 digits of mobile</label>
+                  <input type="text" id="trackPhoneInput" class="ticket-field-input" placeholder="3458" maxlength="4" required autocomplete="off" />
+                </div>
+                <div class="ticket-submit-wrap">
+                  <button type="submit" class="ticket-submit-link">Find my booking &rarr;</button>
+                </div>
+              </form>
+            </div>
+          </div>
+          <div class="ticket-error-msg" id="trackInlineError" role="alert" aria-live="polite" style="display: none;"></div>
+          <p class="track-demo-note" id="trackDemoNote" style="display: none; font-size: 0.82rem; color: #64748b; margin-top: 0.75rem; text-align: center;">
+            Demo: bookings are saved in this browser. In the live system the server stores them so you can track from any device.
+          </p>
+        </div>
+      </section>
+
+      <!-- RESULTS DETAILS (Hidden until booking found) -->
+      <div id="trackResultSection" class="track-results-wrap" style="display: none;">
+        <!-- TOP STATUS STRIP -->
+        <div class="booking-status-card">
+          <div class="status-card-header">
+            <div>
+              <span class="booking-ref-label">Booking Reference</span>
+              <h2 class="booking-ref-title" id="displayRefNum">TK-261021-002</h2>
+            </div>
+            <div class="status-badge-wrap" style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+              <span class="badge badge-lg badge-type" id="displayTypeBadge" style="background: #212e34; color: #ffffff;">Event</span>
+              <span class="badge badge-lg" id="displayStatusBadge">On Hold (48h)</span>
+            </div>
+          </div>
+
+          <!-- PROGRESS TIMELINE -->
+          <div class="progress-timeline-wrap">
+            <div class="timeline-step" data-phase="inquiry">
+              <div class="timeline-dot">1</div>
+              <span class="timeline-label">Inquiry / Draft</span>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-step" data-phase="hold">
+              <div class="timeline-dot">2</div>
+              <span class="timeline-label">Date Held (48h)</span>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-step" data-phase="downpayment">
+              <div class="timeline-dot">3</div>
+              <span class="timeline-label">Downpayment Proof</span>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-step" data-phase="confirmed">
+              <div class="timeline-dot">4</div>
+              <span class="timeline-label">Date Confirmed</span>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-step" data-phase="event">
+              <div class="timeline-dot">5</div>
+              <span class="timeline-label">Event Day</span>
+            </div>
+            <div class="timeline-line"></div>
+            <div class="timeline-step" data-phase="completed">
+              <div class="timeline-dot">6</div>
+              <span class="timeline-label">Completed</span>
+            </div>
+          </div>
+
+          <!-- 48-HOUR HOLD TIMER BOX -->
+          <div id="holdCountdownBox" class="hold-countdown-banner" style="display: none;">
+            <div class="hold-timer-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div class="hold-timer-content">
+              <strong>48-Hour Date Hold Active</strong>
+              <p>Your celebration date is temporarily locked for you. Submit your 50% downpayment before the timer expires to secure your reservation.</p>
+              <div class="countdown-digits" id="holdCountdownTimer">47h 59m 12s remaining</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="booking-details-grid">
+          <!-- LEFT COLUMN: Summary & Payment Proof Upload -->
+          <div class="details-left-col">
+            <!-- Event Summary Card -->
+            <div class="detail-box">
+              <h3 class="detail-box-title">Event Overview</h3>
+              <div class="meta-row">
+                <span class="meta-label">Celebration Type:</span>
+                <span class="meta-value" id="displayEventType">Grand Wedding</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Target Date & Time:</span>
+                <span class="meta-value" id="displayEventDateTime">Dec 25, 2026 · 06:30 PM</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Anticipated Guests:</span>
+                <span class="meta-value" id="displayPax">100 Guests</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Assigned Package:</span>
+                <span class="meta-value" id="displayPackage">Grand Royal Wedding</span>
+              </div>
+              <div class="meta-row">
+                <span class="meta-label">Venue / Location:</span>
+                <span class="meta-value" id="displayVenue">Tagaytay Highlands Banquet</span>
+              </div>
+              <div class="meta-row" id="displayBoardNameRow" style="display: none;">
+                <span class="meta-label" id="displayBoardNameLabel">Name on Board:</span>
+                <span class="meta-value" id="displayBoardName">Not provided</span>
+              </div>
+              <div class="meta-row" id="displayThemeRow" style="display: none;">
+                <span class="meta-label" id="displayThemeLabel">Theme / Palette:</span>
+                <span class="meta-value" id="displayTheme">Not provided</span>
+              </div>
+            </div>
+
+            <!-- UPLOAD PAYMENT PROOF FORM -->
+            <div class="detail-box proof-upload-box" id="proofUploadSection">
+              <h3 class="detail-box-title">Upload Payment Proof</h3>
+              <p class="form-hint" id="proofFormHint">Pay the 50% downpayment via official Dack's channels to confirm your date lock.</p>
+
+              <!-- Payment Channels List (Rendered dynamically from settings.paymentChannels) -->
+              <div id="trackPaymentChannelsBox" class="track-payment-channels-box" style="margin-bottom: 1.25rem;"></div>
+
+              <div id="proofRejectionNotice" style="display: none; padding: 0.85rem 1rem; background: rgba(171,75,46,0.1); border-left: 4px solid var(--color-rust); border-radius: 6px; margin-bottom: 1rem; font-size: 13px; color: var(--color-slate); font-weight: 500;"></div>
+
+              <div id="proofSuccessNotice" style="display: none; padding: 0.85rem 1rem; background: rgba(79,164,157,0.12); border-left: 4px solid var(--color-teal); border-radius: 6px; margin-bottom: 1rem; font-size: 13px; color: var(--color-slate); font-weight: 600;">
+                Proof submitted. Dack's will verify it.
+              </div>
+
+              <form id="paymentProofForm" class="form-grid-12">
+                <div class="field col-6">
+                  <label for="proofAmount" class="field-label">Payment Amount (₱) *</label>
+                  <input type="number" id="proofAmount" class="form-input" required min="100">
+                </div>
+                <div class="field col-6">
+                  <label for="proofChannel" class="field-label">Payment Channel *</label>
+                  <select id="proofChannel" class="form-select" required>
+                    <option value="GCash">GCash</option>
+                    <option value="Maya">Maya</option>
+                    <option value="Bank Transfer">Bank Transfer (BDO)</option>
+                    <option value="Cash Deposit">Direct Cash / Office Deposit</option>
+                  </select>
+                </div>
+
+                <div class="field col-12">
+                  <label for="proofRefNo" class="field-label">Transaction Reference Number *</label>
+                  <input type="text" id="proofRefNo" class="form-input" required placeholder="e.g. 1002 9847 2819">
+                </div>
+
+                <div class="field col-12">
+                  <label class="field-label">Receipt Screenshot / Photo (JPG, PNG, WEBP, PDF up to 5 MB) *</label>
+                  <div class="track-upload-zone" id="trackUploadZone">
+                    <input type="file" id="trackFileInput" accept=".jpg,.jpeg,.png,.webp,.pdf,image/jpeg,image/png,image/webp,application/pdf" class="file-input-hidden">
+                    <div id="trackUploadPrompt" class="track-upload-prompt" style="cursor: pointer;">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                      <span>Click to select receipt screenshot or PDF (max 5 MB)</span>
+                    </div>
+                    <div id="trackUploadPreview" style="display: none; align-items: center; justify-content: space-between; gap: 0.75rem; width: 100%;">
+                      <div style="display: flex; align-items: center; gap: 0.75rem; overflow: hidden;">
+                        <img id="trackPreviewImg" src="" alt="Proof Preview" style="width: 50px; height: 50px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd; display: none;">
+                        <div id="trackPdfPreviewIcon" style="width: 50px; height: 50px; border-radius: 6px; background: rgba(171,75,46,0.12); color: var(--color-rust); display: none; align-items: center; justify-content: center; font-weight: 700; font-size: 13px;">PDF</div>
+                        <div style="overflow: hidden;">
+                          <div id="trackFileName" style="font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">receipt.jpg</div>
+                          <div id="trackFileSize" style="font-size: 11px; color: var(--color-slate-60);">0 KB</div>
+                        </div>
+                      </div>
+                      <button type="button" class="btn btn-xs btn-outline" id="btnRemoveProof" style="flex-shrink: 0;">Remove</button>
+                    </div>
+                  </div>
+                  <div id="proofUploadError" style="display: none; color: var(--color-rust); font-size: 12px; margin-top: 0.4rem; font-weight: 600;"></div>
+                </div>
+
+                <div class="field col-12" style="margin-top: 0.5rem;">
+                  <button type="submit" class="btn btn-primary btn-block" id="btnSubmitProof">
+                    Submit Payment for Verification &rarr;
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Notes & Special Requests Box -->
+            <div class="detail-box">
+              <h3 class="detail-box-title">Special Requests & Inquiries</h3>
+              <p class="form-hint">Message directly to the organizer kitchen team regarding this booking.</p>
+              <textarea id="bookingNotesInput" class="form-textarea" rows="3" placeholder="Add additional requests..."></textarea>
+              <div style="margin-top: 0.75rem; text-align: right;">
+                <button type="button" class="btn btn-xs btn-outline" id="btnSaveBookingNotes">Save Notes</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Payment Ledger & Printables -->
+          <div class="details-right-col">
+            <!-- Payment Ledger Summary -->
+            <div class="detail-box payment-ledger-box">
+              <h3 class="detail-box-title">Financial Summary</h3>
+              <div class="ledger-row">
+                <span>Total Quotation:</span>
+                <strong id="ledgerTotal">₱0</strong>
+              </div>
+              <div class="ledger-row">
+                <span>Total Paid / Verified:</span>
+                <span id="ledgerPaid" style="color: var(--color-teal); font-weight: 700;">₱0</span>
+              </div>
+              <div class="ledger-row ledger-balance-row">
+                <span>Remaining Balance:</span>
+                <strong id="ledgerBalance" style="color: var(--color-rust); font-size: 1.3rem;">₱0</strong>
+              </div>
+              <div class="ledger-due-note" id="ledgerDueDate">
+                Full balance due 7 days prior to event day.
+              </div>
+            </div>
+
+            <!-- Itemized Quotation Breakdown (Revision 7) -->
+            <div class="detail-box quotation-breakdown-box" id="quotationBreakdownBox">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;">
+                <h3 class="detail-box-title" style="margin: 0;">Itemized Breakdown</h3>
+                <span class="badge badge-rust" id="awaitingFinalQuoteBadge" style="display: none; font-size: 10px;">Awaiting final quote</span>
+              </div>
+              <div id="breakdownLinesContainer" style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <!-- Populated dynamically -->
+              </div>
+            </div>
+
+            <!-- Payment Submissions History Table -->
+            <div class="detail-box">
+              <h3 class="detail-box-title">Payment History</h3>
+              <div id="paymentHistoryList">
+                <p style="font-size: 12px; color: var(--color-slate-60);">No verified payments recorded yet.</p>
+              </div>
+            </div>
+
+            <!-- Floor Plan Thumbnail (if exists) -->
+            <div class="detail-box" id="floorPlanPreviewBox" style="display: none;">
+              <h3 class="detail-box-title">Event Floor Plan</h3>
+              <div id="floorPlanSvgContainer" class="floor-preview-thumb"></div>
+            </div>
+
+            <!-- Official Booking Policies -->
+            <div class="detail-box">
+              <h3 class="detail-box-title">Booking Policies</h3>
+              <p style="font-size: 11px; color: var(--color-slate-60); margin-bottom: 0.75rem;">
+                Review the official policies governing your reservation, cancellation refunds, and equipment care.
+              </p>
+              <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                <button type="button" class="btn btn-xs btn-outline btn-block" id="btnTrackViewCancelPolicy">
+                  View Cancellation Policy
+                </button>
+                <button type="button" class="btn btn-xs btn-outline btn-block" id="btnTrackViewDamagePolicy">
+                  View Damage &amp; Loss Policy
+                </button>
+              </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="detail-box action-print-box">
+              <button type="button" class="btn btn-outline btn-block" id="btnPrintReceipt">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+                Print Official Booking Summary
+              </button>
+              <button type="button" class="btn btn-secondary btn-block" id="btnRequestChange" style="margin-top: 0.75rem;">
+                Request Reschedule or Cancel
+              </button>
+              <a href="index.html" class="btn btn-outline btn-block" id="btnBackToHome" style="margin-top: 0.75rem; text-align: center; text-decoration: none; display: block;">
+                &larr; View Event Details (Back to Home)
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- CHANGE REQUEST MODAL (B8) -->
+  <div id="changeRequestModal" class="change-modal" role="dialog" aria-modal="true" aria-label="Request Reschedule or Cancel" style="display: none;">
+    <div class="change-backdrop" id="changeModalBackdrop"></div>
+    <div class="change-dialog">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+        <h2 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--slate); margin: 0;">Request Reschedule or Cancel</h2>
+        <button type="button" id="closeChangeModalBtn" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--slate);">&times;</button>
+      </div>
+      <form id="changeRequestForm" class="form-grid-12">
+        <div class="field col-12">
+          <label for="changeTypeSelect" class="field-label">Request Type *</label>
+          <select id="changeTypeSelect" class="form-select" required>
+            <option value="Reschedule">Reschedule Event Date</option>
+            <option value="Cancel">Cancel Reservation</option>
+            <option value="Modify Details">Modify Guest Count or Package</option>
+          </select>
+        </div>
+        <div class="field col-12" id="preferredDateGroup">
+          <label for="preferredNewDate" class="field-label">Preferred New Date</label>
+          <input type="date" id="preferredNewDate" class="form-input">
+        </div>
+        <div class="field col-12">
+          <fieldset class="form-fieldset">
+            <legend class="field-label">How should we reach you? *</legend>
+            <div class="control-row">
+              <label class="control-label" for="changeMethodSms">
+                <input type="radio" id="changeMethodSms" name="changeContactMethod" value="SMS" checked class="sr-only">
+                <span class="control-indicator-radio" aria-hidden="true"></span>
+                <span>Phone or SMS</span>
+              </label>
+              <label class="control-label" for="changeMethodMessenger">
+                <input type="radio" id="changeMethodMessenger" name="changeContactMethod" value="Messenger" class="sr-only">
+                <span class="control-indicator-radio" aria-hidden="true"></span>
+                <span>Messenger</span>
+              </label>
+            </div>
+          </fieldset>
+        </div>
+        <div class="field col-12" id="changeMessengerGroup" style="display: none;">
+          <label for="changeMessengerName" class="field-label">Your Facebook Messenger Name *</label>
+          <input type="text" id="changeMessengerName" class="form-input" placeholder="e.g. Maria Santos (FB Profile Name)">
+        </div>
+        <div class="field col-12">
+          <label for="changeReason" class="field-label">Reason for Request *</label>
+          <textarea id="changeReason" class="form-textarea" rows="3" required placeholder="Please explain why you need to reschedule or cancel..."></textarea>
+        </div>
+        <div class="field col-12" style="display: flex; gap: 0.75rem; justify-content: flex-end; margin-top: 0.5rem;">
+          <button type="button" class="btn btn-outline" id="btnCancelChangeModal">Dismiss</button>
+          <button type="submit" class="btn btn-primary" id="btnSubmitChangeRequest">Submit Request &rarr;</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/mockApi.js"></script>
+  <script type="module" src="js/pages/track.js"></script>
+</body>
+</html>

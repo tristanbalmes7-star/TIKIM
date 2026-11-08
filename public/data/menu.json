@@ -1,0 +1,342 @@
+[
+  {
+    "id": "chicken-barbecue",
+    "name": "Chicken Barbecue",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Grilled marinated chicken quarters brushed with Dack's sweet and savory barbecue glaze.",
+    "slug": "chicken-barbecue"
+  },
+  {
+    "id": "chicken-caldareta",
+    "name": "Chicken Caldareta",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Tender chicken simmered in rich spiced tomato sauce with bell peppers, carrots, and potatoes.",
+    "slug": "chicken-caldareta"
+  },
+  {
+    "id": "chicken-teriyaki",
+    "name": "Chicken Teriyaki",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Pan-seared chicken glazed in homemade sweet soy teriyaki sauce and sprinkled with sesame seeds.",
+    "slug": "chicken-teriyaki"
+  },
+  {
+    "id": "buttered-chicken",
+    "name": "Buttered Chicken",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Crispy golden fried chicken tossed in rich garlic butter sauce.",
+    "slug": "buttered-chicken"
+  },
+  {
+    "id": "cordonbleu",
+    "name": "Cordonbleu",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Crispy rolled chicken breast stuffed with savory ham and melted cheese, served with creamy sauce.",
+    "slug": "cordonbleu"
+  },
+  {
+    "id": "chicken-joy",
+    "name": "Chicken Joy",
+    "category": "Chicken",
+    "course": "chicken",
+    "description": "Crisp, flavorful deep-fried chicken with tender juicy meat served with traditional savory gravy.",
+    "slug": "chicken-joy"
+  },
+
+  {
+    "id": "kare-kare",
+    "name": "Kare-Kare",
+    "category": "Beef",
+    "course": "beef",
+    "description": "Classic beef stewed in savory roasted peanut sauce with tender vegetables and bagoong alamang.",
+    "slug": "kare-kare"
+  },
+  {
+    "id": "beef-caldareta",
+    "name": "Beef Caldareta",
+    "category": "Beef",
+    "course": "beef",
+    "description": "Slow-braised beef chunks in thick tomato and liver sauce with olives, cheese, and bell peppers.",
+    "slug": "beef-caldareta"
+  },
+  {
+    "id": "beef-broccoli",
+    "name": "Beef Broccoli",
+    "category": "Beef",
+    "course": "beef",
+    "description": "Thin tender beef slices stir-fried with crisp broccoli florets in savory ginger oyster sauce.",
+    "slug": "beef-broccoli"
+  },
+  {
+    "id": "creamy-beef",
+    "name": "Creamy Beef",
+    "category": "Beef",
+    "course": "beef",
+    "description": "Tender beef strips smothered in velvety mushroom cream sauce with toasted garlic.",
+    "slug": "creamy-beef"
+  },
+
+  {
+    "id": "pork-kare-kare",
+    "name": "Pork Kare-Kare",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Tender pork belly cooked in rich aromatic peanut sauce with string beans, eggplant, and pechay.",
+    "slug": "pork-kare-kare"
+  },
+  {
+    "id": "pork-caldareta",
+    "name": "Pork Caldareta",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Savory pork chunks stewed in seasoned tomato sauce with potatoes, carrots, and pimientos.",
+    "slug": "pork-caldareta"
+  },
+  {
+    "id": "pork-broccoli",
+    "name": "Pork Broccoli",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Tender pork cuts stir-fried with fresh broccoli florets in savory garlic soy sauce.",
+    "slug": "pork-broccoli"
+  },
+  {
+    "id": "pork-menudo",
+    "name": "Pork Menudo",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Traditional fiesta pork stew with diced potatoes, carrots, raisins, and hotdogs in tomato sauce.",
+    "slug": "pork-menudo"
+  },
+  {
+    "id": "korean-pork",
+    "name": "Korean Pork",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Sweet and savory Korean-style glazed pork stir-fry with sesame oil and green onions.",
+    "slug": "korean-pork"
+  },
+  {
+    "id": "lumpiang-shanghai",
+    "name": "Lumpiang Shanghai",
+    "category": "Pork",
+    "course": "pork",
+    "description": "Crispy golden fried pork spring rolls with minced carrots and onions, served with sweet chili dip.",
+    "slug": "lumpiang-shanghai"
+  },
+
+  {
+    "id": "fish-fillet-tartar",
+    "name": "Fish Fillet with Tartar Sauce",
+    "category": "Fish",
+    "course": "fish",
+    "description": "Golden crispy breaded white fish fillets served with rich homemade tangy tartar dip.",
+    "slug": "fish-fillet-tartar"
+  },
+  {
+    "id": "fish-fillet-sweet-sour",
+    "name": "Fish Fillet with Sweet & Sour Sauce",
+    "category": "Fish",
+    "course": "fish",
+    "description": "Crisp battered fish fillets smothered in vibrant pineapple sweet and sour sauce.",
+    "slug": "fish-fillet-sweet-sour"
+  },
+
+  {
+    "id": "mix-vegetables",
+    "name": "Mix Vegetables",
+    "category": "Vegetables",
+    "course": "vegetables",
+    "description": "Fresh medley of cauliflower, carrots, young corn, and snow peas in light butter glaze.",
+    "slug": "mix-vegetables"
+  },
+  {
+    "id": "chopsuey",
+    "name": "Chopsuey",
+    "category": "Vegetables",
+    "course": "vegetables",
+    "description": "Classic stir-fried crisp vegetables with chicken liver and quail eggs in savory sauce.",
+    "slug": "chopsuey"
+  },
+  {
+    "id": "gising-gising",
+    "name": "Gising-Gising",
+    "category": "Vegetables",
+    "course": "vegetables",
+    "description": "Finely chopped winged beans and chili simmered in rich coconut milk and bagoong.",
+    "slug": "gising-gising"
+  },
+  {
+    "id": "sipo-egg",
+    "name": "Sipo Egg",
+    "category": "Vegetables",
+    "course": "vegetables",
+    "description": "Kapampangan fiesta favorite: mixed vegetables, water chestnuts, and quail eggs in thick cream sauce.",
+    "slug": "sipo-egg"
+  },
+
+  {
+    "id": "dacks-japchae",
+    "name": "Dack's Japchae",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Stir-fried sweet potato glass noodles with julienned vegetables in fragrant toasted sesame soy sauce.",
+    "slug": "dacks-japchae"
+  },
+  {
+    "id": "pancit-bihon",
+    "name": "Pancit Bihon",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Traditional fiesta rice noodles tossed with shredded chicken, fresh cabbage, and carrots.",
+    "slug": "pancit-bihon"
+  },
+  {
+    "id": "sotanghon-guisado",
+    "name": "Sotanghon Guisado",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Flavorful glass noodles cooked in rich annatto chicken broth with wood ear mushrooms and celery.",
+    "slug": "sotanghon-guisado"
+  },
+  {
+    "id": "palabok",
+    "name": "Palabok",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Rice noodles topped with golden shrimp sauce, crushed chicharon, hard-boiled eggs, and tinapa flakes.",
+    "slug": "palabok"
+  },
+  {
+    "id": "spaghetti",
+    "name": "Spaghetti",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Filipino-style sweet and meaty tomato meat sauce spaghetti loaded with hotdog slices and grated cheese.",
+    "slug": "spaghetti"
+  },
+  {
+    "id": "carbonara",
+    "name": "Carbonara",
+    "category": "Pasta",
+    "course": "pasta",
+    "description": "Fettuccine pasta in rich creamy parmesan and bacon sauce with sliced button mushrooms.",
+    "slug": "carbonara"
+  },
+
+  {
+    "id": "iced-tea",
+    "name": "Iced Tea",
+    "category": "Drinks",
+    "course": "drinks",
+    "description": "Refreshing chilled lemon iced tea brewed to perfection.",
+    "slug": "iced-tea"
+  },
+  {
+    "id": "black-gulaman",
+    "name": "Black Gulaman",
+    "category": "Drinks",
+    "course": "drinks",
+    "description": "Sweet caramelized brown sugar drink with chewy grass jelly cubes and sago pearls.",
+    "slug": "black-gulaman"
+  },
+  {
+    "id": "four-seasons",
+    "name": "Four Seasons",
+    "category": "Drinks",
+    "course": "drinks",
+    "description": "Tropical fruit blend of mango, guava, pineapple, and orange juices.",
+    "slug": "four-seasons"
+  },
+  {
+    "id": "cucumber",
+    "name": "Cucumber",
+    "category": "Drinks",
+    "course": "drinks",
+    "description": "Cool, crisp cucumber infused water with lemon slices and mint.",
+    "slug": "cucumber"
+  },
+  {
+    "id": "blue-lemonade",
+    "name": "Blue Lemonade",
+    "category": "Drinks",
+    "course": "drinks",
+    "description": "Vibrant citrus lemonade with a cool blue curaçao-style twist.",
+    "slug": "blue-lemonade"
+  },
+
+  {
+    "id": "fruit-salad",
+    "name": "Fruit Salad",
+    "category": "Desserts",
+    "course": "desserts",
+    "description": "Chilled mixed tropical cocktail fruit in sweetened cream and condensed milk with nata de coco.",
+    "slug": "fruit-salad"
+  },
+  {
+    "id": "buko-pandan",
+    "name": "Buko Pandan",
+    "category": "Desserts",
+    "course": "desserts",
+    "description": "Shredded fresh young coconut and fragrant green pandan agar-agar in sweet cream.",
+    "slug": "buko-pandan"
+  },
+  {
+    "id": "coffee-jelly",
+    "name": "Coffee Jelly",
+    "category": "Desserts",
+    "course": "desserts",
+    "description": "Robust coffee gelatin cubes suspended in creamy sweetened milk.",
+    "slug": "coffee-jelly"
+  },
+
+  {
+    "id": "java-rice",
+    "name": "Java rice",
+    "category": "Rice",
+    "course": "rice",
+    "description": "Fragrant golden rice cooked with annatto, butter, and seasonings.",
+    "slug": "java-rice"
+  },
+  {
+    "id": "plain-rice",
+    "name": "Plain rice",
+    "category": "Rice",
+    "course": "rice",
+    "description": "Fluffy steamed white jasmine rice.",
+    "slug": "plain-rice"
+  },
+
+  {
+    "id": "shrimp-tempura",
+    "name": "Shrimp Tempura",
+    "category": "Special Dishes",
+    "course": "special",
+    "description": "Crispy Japanese-style battered tiger prawns served with sweet mirin dipping sauce.",
+    "slug": "shrimp-tempura",
+    "priceOnRequest": true
+  },
+  {
+    "id": "lemon-buttered-shrimp",
+    "name": "Lemon Buttered Shrimp",
+    "category": "Special Dishes",
+    "course": "special",
+    "description": "Plump juicy prawns sautéed in lemon zest, rich butter, and minced garlic.",
+    "slug": "lemon-buttered-shrimp",
+    "priceOnRequest": true
+  },
+  {
+    "id": "mix-seafoods",
+    "name": "Mix Seafoods",
+    "category": "Special Dishes",
+    "course": "special",
+    "description": "Medley of mussels, squid, and shrimp sautéed in savory garlic cajun butter sauce.",
+    "slug": "mix-seafoods",
+    "priceOnRequest": true
+  }
+]

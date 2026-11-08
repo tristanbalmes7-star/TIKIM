@@ -1,0 +1,349 @@
+{
+  "pricingVersion": 1,
+  "draftTtlDays": 14,
+  "minPax": 75,
+  "underMinFlat": 15000,
+  "guestsPerRoundTable": 5,
+  "softMaxPax": 500,
+  "softMaxPax_assumed": true,
+  "downpaymentPercent": 50,
+  "weddingSurchargePerHead": 20,
+  "levels": [
+    {
+      "level": 1,
+      "name": "Food Package 1",
+      "perHead": 250,
+      "dishes": 4,
+      "slots": [
+        ["chicken", "fish"],
+        ["beef", "pork"],
+        ["pasta"],
+        ["vegetables"]
+      ]
+    },
+    {
+      "level": 2,
+      "name": "Food Package 2",
+      "perHead": 270,
+      "dishes": 5,
+      "slots": [
+        ["chicken"],
+        ["fish"],
+        ["beef", "pork"],
+        ["pasta"],
+        ["vegetables"]
+      ]
+    },
+    {
+      "level": 3,
+      "name": "Food Package 3",
+      "perHead": 300,
+      "dishes": 6,
+      "slots": [
+        ["chicken"],
+        ["fish"],
+        ["beef"],
+        ["pork"],
+        ["pasta"],
+        ["vegetables"]
+      ]
+    }
+  ],
+  "cateringInclusions": [
+    "Utensils",
+    "Waiters",
+    "Food attendants",
+    "Ice",
+    "Java or plain rice",
+    "Tables and chairs",
+    "Basic set up",
+    "Dessert",
+    "Drinks"
+  ],
+  "allIn": {
+    "baseLevel": 1,
+    "bundles": [
+      {
+        "id": "party",
+        "name": "Party Package",
+        "forEvents": ["party", "birthday", "corporate", "reunion", "other"],
+        "price": 55000,
+        "basePax": 100,
+        "extraPerHead": 250,
+        "inclusions": [
+          "Catering service",
+          "Stage set up (styro name, character, wooden chair, balloon decoration, entrance arc)",
+          "Clown (puppet and magician)",
+          "Photobooth (3 hours unlimited shots with laminated copy)",
+          "Basic lights and sounds",
+          "Cake and 1 dozen cupcakes",
+          "Photographer",
+          "Host"
+        ]
+      },
+      {
+        "id": "wedding",
+        "name": "Wedding Package",
+        "forEvents": ["wedding"],
+        "price": 55000,
+        "basePax": 100,
+        "extraPerHead": 280,
+        "inclusions": [
+          "Catering service",
+          "Stage set up (styro name, character, couch, entrance arc)",
+          "Presidential table",
+          "Photobooth (3 hours unlimited shots)",
+          "Invitation (20 pcs)",
+          "Basic lights and sounds",
+          "Cake and 1 dozen cupcakes",
+          "Photographer",
+          "Host"
+        ]
+      }
+    ]
+  },
+  "componentEstimates": {
+    "catering": 25000,
+    "stageStandard": 5000,
+    "stageCompany": 3000,
+    "stageReunion": 4000,
+    "clown": 4000,
+    "photobooth": 5000,
+    "lightsAndSounds": 4000,
+    "cakeCupcakes": 3000,
+    "photographer": 5000,
+    "host": 4000
+  },
+  "eventPackages": [
+    {
+      "id": "wedding",
+      "name": "Wedding Package",
+      "occasion": "wedding",
+      "price": 55000,
+      "basePax": 100,
+      "extraPerHead": 280,
+      "priceStatus": "confirmed",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (styro name, character, couch, entrance arc)",
+        "Presidential table",
+        "Photobooth (3 hours unlimited shots)",
+        "Invitation (20 pcs)",
+        "Basic lights and sounds",
+        "Cake and 1 dozen cupcakes",
+        "Photographer",
+        "Host"
+      ]
+    },
+    {
+      "id": "party",
+      "name": "Party Package",
+      "occasion": "party",
+      "price": 55000,
+      "basePax": 100,
+      "extraPerHead": 250,
+      "priceStatus": "confirmed",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (styro name, character, wooden chair, balloon decoration, entrance arc)",
+        "Clown (puppet and magician)",
+        "Photobooth (3 hours unlimited shots with laminated copy)",
+        "Basic lights and sounds",
+        "Cake and 1 dozen cupcakes",
+        "Photographer",
+        "Host"
+      ]
+    },
+    {
+      "id": "birthday",
+      "name": "Birthday Package",
+      "occasion": "birthday",
+      "price": 50000,
+      "basePax": 100,
+      "extraPerHead": 250,
+      "priceStatus": "estimate",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (styro name, character, wooden chair, balloon decoration, entrance arc)",
+        "Clown (puppet and magician)",
+        "Photobooth (3 hours unlimited shots with laminated copy)",
+        "Basic lights and sounds",
+        "Cake and 1 dozen cupcakes",
+        "Host"
+      ]
+    },
+    {
+      "id": "corporate",
+      "name": "Corporate Package",
+      "occasion": "corporate",
+      "price": 41000,
+      "basePax": 100,
+      "extraPerHead": 250,
+      "priceStatus": "estimate",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (company name board and entrance arc)",
+        "Basic lights and sounds",
+        "Photographer",
+        "Host (emcee)"
+      ]
+    },
+    {
+      "id": "reunion",
+      "name": "Reunion Package",
+      "occasion": "reunion",
+      "price": 47000,
+      "basePax": 100,
+      "extraPerHead": 250,
+      "priceStatus": "estimate",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (family name board, balloon decoration, wooden chair, entrance arc)",
+        "Photobooth (3 hours unlimited shots with laminated copy)",
+        "Basic lights and sounds",
+        "Photographer",
+        "Host"
+      ]
+    },
+    {
+      "id": "other",
+      "name": "Special Occasion Package",
+      "occasion": "other",
+      "price": 46000,
+      "basePax": 100,
+      "extraPerHead": 250,
+      "priceStatus": "estimate",
+      "description": "for christenings, anniversaries and graduations",
+      "inclusions": [
+        "Catering service",
+        "Stage set up (styro name, character, wooden chair, balloon decoration, entrance arc)",
+        "Basic lights and sounds",
+        "Cake and 1 dozen cupcakes",
+        "Photographer",
+        "Host"
+      ]
+    }
+  ],
+  "addOns": [
+    { "id": "clown-magician", "label": "Clown (puppet and magician)", "type": "flat", "price": 4000, "priceStatus": "estimate", "occasions": ["reunion", "other"], "hideIfIncluded": true },
+    { "id": "photobooth-3h", "label": "Photobooth (3 hours unlimited shots with laminated copy)", "type": "flat", "price": 5000, "priceStatus": "estimate", "occasions": ["corporate", "other"], "hideIfIncluded": true },
+    { "id": "cake-cupcakes", "label": "Cake and 1 dozen cupcakes", "type": "flat", "price": 3000, "priceStatus": "estimate", "occasions": ["corporate", "reunion"], "hideIfIncluded": true },
+    { "id": "photographer", "label": "Photographer", "type": "flat", "price": 5000, "priceStatus": "estimate", "occasions": ["birthday"], "hideIfIncluded": true },
+    { "id": "extra-photobooth-hour", "label": "Extra photobooth hour", "type": "flat", "price": 1500, "priceStatus": "estimate", "occasions": ["all"], "requires": "photobooth" },
+    { "id": "videographer", "label": "Videographer, event coverage", "type": "flat", "price": 5000, "priceStatus": "estimate", "occasions": ["all"] },
+    { "id": "presidential-table", "label": "Presidential table", "type": "flat", "price": 1000, "priceStatus": "estimate", "occasions": ["party", "birthday", "corporate", "reunion", "other"], "hideIfIncluded": true },
+    { "id": "invitation-20", "label": "Invitation (20 pcs)", "type": "flat", "price": 600, "priceStatus": "estimate", "occasions": ["party", "birthday", "reunion", "other"], "hideIfIncluded": true },
+    { "id": "couch-upgrade", "label": "Couch instead of wooden chair", "type": "flat", "price": 1000, "priceStatus": "estimate", "occasions": ["party", "birthday", "reunion", "other"], "hideIfIncluded": true },
+    { "id": "ceremony-setup", "label": "Ceremony and aisle set up", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["wedding"] },
+    { "id": "flower-centerpieces", "label": "Flower centerpieces", "type": "flat", "price": 4500, "priceStatus": "estimate", "occasions": ["wedding"] },
+    { "id": "cake-upgrade", "label": "Tiered cake upgrade", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["wedding"] },
+    { "id": "bridal-car", "label": "Bridal car decoration", "type": "flat", "price": 1500, "priceStatus": "estimate", "occasions": ["wedding"] },
+    { "id": "kiddie-games", "label": "Kiddie games and prizes", "type": "flat", "price": 2500, "priceStatus": "estimate", "occasions": ["party", "birthday"] },
+    { "id": "mascot", "label": "Mascot or character visit", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["party", "birthday"] },
+    { "id": "food-cart", "label": "Ice cream, popcorn or cotton candy cart", "type": "flat", "price": 4000, "priceStatus": "estimate", "occasions": ["party", "birthday"] },
+    { "id": "balloon-centerpieces", "label": "Balloon centerpieces", "type": "flat", "price": 2000, "priceStatus": "estimate", "occasions": ["party", "birthday"] },
+    { "id": "videoke", "label": "Videoke", "type": "flat", "price": 2500, "priceStatus": "estimate", "occasions": ["party", "reunion"] },
+    { "id": "custom-backdrop", "label": "Custom tarpaulin backdrop", "type": "flat", "price": 1500, "priceStatus": "estimate", "occasions": ["birthday"] },
+    { "id": "giveaways", "label": "Giveaways or loot bags", "type": "per_head", "price": 35, "priceStatus": "estimate", "occasions": ["birthday"] },
+    { "id": "projector-screen", "label": "Projector and screen", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "extra-mics", "label": "Extra wireless microphones, pair", "type": "flat", "price": 800, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "registration-table", "label": "Registration table with attendants", "type": "flat", "price": 1500, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "coffee-station", "label": "Coffee break station", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "company-banner", "label": "Company banner backdrop", "type": "flat", "price": 2000, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "branded-giveaways", "label": "Branded giveaways", "type": "per_head", "price": 50, "priceStatus": "estimate", "occasions": ["corporate"] },
+    { "id": "family-backdrop", "label": "Family name and year backdrop", "type": "flat", "price": 1800, "priceStatus": "estimate", "occasions": ["reunion"] },
+    { "id": "family-games", "label": "Family games and prizes", "type": "flat", "price": 2500, "priceStatus": "estimate", "occasions": ["reunion"] },
+    { "id": "lechon", "label": "Lechon", "type": "flat", "price": 10000, "priceStatus": "estimate", "occasions": ["reunion"] },
+    { "id": "souvenir-shirts", "label": "Souvenir shirts, each", "type": "per_unit", "price": 200, "priceStatus": "estimate", "occasions": ["reunion"] },
+    { "id": "memory-wall", "label": "Photo wall or memory board", "type": "flat", "price": 2000, "priceStatus": "estimate", "occasions": ["reunion", "other"] },
+    { "id": "celebrant-backdrop", "label": "Custom backdrop with the celebrant's name", "type": "flat", "price": 1800, "priceStatus": "estimate", "occasions": ["other"] },
+    { "id": "balloon-bouquet", "label": "Balloon bouquet or backdrop", "type": "flat", "price": 3000, "priceStatus": "estimate", "occasions": ["other"] },
+    { "id": "dessert-buffet", "label": "Dessert or candy buffet", "type": "flat", "price": 3500, "priceStatus": "estimate", "occasions": ["other"] },
+    { "id": "souvenirs", "label": "Souvenirs", "type": "per_head", "price": 30, "priceStatus": "estimate", "occasions": ["other"] }
+  ],
+  "extraDishPer100": {
+    "chicken": 3000,
+    "beef": 3500,
+    "pork": 3500,
+    "fish": 3000,
+    "vegetables": 3000,
+    "pasta": 3000
+  },
+  "stageSetup": {
+    "includes": [
+      "Balloon decoration",
+      "Styro name",
+      "Couch or wooden chair",
+      "Entrance arc"
+    ],
+    "variants": [
+      {
+        "id": "wooden-chair",
+        "label": "Wooden chair",
+        "price": 5000,
+        "assumed": true
+      },
+      {
+        "id": "couch",
+        "label": "Couch",
+        "price": 6000,
+        "assumed": true
+      }
+    ]
+  },
+  "includedChoices": {
+    "drinks": 1,
+    "desserts": 1,
+    "rice": 1
+  },
+  "specialDishes": [
+    { "name": "Shrimp Tempura", "price": null, "assumed": true },
+    { "name": "Lemon Buttered Shrimp", "price": null, "assumed": true },
+    { "name": "Mix Seafoods", "price": null, "assumed": true }
+  ],
+  "requestItems": [
+    "Clown (puppet or magician)",
+    "Photobooth (3 hours unlimited shots with laminated copy)",
+    "Basic lights and sounds",
+    "Photographer",
+    "Host",
+    "Cake and 1 dozen cupcakes",
+    "Invitation (20 pcs)",
+    "Presidential table"
+  ],
+  "trays": {
+    "chicken": 900,
+    "pork": 950,
+    "beef": 1000,
+    "pasta": 800,
+    "fish": 800,
+    "veggie": 800
+  },
+  "extrasFields": {
+    "party": {
+      "boardName": "Name on the styro board (optional)",
+      "theme": "Character theme (optional)"
+    },
+    "birthday": {
+      "boardName": "Celebrant's name on the styro board (optional)",
+      "theme": "Character theme or colours (optional)"
+    },
+    "wedding": {
+      "boardName": "Couple's names on the styro board (optional)",
+      "theme": "Colour palette (optional)"
+    },
+    "corporate": {
+      "boardName": "Company name on the board (optional)",
+      "theme": "Brand colours (optional)"
+    },
+    "reunion": {
+      "boardName": "Family name and year on the board (optional)",
+      "theme": "Theme or colours (optional)"
+    },
+    "other": {
+      "boardName": "Celebrant's name on the board (optional)",
+      "theme": "Theme or colours (optional)"
+    }
+  }
+}
+

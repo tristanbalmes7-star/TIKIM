@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
+  <defs>
+    <!-- Pattern definitions in tints of teal and rust with 10% opacity -->
+    <style>
+      .pat-teal { fill: #4fa49d; opacity: 0.11; }
+      .pat-rust { fill: #ab4b2e; opacity: 0.10; }
+      .pat-stroke-teal { stroke: #4fa49d; stroke-width: 2; fill: none; opacity: 0.12; }
+      .pat-stroke-rust { stroke: #ab4b2e; stroke-width: 2; fill: none; opacity: 0.11; }
+    </style>
+  </defs>
+
+  <!-- Crossed Fork and Spatula Motif (Center) -->
+  <g transform="translate(100, 100) scale(0.7)">
+    <!-- Fork -->
+    <path class="pat-teal" d="M -25 -25 L 25 25 M -20 -28 L -16 -24 M -23 -23 L -19 -19 M -28 -20 L -24 -16" stroke="#4fa49d" stroke-width="3" stroke-linecap="round" />
+    <path class="pat-teal" d="M -18 -32 L -25 -25 L -22 -22 L -15 -29 Z" />
+    <!-- Spatula -->
+    <path class="pat-rust" d="M 25 -25 L -25 25" stroke="#ab4b2e" stroke-width="3" stroke-linecap="round" />
+    <rect class="pat-rust" x="15" y="-35" width="14" height="20" rx="3" transform="rotate(45 22 -25)" />
+    <!-- Center pivot ring -->
+    <circle cx="0" cy="0" r="4" class="pat-teal" />
+  </g>
+
+  <!-- Cute Ducky Silhouette Motif (Top-Left) -->
+  <g transform="translate(35, 35) scale(0.55)">
+    <!-- Head -->
+    <circle cx="0" cy="-10" r="14" class="pat-teal" />
+    <!-- Beak -->
+    <path class="pat-rust" d="M -12 -10 Q -22 -8 -13 -4 Z" />
+    <!-- Body -->
+    <path class="pat-rust" d="M -8 2 C -18 10 -15 26 5 24 C 20 22 25 10 18 2 Z" />
+    <!-- Wing -->
+    <path class="pat-teal" d="M 0 6 C -4 14 6 18 10 10 Z" />
+    <!-- Eye -->
+    <circle cx="-5" cy="-12" r="2" fill="#212e34" opacity="0.2" />
+  </g>
+
+  <!-- Dining Plate & Cloche Motif (Bottom-Right) -->
+  <g transform="translate(165, 160) scale(0.6)">
+    <ellipse cx="0" cy="10" rx="24" ry="7" class="pat-stroke-teal" />
+    <path class="pat-teal" d="M -18 8 A 18 16 0 0 1 18 8 Z" />
+    <circle cx="0" cy="-8" r="3" class="pat-rust" />
+  </g>
+
+  <!-- Festive Balloons Motif (Top-Right) -->
+  <g transform="translate(165, 35) scale(0.55)">
+    <path class="pat-rust" d="M -8 -8 C -14 -18 0 -24 6 -14 C 10 -6 0 4 -4 4 Z" />
+    <path class="pat-teal" d="M 6 -4 C 0 -14 14 -20 20 -10 C 24 -2 14 8 10 8 Z" />
+    <path class="pat-stroke-rust" d="M -4 4 Q -8 18 -2 24" />
+    <path class="pat-stroke-teal" d="M 10 8 Q 6 20 12 26" />
+  </g>
+
+  <!-- Celebration Stars & Sparkles -->
+  <g transform="translate(35, 165) scale(0.6)">
+    <path class="pat-rust" d="M 0 -12 L 3 -3 L 12 0 L 3 3 L 0 12 L -3 3 L -12 0 L -3 -3 Z" />
+  </g>
+  <g transform="translate(100, 25) scale(0.4)">
+    <path class="pat-teal" d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z" />
+  </g>
+  <g transform="translate(100, 175) scale(0.4)">
+    <path class="pat-rust" d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z" />
+  </g>
+  <g transform="translate(25, 100) scale(0.4)">
+    <path class="pat-teal" d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z" />
+  </g>
+  <g transform="translate(175, 100) scale(0.4)">
+    <path class="pat-rust" d="M 0 -10 L 2 -2 L 10 0 L 2 2 L 0 10 L -2 2 L -10 0 L -2 -2 Z" />
+  </g>
+</svg>

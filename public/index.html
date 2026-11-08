@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dack's Catering Services | TIKIM Event Customization & Management</title>
+  <meta name="description" content="TIKIM: An Event Customization and Management System for Dack's Catering Services in San Ildefonso, Bulacan. Full-service catering, 360 event rentals, and 2D floor planner." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Knewave&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat+Brush&family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&family=Knewave&family=Montserrat:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/landing.css" />
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png" />
+
+  <!-- Preload responsive hero photo 1 -->
+  <link rel="preload" as="image" href="assets/img/hero/photo1-1200.webp" media="(min-width: 769px)" />
+  <link rel="preload" as="image" href="assets/img/hero/photo1-640.webp" media="(max-width: 768px)" />
+
+  <!-- Pinned GSAP & Lenis libraries for smooth scrolling & timeline -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+</head>
+<body data-page="home">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <div id="tikim-header-slot">
+    <nav class="sr-only" aria-label="Static Navigation">
+      <a href="packages.html">Packages</a>
+      <a href="menu.html">Menu</a>
+      <a href="#styling">Event Styling</a>
+      <a href="planner.html">Floor Planner</a>
+      <a href="studio.html">Book Your Date</a>
+      <a href="track.html">Track Your Booking</a>
+      <a href="food-orders.html">Food Trays</a>
+      <a href="about.html">About Us</a>
+      <a href="gallery.html">Customer Gallery</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="quote.html">Shared Quote</a>
+    </nav>
+  </div>
+
+  <!-- Fixed Brand Logo: smoothly docks into nav slot on scroll -->
+  <div class="brand-logo-dock" id="brandLogo" aria-label="Dack's Catering Logo">
+    <img src="assets/img/logo-main.png" alt="Dack's Catering Services Logo" class="brand-logo-img" />
+  </div>
+
+  <!-- Dev title switcher indicator badge (hidden unless T pressed or ?title=) -->
+  <div class="title-dev-badge" id="titleDevBadge" aria-live="polite" style="display: none;"></div>
+
+  <main class="landing-main" id="main-content">
+    
+    <!-- 1. HERO TRACK: ROCKSTAR GTA VI SCRUBBED TIMELINE (260vh desktop, 300vh mobile) -->
+    <section class="hero-track" id="heroTrack" aria-label="Hero Scene">
+      <div class="hero-stage" id="heroStage">
+        <!-- The picture card; contains the procedural shards -->
+        <div class="hero-art" id="heroArt" role="img" aria-label="Dack's Catering Celebrations">
+          <!-- Shards dynamically rendered by js/hero/shards.js -->
+        </div>
+
+        <!-- Hero copy under the card: holds stacked wordmark and glowing Book Your Date button -->
+        <div class="hero-copy" id="heroCopy">
+          <h1 class="hero-copy-title hero-wordmark" id="heroWordmark">
+            <!-- Variant A: Brush stack (default) -->
+            <span class="hero-title-variant hero-title-variant-a">
+              <span class="hero-wordmark-brand">Dack's</span>
+              <span class="hero-wordmark-sub-wrap">
+                <span class="hero-wordmark-sub">CATERING SERVICES</span>
+                <svg class="hero-brush-underline" viewBox="0 0 240 12" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M3 8.5C45 4 125 3.5 237 7.5" stroke="#4fa49d" stroke-width="3.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+            </span>
+
+            <!-- Variant B: Stamp -->
+            <span class="hero-title-variant hero-title-variant-b" style="display: none;">
+              <span class="hero-stamp-brand">Dack's</span>
+              <span class="hero-stamp-badge">CATERING SERVICES</span>
+            </span>
+
+            <!-- Variant C: Single line -->
+            <span class="hero-title-variant hero-title-variant-c" style="display: none;">
+              <span class="hero-singleline-rule" aria-hidden="true"></span>
+              <span class="hero-singleline-text">DACK'S CATERING SERVICES</span>
+              <span class="hero-singleline-rule" aria-hidden="true"></span>
+            </span>
+          </h1>
+          <a href="studio.html" class="hero-book-btn" id="heroBookBtn">Book Your Date</a>
+        </div>
+
+        <!-- Scroll hint -->
+        <div class="hero-scroll" id="heroScroll" aria-label="Scroll to explore">
+          <span class="hero-scroll-text">SCROLL</span>
+          <svg class="hero-scroll-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. SECTION 2: EVENT CATERING SERVICES (Occasion Cards with See Packages button) -->
+    <section class="catering-section" id="sectionCatering" aria-label="Event Catering Services">
+      <div class="catering-section-inner">
+        <div class="section-header-block reveal-on-scroll">
+          <span style="font-size: 0.82rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: var(--rust); display: block; margin-bottom: 0.5rem;">
+            Full-Service Hospitality
+          </span>
+          <h2 class="section-header-title">Event Catering Services</h2>
+          <p class="section-header-desc">
+            From intimate gatherings to grand celebrations, Dack's Catering brings the food, the setup and the service to your special day. Choose your occasion to start planning.
+          </p>
+        </div>
+
+        <div class="occasions-grid">
+          <!-- Card 1: Weddings -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/weddings.jpg" alt="Dack's Real Wedding Reception Setup" width="2048" height="1536" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/wedding.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALWEDDING.png" alt="Weddings. Elegant buffets, styled stages and every detail ready for your walk down the aisle." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=wedding" aria-label="See packages for Weddings">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Birthdays -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/birthdays.jpg" alt="Dack's Real Birthday Stage Setup" width="2048" height="1155" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/birthday.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALBIRTHDAY.png" alt="Birthdays. Kiddie parties to grand celebrations, with hosts, clowns and photobooth fun." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=birthday" aria-label="See packages for Birthdays">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Corporate -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/corporate.jpg" alt="Dack's Real Corporate Seminar Setup" width="1632" height="1224" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/corporate.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALCORPORATE.png" alt="Corporate. Smooth, professional catering for company events, seminars and year-end parties." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=corporate" aria-label="See packages for Corporate">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Reunions -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/reunion.jpg" alt="Dack's Real Grand Reunion Buffet Setup" width="2048" height="1154" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/reunion.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALREUNION.png" alt="Reunions. Hearty Filipino spreads that bring the whole clan around one table." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=reunion" aria-label="See packages for Reunions">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Parties -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/party.jpg" alt="Dack's Real Celebration Buffet Setup" width="2048" height="1152" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/party.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALPARTIES.png" alt="Parties. Casual get-togethers made easy, with flexible menus and a setup that fits your crowd." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=party" aria-label="See packages for Parties">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Other Occasions -->
+          <div class="occ-card reveal-on-scroll">
+            <div class="occ-frame">
+              <div class="occ-photo-wrap">
+                <picture>
+                  <img class="occ-photo" src="assets/img/event-packages/other occassion.jpg" alt="Dack's Real Celebration Feast Spread" width="720" height="960" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='assets/img/occasions/other.jpg'" />
+                </picture>
+              </div>
+              <img class="occ-box" src="assets/img/OFFICIALOTHEROCCASION.png" alt="Other Occasions. Christenings, anniversaries, graduations and more. Tell us what you're celebrating." width="782" height="594" loading="lazy" decoding="async" />
+              <div class="occ-btn-wrap">
+                <a class="occ-btn" href="packages.html?event=other" aria-label="See packages for Other Occasions">See Packages &rarr;</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. SECTION 3: EVENT STYLING (Workshop Wall + Mini Floor Planner) -->
+    <section class="workshop-section" id="styling" aria-label="Event Styling & Workshop Wall">
+      <div class="workshop-inner">
+        <!-- Left 5 Columns: Renumbered list with stage and balloon arch removed -->
+        <div class="workshop-left reveal-on-scroll">
+          <span class="workshop-eyebrow">Creative Setups & Layouts</span>
+          <h2 class="workshop-title">Event Styling</h2>
+          <p class="workshop-desc">
+            We style the space so your event looks as good as it tastes, from table centerpieces and ambient lighting to themed backdrops. Plan your layout before the big day with our floor planner.
+          </p>
+
+          <div class="workshop-list">
+            <div class="workshop-list-item">
+              <span class="workshop-item-num">01</span>
+              <span class="workshop-item-text">Styro name and character themes</span>
+            </div>
+            <div class="workshop-list-item">
+              <span class="workshop-item-num">02</span>
+              <span class="workshop-item-text">Tables, chairs and lighting</span>
+            </div>
+          </div>
+
+          <div class="workshop-btn-row">
+            <a href="planner.html" class="btn-primary" style="padding: 0.9rem 2rem;">
+              Open the Floor Planner
+            </a>
+          </div>
+        </div>
+
+        <!-- Right 7 Columns: Pinned Paper Floor Plan Sheet (Polaroids removed) -->
+        <div class="workshop-right reveal-on-scroll">
+          <div class="pinned-paper-sheet">
+            <div class="pinned-tape tape-tl"></div>
+            <div class="pinned-tape tape-tr"></div>
+
+            <!-- Live Mini Floor Planner Mount -->
+            <div id="landingMiniPlanner"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. SECTION 4: "ALREADY BOOKED?" CLAIM-TICKET BAND (A6) -->
+    <section class="claim-ticket-band" id="sectionTrack" aria-label="Booking Reference Lookup">
+      <div class="claim-ticket-container reveal-on-scroll">
+        <div class="claim-ticket-stub">
+          <div class="ticket-stub-left">
+            <h2 class="ticket-stub-title">Already booked?</h2>
+            <p class="ticket-stub-helper">Your reference number came by SMS.</p>
+          </div>
+          
+          <div class="ticket-stub-perforation" aria-hidden="true">
+            <div class="ticket-notch notch-top"></div>
+            <div class="ticket-notch notch-bottom"></div>
+          </div>
+          
+          <div class="ticket-stub-right">
+            <form class="claim-ticket-form" id="claimTicketForm" novalidate style="display: contents;">
+              <div class="ticket-field-group">
+                <label class="ticket-field-label" for="ticketRefInput">Reference no.</label>
+                <input type="text" id="ticketRefInput" class="ticket-field-input" placeholder="TK-241122-001" required autocomplete="off" />
+              </div>
+              <div class="ticket-field-group" style="max-width: 200px;">
+                <label class="ticket-field-label" for="ticketMobileInput">Last 4 digits of mobile</label>
+                <input type="text" id="ticketMobileInput" class="ticket-field-input" placeholder="3458" maxlength="4" required autocomplete="off" />
+              </div>
+              <div class="ticket-submit-wrap">
+                <button type="submit" class="ticket-submit-link">Find my booking &rarr;</button>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="ticket-error-msg" id="ticketErrorMsg" role="alert" aria-live="polite" style="display: none;"></div>
+      </div>
+    </section>
+
+    <!-- 7. SECTION 7: CUSTOMER GALLERY CONTINUOUS HORIZONTAL MARQUEE (A4) -->
+    <section class="landing-gallery-strip" id="landingGalleryStrip" aria-label="Customer Gallery">
+      <div class="gallery-strip-header">
+        <h2 class="gallery-strip-title">Customer Gallery</h2>
+      </div>
+      
+      <div class="marquee-wrapper" id="customerMarqueeWrap">
+        <div class="marquee-track" id="marqueeTrack">
+          <!-- Dynamically populated from data/gallery.json -->
+        </div>
+      </div>
+
+      <div class="gallery-strip-footer" style="display: none;">
+        <a href="gallery.html" class="gallery-strip-link">View the full Customer Gallery &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Shared Lightbox Modal for Marquee Customer Photos -->
+  <div id="galleryLightbox" class="lightbox-modal" role="dialog" aria-modal="true" aria-label="Photo View" style="display: none;">
+    <div class="lightbox-backdrop" id="lightboxBackdrop"></div>
+    <div class="lightbox-dialog">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Close Lightbox">&times;</button>
+      <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous Photo">&#10094;</button>
+      <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next Photo">&#10095;</button>
+      
+      <div class="lightbox-content">
+        <div class="lightbox-figure-wrap">
+          <img id="lightboxImg" src="" alt="" class="lightbox-img" />
+        </div>
+        <div class="lightbox-details">
+          <div class="lightbox-tags">
+            <span id="lightboxEvent" class="badge badge-teal"></span>
+            <span id="lightboxCategory" class="badge badge-outline"></span>
+            <span id="lightboxCounter" class="lightbox-counter-text"></span>
+          </div>
+          <h2 id="lightboxTitle" class="lightbox-title"></h2>
+          <p id="lightboxCaption" class="lightbox-caption"></p>
+          <div class="lightbox-actions">
+            <a id="lightboxUseSetup" href="studio.html" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+              Use This Setup in Studio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/pages/landing.js"></script>
+</body>
+</html>

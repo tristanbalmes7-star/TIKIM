@@ -1,0 +1,230 @@
+[
+  {
+    "id": "round-table",
+    "name": "60-Inch Round Banquet Table",
+    "category": "Tables",
+    "badge": "Included in all packages",
+    "seats": 10,
+    "dimensions": "152cm (Dia) x 76cm (H)",
+    "material": "High-density birch folding core with steel frame",
+    "description": "Standard 10-seater round table complete with floor-length drop linen, runner, and table numbers.",
+    "modelSlug": "table",
+    "hotspots": [
+      { "name": "Table Surface", "pos": [0, 0.76, 0], "desc": "152cm diameter heavy-duty top, fits 10 chargers comfortably." },
+      { "name": "Folding Pedestal", "pos": [0, 0.2, 0], "desc": "Locking steel legs with non-marring floor glides." }
+    ],
+    "variants": [
+      { "id": "ivory", "name": "Ivory Damask", "color": "#f5efe6" },
+      { "id": "teal", "name": "Tikim Teal", "color": "#4fa49d" },
+      { "id": "rust", "name": "Rust Terracotta", "color": "#ab4b2e" }
+    ]
+  },
+  {
+    "id": "long-table",
+    "name": "6-Foot Rectangular Banquet Table",
+    "category": "Tables",
+    "badge": "Included in all packages",
+    "seats": 6,
+    "dimensions": "183cm (L) x 76cm (W) x 76cm (H)",
+    "material": "Solid birch plywood with vinyl edge",
+    "description": "Versatile rectangular table for family-style banquet seating, registration desk, or gift station.",
+    "modelSlug": "table",
+    "hotspots": [
+      { "name": "Drop Linen", "pos": [0, 0.76, 0], "desc": "Floor-length drop skirt hides under-table storage." }
+    ],
+    "variants": [
+      { "id": "ivory", "name": "Ivory", "color": "#f5efe6" },
+      { "id": "slate", "name": "Slate Navy", "color": "#212e34" }
+    ]
+  },
+  {
+    "id": "presidential-table",
+    "name": "Presidential VIP Long Dining Table",
+    "category": "Tables",
+    "badge": "Included in all-in",
+    "packageNote": "Included in Wedding Package, on request for other occasions",
+    "seats": 12,
+    "dimensions": "360cm (L) x 100cm (W) x 76cm (H)",
+    "material": "Polished hardwood top with floral trough",
+    "description": "Luxury wide VIP table designed for bridal parties and corporate executives.",
+    "modelSlug": "table",
+    "hotspots": [
+      { "name": "Floral Trough", "pos": [0, 0.78, 0], "desc": "Integrated recessed groove for long fresh floral runners." }
+    ],
+    "variants": [
+      { "id": "mahogany", "name": "Polished Mahogany", "color": "#4a2c1b" },
+      { "id": "whitewash", "name": "Rustic Whitewash", "color": "#ebe5dc" }
+    ]
+  },
+  {
+    "id": "wooden-chair",
+    "name": "Rustic Wooden Cross-Back Chair",
+    "category": "Chairs",
+    "badge": "Included in all packages",
+    "seats": 1,
+    "dimensions": "91cm (H) x 48cm (W) x 46cm (D)",
+    "material": "Solid bentwood beech with ivory padded cushion",
+    "description": "Ergonomic and sturdy cross-back chair, tested to 180kg load capacity.",
+    "modelSlug": "chair",
+    "hotspots": [
+      { "name": "Curved Backrest", "pos": [0, 0.85, -0.2], "desc": "Supportive steam-bent cross back for all-day comfort." },
+      { "name": "Tie-on Cushion", "pos": [0, 0.45, 0], "desc": "High-density memory foam with removable linen cover." }
+    ],
+    "variants": [
+      { "id": "beech", "name": "Natural Beechwood", "color": "#b89772" },
+      { "id": "walnut", "name": "Walnut Mahogany", "color": "#533626" },
+      { "id": "whitewash", "name": "Rustic White Wash", "color": "#e6ded1" }
+    ]
+  },
+  {
+    "id": "monobloc-chair",
+    "name": "Standard Monobloc Chair with Spandex Cover",
+    "category": "Chairs",
+    "badge": "Included in all packages",
+    "seats": 1,
+    "dimensions": "82cm (H) x 43cm (W) x 43cm (D)",
+    "material": "Heavy duty commercial resin with stretch spandex",
+    "description": "Economical seating with crisp full-length stretch spandex cover and ribbon accent.",
+    "modelSlug": "chair",
+    "hotspots": [
+      { "name": "Spandex Cover", "pos": [0, 0.5, 0], "desc": "Wrinkle-free cover with reinforced leg pockets." }
+    ],
+    "variants": [
+      { "id": "white", "name": "Crisp White", "color": "#ffffff" },
+      { "id": "teal", "name": "Teal Ribbon", "color": "#4fa49d" }
+    ]
+  },
+  {
+    "id": "couch",
+    "name": "VIP Tufted Chesterfield Couch",
+    "category": "Chairs",
+    "badge": "Included in all-in",
+    "packageNote": "Included in Wedding Package stage setup",
+    "seats": 3,
+    "dimensions": "210cm (L) x 85cm (D) x 75cm (H)",
+    "material": "Tufted faux leather with walnut turned legs",
+    "description": "Photogenic lounge couch for the celebrant, photo stage, or VIP seating.",
+    "modelSlug": "chair",
+    "hotspots": [
+      { "name": "Deep Tufting", "pos": [0, 0.6, 0], "desc": "Classic diamond-tufted button back." }
+    ],
+    "variants": [
+      { "id": "cognac", "name": "Cognac Tan", "color": "#8c4a2a" },
+      { "id": "emerald", "name": "Teal Velvet", "color": "#336b66" }
+    ]
+  },
+  {
+    "id": "par-lights",
+    "name": "Pro LED Par Stage Spotlight Set",
+    "category": "Lights",
+    "badge": "Included in all-in",
+    "packageNote": "Part of basic lights & sounds inclusion",
+    "seats": 0,
+    "dimensions": "32cm x 28cm x 22cm per fixture",
+    "material": "Aluminum die-cast housing with DMX512 controls",
+    "description": "High-lumen 18x12W RGBW par cans for stage wash and centerpiece spotlighting.",
+    "modelSlug": "lights",
+    "hotspots": [
+      { "name": "LED Array", "pos": [0, 0.4, 0.15], "desc": "18x12W quad-color LEDs with flicker-free dimming." },
+      { "name": "DMX Control", "pos": [0, 0.2, -0.15], "desc": "Synced to master lighting console." }
+    ],
+    "variants": [
+      { "id": "warm", "name": "Warm Amber (3200K)", "color": "#ffaa33" },
+      { "id": "daylight", "name": "Cool Daylight (5600K)", "color": "#b0d0ff" },
+      { "id": "neon", "name": "Party RGB Pulse", "color": "#c438ef" }
+    ]
+  },
+  {
+    "id": "sound-system",
+    "name": "Acoustic Stage Sound System & Wireless Mics",
+    "category": "Sounds",
+    "badge": "Included in all-in",
+    "packageNote": "Part of basic lights & sounds inclusion",
+    "seats": 0,
+    "dimensions": "Two 15-inch active speakers + sub + 16ch mixer",
+    "material": "Plywood tour-grade cabinets with class D power",
+    "description": "Clear high-fidelity acoustic sound tuned for ballrooms, gardens, and speech clarity.",
+    "modelSlug": "sound",
+    "hotspots": [
+      { "name": "Active 15-inch Box", "pos": [0, 0.8, 0], "desc": "1000W peak power with wide horizontal dispersion." }
+    ],
+    "variants": [
+      { "id": "standard", "name": "Standard 2-Speaker Setup", "color": "#111111" }
+    ]
+  },
+  {
+    "id": "photobooth",
+    "name": "Instant Souvenir Photobooth Station",
+    "category": "Photobooth",
+    "badge": "Included in all-in",
+    "packageNote": "3 hours unlimited shots included in all-in packages",
+    "seats": 0,
+    "dimensions": "200cm (H) x 200cm (W) backdrop with kiosk",
+    "material": "DNP high-speed thermal dye-sub printer, studio strobe, DSLR",
+    "description": "Complete photobooth station with studio ring light, magnetic laminated printouts, and custom template.",
+    "modelSlug": "photobooth",
+    "hotspots": [
+      { "name": "DSLR Lens & Ringlight", "pos": [0, 1.4, 0], "desc": "Flattering soft ring light with touch countdown display." }
+    ],
+    "variants": [
+      { "id": "glitter", "name": "Gold Sequins Backdrop", "color": "#d1a153" },
+      { "id": "rustic", "name": "Faux Wood Hedge Backdrop", "color": "#3f6345" }
+    ]
+  },
+  {
+    "id": "styro-name",
+    "name": "Custom 3D Styro Name & Stage Backdrop",
+    "category": "Stage and Decor",
+    "badge": "Included in all-in",
+    "packageNote": "Included in all-in packages stage setup",
+    "seats": 0,
+    "dimensions": "Up to 3 meters wide stage lettering",
+    "material": "High-density carved styrofoam with painted enamel",
+    "description": "Personalized 3D lettering for birthdays, debuts, and corporate stage themes.",
+    "modelSlug": "styro",
+    "hotspots": [
+      { "name": "3D Lettering", "pos": [0, 0.5, 0], "desc": "Beveled edge with glitter or matte protective topcoat." }
+    ],
+    "variants": [
+      { "id": "pastel", "name": "Pastel Wonderland", "color": "#81d4fa" },
+      { "id": "bold", "name": "Vibrant Fiesta", "color": "#ab4b2e" }
+    ]
+  },
+  {
+    "id": "entrance-arc",
+    "name": "Organic Balloon & Botanical Entrance Arc",
+    "category": "Stage and Decor",
+    "badge": "Included in all-in",
+    "packageNote": "Included in all-in packages stage setup",
+    "seats": 0,
+    "dimensions": "2.4m (H) x 2.2m (W)",
+    "material": "Biodegradable latex balloons on heavy base truss",
+    "description": "Grand welcoming arch with layered organic balloon sizes, eucalyptus faux leaves, and welcome sign.",
+    "modelSlug": "arch",
+    "hotspots": [
+      { "name": "Balloon Cluster", "pos": [0, 1.8, 0], "desc": "Layered sizes 5-inch to 18-inch with double-stuffed pastel colors." }
+    ],
+    "variants": [
+      { "id": "teal-rust", "name": "Tikim Brand Palette", "color": "#4fa49d" },
+      { "id": "pastel-pink", "name": "Fairy Tale Pastel", "color": "#f8bbd0" }
+    ]
+  },
+  {
+    "id": "chafing-dish",
+    "name": "Stainless Steel Roll-Top Chafing Dish",
+    "category": "Food Service",
+    "badge": "Included in all packages",
+    "seats": 0,
+    "dimensions": "65cm x 36cm x 42cm (9 Liter Capacity)",
+    "material": "Heavy gauge 18/10 stainless steel with mirror polish",
+    "description": "Keeps dishes piping hot throughout buffet service with safe chafing gel fuel.",
+    "modelSlug": "chafing",
+    "hotspots": [
+      { "name": "Roll-top Cover", "pos": [0, 0.35, 0], "desc": "Smooth 90° and 180° opening roll-top with cool-touch handle." }
+    ],
+    "variants": [
+      { "id": "silver", "name": "Mirror Stainless", "color": "#e0e0e0" },
+      { "id": "gold-accent", "name": "Brass Accents", "color": "#d4af37" }
+    ]
+  }
+]

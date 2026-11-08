@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Organizer Login | TIKIM · Dack's Catering</title>
+  <meta name="description" content="Secure portal access for Dack's Catering Services event coordinators and kitchen management.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <style>
+    body {
+      background-color: var(--color-slate);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    body::before {
+      content: "";
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(79, 164, 157, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .login-card {
+      background: #ffffff;
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--color-slate-15);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+      width: 100%;
+      max-width: 420px;
+      padding: 2.5rem;
+      position: relative;
+      z-index: 2;
+    }
+    .login-brand {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .login-logo {
+      height: 70px;
+      width: auto;
+      margin-bottom: 0.75rem;
+    }
+    .login-title {
+      font-family: var(--font-heading);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--color-slate);
+      margin-bottom: 0.25rem;
+    }
+    .login-sub {
+      font-size: var(--text-xs);
+      color: var(--color-slate-60);
+    }
+    .demo-creds-banner {
+      background: rgba(79, 164, 157, 0.12);
+      border: 1px solid var(--color-teal);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      font-size: 11px;
+      color: var(--color-slate);
+      margin-bottom: 1.5rem;
+      line-height: 1.4;
+    }
+    .demo-creds-banner code {
+      background: rgba(33, 46, 52, 0.1);
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-weight: bold;
+    }
+    .login-back-link {
+      display: block;
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: var(--text-xs);
+      color: var(--color-slate-60);
+    }
+    .login-back-link:hover {
+      color: var(--color-teal);
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-brand">
+      <img src="../assets/img/logo-main.png" alt="Dack's Catering Services" class="login-logo">
+      <h1 class="login-title">Organizer Portal</h1>
+      <p class="login-sub">TIKIM Operations & Schedule Hub</p>
+    </div>
+
+    
+
+    <form id="adminLoginForm" class="form-grid-12">
+      <div class="field col-12">
+        <label for="adminUsername" class="field-label">Username</label>
+        <input type="text" id="adminUsername" class="form-input" required autofocus autocomplete="username">
+      </div>
+      <div class="field col-12">
+        <label for="adminPassword" class="field-label">Password</label>
+        <input type="password" id="adminPassword" class="form-input" required autocomplete="current-password">
+      </div>
+      <div class="field col-12" style="margin-top: 0.5rem;">
+        <button type="submit" class="btn btn-primary btn-block">Sign In to Dashboard &rarr;</button>
+      </div>
+    </form>
+
+    <a href="../index.html" class="login-back-link">&larr; Back to Public Website</a>
+  </div>
+
+<script type="module">
+  const loginForm = document.getElementById('adminLoginForm');
+
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const username = document.getElementById('adminUsername').value.trim();
+    const password = document.getElementById('adminPassword').value;
+
+    const submitButton = loginForm.querySelector('button[type="submit"]');
+    const originalText = submitButton.innerHTML;
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'Signing in...';
+
+    try {
+      const csrfResponse = await fetch('/api/v1/csrf', {
+        method: 'GET',
+        credentials: 'same-origin',
+        headers: { Accept: 'application/json' }
+      });
+      const csrfData = await csrfResponse.json().catch(() => ({}));
+
+      if (!csrfResponse.ok || typeof csrfData.token !== 'string' || !csrfData.token) {
+        throw new Error('Unable to obtain a security token. Check your connection and try again.');
+      }
+
+      const response = await fetch('/api/v1/login', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'X-CSRF-TOKEN': csrfData.token
+        },
+        body: JSON.stringify({ username, password })
+      });
+
+      const result = await response.json().catch(() => ({}));
+
+      if (!response.ok) {
+        if (response.status === 419) {
+          throw new Error('Your security token expired. Please try signing in again.');
+        }
+
+        const message = result.message ||
+          result.errors?.username?.[0] ||
+          'Invalid username or password.';
+
+        throw new Error(message);
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const next = urlParams.get('next');
+
+      if (next) {
+        const target = new URL(next, window.location.href);
+
+        if (target.origin === window.location.origin) {
+          window.location.href = target.href;
+        } else {
+          window.location.href = 'index.html#/dashboard';
+        }
+      } else {
+        window.location.href = 'index.html#/dashboard';
+      }
+
+    } catch (error) {
+      alert(error.message || 'Unable to connect to the server. Please try again.');
+      submitButton.disabled = false;
+      submitButton.innerHTML = originalText;
+    }
+  });
+
+  if (window.location.search.includes('contrast=1')) {
+    import('../js/contrast-audit.js?v=' + Date.now())
+      .then(m => m.runContrastAudit());
+  }
+</script>
+</body>
+</html>

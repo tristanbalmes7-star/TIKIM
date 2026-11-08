@@ -1,0 +1,562 @@
+/* ==========================================================================
+   TIKIM Customer Booking Tracker Stylesheet
+   ========================================================================== */
+
+html:has(.track-page) {
+  overflow-y: scroll;
+}
+
+.track-page {
+  padding-top: var(--header-height);
+  min-height: auto;
+  background-color: var(--color-bg);
+  padding-bottom: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.track-container {
+  max-width: 1080px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 1.5rem 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  flex: 1 0 auto;
+}
+
+.track-search-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-slate-10);
+  box-shadow: 0 8px 30px rgba(33, 46, 52, 0.06);
+  padding: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.track-title {
+  font-family: var(--font-heading);
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 800;
+  color: var(--color-slate);
+  margin-bottom: 0.5rem;
+}
+
+.track-subtitle {
+  font-size: var(--text-sm);
+  color: var(--color-slate-70);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.5;
+}
+
+.lookup-form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.lookup-inputs-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .lookup-inputs-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+.flex-2 { flex: 2; }
+.flex-1 { flex: 1; }
+.btn-col { display: flex; align-items: flex-end; }
+
+.sample-hint {
+  margin-top: 1.5rem;
+  font-size: var(--text-lg);
+  color: var(--color-rust);
+}
+
+/* --------------------------------------------------------------------------
+   Booking Status Card & Timeline
+   -------------------------------------------------------------------------- */
+.booking-status-card {
+  background: #ffffff;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-slate-10);
+  box-shadow: 0 8px 30px rgba(33, 46, 52, 0.06);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.status-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-slate-10);
+}
+
+.booking-ref-label {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-slate-60);
+}
+
+.booking-ref-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+  color: var(--color-slate);
+  letter-spacing: 0.05em;
+}
+
+.progress-timeline-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: auto;
+  padding: 0.5rem 0 1rem;
+}
+
+.timeline-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.4rem;
+  position: relative;
+  z-index: 2;
+  min-width: 90px;
+}
+
+.timeline-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-slate-10);
+  color: var(--color-slate-60);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: var(--text-xs);
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.timeline-step.active .timeline-dot {
+  background: var(--color-teal);
+  color: var(--color-slate);
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 4px rgba(79, 164, 157, 0.25);
+}
+
+.timeline-step.completed .timeline-dot {
+  background: var(--color-slate);
+  color: #ffffff;
+}
+
+.timeline-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-slate-70);
+  white-space: nowrap;
+}
+
+.timeline-step.active .timeline-label {
+  color: var(--color-slate);
+  font-weight: 800;
+}
+
+.timeline-line {
+  flex: 1;
+  height: 2px;
+  background: var(--color-slate-15);
+  margin: 0 -10px 1.5rem;
+}
+
+/* 48-Hour Hold Countdown Box */
+.hold-countdown-banner {
+  background: rgba(171, 75, 46, 0.08);
+  border: 1px solid var(--color-rust);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hold-timer-icon {
+  font-size: 1.75rem;
+}
+
+.hold-timer-content strong {
+  font-size: var(--text-sm);
+  color: var(--color-rust);
+}
+
+.hold-timer-content p {
+  font-size: var(--text-xs);
+  color: var(--color-slate-70);
+  margin: 0.25rem 0 0.5rem;
+}
+
+.countdown-digits {
+  font-family: var(--font-heading);
+  font-size: var(--text-lg);
+  font-weight: 800;
+  color: var(--color-rust);
+}
+
+/* --------------------------------------------------------------------------
+   Booking Details Grid
+   -------------------------------------------------------------------------- */
+.booking-details-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 840px) {
+  .booking-details-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.detail-box {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-slate-10);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 4px 16px rgba(33, 46, 52, 0.04);
+}
+
+.detail-box-title {
+  font-family: var(--font-heading);
+  font-size: var(--text-base);
+  font-weight: 800;
+  color: var(--color-slate);
+  margin-bottom: 1rem;
+}
+
+.meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--text-xs);
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--color-slate-10);
+}
+
+.meta-label {
+  color: var(--color-slate-60);
+  font-weight: 600;
+}
+
+.meta-value {
+  color: var(--color-slate);
+  font-weight: 700;
+  text-align: right;
+}
+
+/* Track Upload Zone */
+.track-upload-zone {
+  border: 2px dashed rgba(79, 164, 157, 0.4);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  text-align: center;
+  background: var(--color-slate-05);
+  cursor: pointer;
+  position: relative;
+}
+
+.track-upload-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: var(--text-xs);
+  color: var(--color-slate-70);
+}
+
+.track-upload-prompt svg {
+  color: var(--color-teal);
+}
+
+/* Financial Ledger */
+.payment-ledger-box {
+  background: linear-gradient(180deg, #ffffff 0%, var(--color-slate-05) 100%);
+}
+
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: var(--text-sm);
+  padding: 0.5rem 0;
+}
+
+.ledger-balance-row {
+  border-top: 1px dashed var(--color-slate-20);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.ledger-due-note {
+  font-size: 11px;
+  color: var(--color-rust);
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+
+.floor-preview-thumb {
+  background: #f4efe6;
+  border-radius: var(--radius-md);
+  padding: 0.5rem;
+  border: 1px solid var(--color-slate-15);
+  max-height: 240px;
+  overflow: hidden;
+}
+
+.floor-preview-thumb svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Claim Ticket Stub in Tracker (A6 Reuse)
+   -------------------------------------------------------------------------- */
+.claim-ticket-band {
+  background-color: var(--rust, #ab4b2e);
+  padding: 3rem 1.5rem;
+  width: 100%;
+  border-radius: var(--radius-xl, 18px);
+  margin-bottom: 2rem;
+}
+
+.claim-ticket-container {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.claim-ticket-stub {
+  background-color: #faf7f2;
+  color: var(--slate);
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.ticket-stub-left {
+  padding: 2.25rem 2.5rem;
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ticket-stub-title {
+  font-family: var(--font-hero-title, 'Abril Fatface', Georgia, serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: var(--slate);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.15;
+}
+
+.ticket-stub-helper {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+.ticket-stub-perforation {
+  width: 0;
+  position: relative;
+  border-left: 2px dashed rgba(33, 46, 52, 0.28);
+  margin: 0;
+}
+
+.ticket-notch {
+  width: 24px;
+  height: 24px;
+  background-color: var(--rust, #ab4b2e);
+  border-radius: 50%;
+  position: absolute;
+  left: -12px;
+  z-index: 2;
+}
+
+.notch-top {
+  top: -12px;
+}
+
+.notch-bottom {
+  bottom: -12px;
+}
+
+.ticket-stub-right {
+  flex: 1;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ticket-field-group {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ticket-field-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+}
+
+.ticket-field-input {
+  border: none;
+  border-bottom: 2px solid var(--slate);
+  background: transparent;
+  color: var(--slate);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--transition-fast, 0.2s);
+}
+
+.ticket-field-input:focus {
+  border-bottom-color: var(--rust);
+}
+
+.ticket-field-input::placeholder {
+  color: rgba(33, 46, 52, 0.40);
+  font-weight: 400;
+}
+
+.ticket-submit-wrap {
+  margin-bottom: 6px;
+}
+
+.ticket-submit-link {
+  background: transparent;
+  border: none;
+  color: var(--rust);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-fast, 0.2s);
+}
+
+.ticket-submit-link:hover,
+.ticket-submit-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ticket-error-msg {
+  margin-top: 1rem;
+  color: #faf7f2;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.35);
+  padding: 0.75rem 1.25rem;
+  border-radius: 4px;
+  border-left: 3px solid #ffb4a2;
+}
+
+@media (max-width: 768px) {
+  .claim-ticket-stub {
+    flex-direction: column;
+  }
+  .ticket-stub-left {
+    flex: auto;
+    padding: 1.75rem 1.5rem;
+  }
+  .ticket-stub-perforation {
+    width: 100%;
+    height: 0;
+    border-left: none;
+    border-top: 2px dashed rgba(33, 46, 52, 0.28);
+  }
+  .ticket-notch {
+    left: auto;
+  }
+  .notch-top {
+    top: -12px;
+    left: -12px;
+  }
+  .notch-bottom {
+    top: -12px;
+    right: -12px;
+    bottom: auto;
+  }
+  .ticket-stub-right {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .ticket-submit-wrap {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Change Request Modal */
+.change-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 2100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.change-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(33, 46, 52, 0.85);
+  backdrop-filter: blur(4px);
+}
+
+.change-dialog {
+  position: relative;
+  z-index: 2;
+  width: 90%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: var(--radius-xl, 16px);
+  padding: 2rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+}

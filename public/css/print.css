@@ -1,0 +1,53 @@
+/* Print stylesheet for printable quotations, receipts, and equipment turnover sheets. */
+
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 11pt !important;
+  }
+
+  .site-header,
+  .site-footer,
+  .floating-bar,
+  .scroll-progress-container,
+  .search-modal-backdrop,
+  .btn-primary,
+  .btn-secondary,
+  .no-print {
+    display: none !important;
+  }
+
+  .print-page-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  table {
+    width: 100% !important;
+    border-collapse: collapse !important;
+  }
+
+  th, td {
+    border: 1px solid #cccccc !important;
+    padding: 6px 10px !important;
+  }
+
+  .print-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 2px solid #212e34 !important;
+    padding-bottom: 12px !important;
+    margin-bottom: 16px !important;
+  }
+
+  .print-watermark {
+    color: #4fa49d !important;
+    font-weight: 700 !important;
+  }
+}

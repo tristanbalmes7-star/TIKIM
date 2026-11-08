@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Studio Booking Wizard | Dack's Catering Services</title>
+  <meta name="description" content="Design your dream gathering in real-time. Pick packages, customize menus, arrange floor plans, lock your date for 48 hours, and receive instant itemized pricing.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages/studio.css">
+  <link rel="stylesheet" href="css/pages/planner.css">
+  <link rel="stylesheet" href="css/print.css" media="print">
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png" />
+</head>
+<body data-page="studio" data-nav="fixed">
+  <a href="#main-content" class="skip-link">Skip to booking studio</a>
+
+  <!-- Revision 18A Part 1.2: One sticky wrapper containing nav and tab band -->
+  <header class="site-header" id="siteHeader">
+    <div id="tikim-header-slot"></div>
+    <nav class="studio-tab-tracker-band" id="studioTabTracker" aria-label="Booking steps">
+      <div class="tracker-band-inner">
+        <div class="tracker-tabs-scroll" id="trackerTabsScroll" role="tablist">
+          <!-- Dynamically populated tabs -->
+        </div>
+        <div class="tracker-step-counter" id="trackerStepCounter" aria-live="polite">
+          Step 1 of 7
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content" class="studio-page">
+
+    <!-- ACCESSIBILITY ARIA ANNOUNCER -->
+    <div id="studioAriaAnnouncer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <div class="studio-layout-container studio-grid" id="studioLayoutContainer">
+      <!-- WIZARD CONTENT LEFT -->
+      <section class="wizard-content-column">
+        
+        <!-- STEP 1: TWO-SCREEN RESERVATION CHOOSER -->
+        <div class="wizard-step-pane" id="paneStep0" style="display: none;">
+          <div class="studio-chooser-container" id="studioChooserContainer">
+
+            <!-- SCREEN 1: Start your reservation -->
+            <div class="start-screen" id="startScreen1" style="display: block;">
+              <h1 class="chooser-main-title">Start your reservation</h1>
+              <p class="chooser-subtitle">What would you like to book?</p>
+
+
+              <div class="start-cards-grid" role="radiogroup" aria-label="What would you like to book?">
+                <!-- Card 1: Event package -->
+                <button type="button" class="start-card" id="cardBookingEvent" data-type="event" role="radio" aria-checked="false">
+                  <div class="start-card-body">
+                    <span class="start-card-title">Event package</span>
+                    <span class="start-card-text">Food, setup, host and more for your occasion</span>
+                    <span class="start-card-price">From &#8369;41,000</span>
+                  </div>
+                  <span class="start-card-arrow" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </span>
+                </button>
+
+                <!-- Card 2: Food package -->
+                <button type="button" class="start-card" id="cardBookingFood" data-type="food" role="radio" aria-checked="false">
+                  <div class="start-card-body">
+                    <span class="start-card-title">Food package</span>
+                    <span class="start-card-text">Food only, for your own venue</span>
+                    <span class="start-card-price">From &#8369;250 per guest</span>
+                  </div>
+                  <span class="start-card-arrow" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </span>
+                </button>
+
+                <!-- Card 3: Food trays -->
+                <button type="button" class="start-card" id="cardBookingTrays" data-type="trays" role="radio" aria-checked="false">
+                  <div class="start-card-body">
+                    <span class="start-card-title">Food trays</span>
+                    <span class="start-card-text">Ready-to-serve trays, order by the tray</span>
+                    <span class="start-card-price">From &#8369;800 per tray</span>
+                  </div>
+                  <span class="start-card-arrow" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3.3 & 3.4 SCREEN 2: "Pick your package" -->
+            <div class="start-screen" id="startScreen2" style="display: none;">
+              <div class="screen2-header-row">
+                <button type="button" class="btn-back-to-type" id="btnBackToType" aria-label="Back to reservation types">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                  <span>Back</span>
+                </button>
+                <h2 class="screen2-heading" id="screen2Heading">Pick your event package</h2>
+              </div>
+
+              <div class="screen2-columns-layout">
+                <!-- Left: List of selectable rows -->
+                <div class="screen2-rows-list" id="screen2RowsList" role="radiogroup" aria-label="Package options">
+                  <!-- Dynamically populated: 6 rows for Event, 3 rows for Food -->
+                </div>
+
+                <!-- Right: Sticky "Your choice" preview confirmation panel -->
+                <aside class="screen2-preview-panel" id="screen2PreviewPanel" aria-label="Your choice preview">
+                  <div class="preview-panel-card" id="previewPanelCard">
+                    <!-- Populated dynamically with package details and inclusions -->
+                  </div>
+                </aside>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- STEP PANE: DATE & GUESTS (Event & Food) -->
+        <div class="wizard-step-pane" id="paneDateGuests" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleDate">Pick your date and guests</h2>
+          </div>
+
+          <div class="step-card">
+            <h3 class="step-subheading">1. Select Target Date</h3>
+            <div id="studioCalendarContainer" class="calendar-embed-wrap">
+              <!-- TikimCalendar renders here -->
+            </div>
+            <div class="selected-date-alert" id="selectedDateDisplay">
+              <strong>Selected Date:</strong> <span id="dateValText">No date chosen yet</span>
+            </div>
+          </div>
+
+          <div class="step-card">
+            <h3 class="step-subheading">2. Number of guests</h3>
+            <p class="form-hint" id="paxPolicyHint">This package is for 100 guests and up.</p>
+            <div class="pax-control-row">
+              <input type="range" id="paxRangeInput" min="100" max="500" step="1" value="100" class="pax-slider">
+              <div class="pax-stepper">
+                <button type="button" class="btn-stepper" id="btnDecPax">&minus;</button>
+                <input type="number" id="paxNumberInput" min="100" max="1000" value="100" class="pax-number">
+                <button type="button" class="btn-stepper" id="btnIncPax">&plus;</button>
+                <button type="button" class="btn btn-xs btn-outline" id="btnQuick10Pax" title="Add 10 guests">+10</button>
+                <span class="pax-unit">Guests</span>
+              </div>
+            </div>
+            <div id="paxLiveRateNote" class="pax-recommendation-note" style="margin-top: 0.5rem; font-weight: 700; color: var(--color-rust);">
+              +&#8369;250 per guest after 100
+            </div>
+            <div id="paxSnapWarning" class="guests-snap-msg" style="display: none;">
+              This package is for 100 guests and up.
+            </div>
+          </div>
+
+          <div class="step-card">
+            <h3 class="step-subheading">3. Target Venue or Location</h3>
+            <input type="text" id="venueInput" class="form-input" placeholder="e.g. Ville Sommet Tagaytay / San Juan Club House / Private Residence">
+          </div>
+        </div>
+
+        <!-- STEP PANE: MENU (Event & Food) -->
+        <div class="wizard-step-pane" id="paneMenu" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleMenu">Choose your dishes</h2>
+          </div>
+
+          <!-- Top Toolbar: Level selector, Saved Menus -->
+          <div class="menu-toolbar-row">
+
+            <!-- Event menu level selector (shown only for event bookings) -->
+            <div class="menu-level-tabs" id="menuLevelSelector" style="display: none;">
+              <button type="button" class="menu-level-tab active" data-level="1">Food Package 1 (Included)</button>
+              <button type="button" class="menu-level-tab" data-level="2">Food Package 2 (+&#8369;20/head)</button>
+              <button type="button" class="menu-level-tab" data-level="3">Food Package 3 (+&#8369;50/head)</button>
+            </div>
+
+            <!-- Fixed Package Title (shown only for food bookings) -->
+            <div id="foodFixedPackageTitle" style="font-weight: 800; color: var(--color-slate); display: none;">
+              Food Package 1 (4 dishes)
+            </div>
+
+            <!-- Load saved menu dropdown -->
+            <div>
+              <select id="loadSavedMenuSelect" class="menu-saved-dropdown" aria-label="Load a saved menu">
+                <option value="">Load a saved menu...</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Error state boundary container -->
+          <div id="menuErrorContainer" style="display: none;">
+            <div style="background: #fdf2ef; border: 1px solid var(--color-rust); border-radius: 12px; padding: 2rem; text-align: center;">
+              <h3 style="color: var(--color-rust); margin-bottom: 0.5rem;">Could not load menu dishes</h3>
+              <p style="color: var(--color-slate-70); margin-bottom: 1rem;">Please check your connection and try again.</p>
+              <button type="button" class="btn btn-primary" id="btnRetryMenuLoad">Retry Loading Menu</button>
+            </div>
+          </div>
+
+          <!-- Slot Sections Container (Stone-coloured panels) -->
+          <div id="menuSlotsContainer">
+            <!-- Dynamically populated slot panels -->
+          </div>
+
+          <!-- Included With Your Package (Rice, Drinks, Desserts) -->
+          <div class="staples-section">
+            <h3 class="staples-title">Included with your package</h3>
+            <div class="staples-grid" id="staplesGrid">
+              <!-- Dynamically populated staples choices -->
+            </div>
+          </div>
+
+          <!-- Collapsed Extra Dishes Accordion -->
+          <details class="extra-dishes-details" id="extraDishesAccordion">
+            <summary class="extra-dishes-summary">Extra dishes &amp; Special dishes (Optional)</summary>
+            <div class="extra-dishes-content">
+              <p class="form-hint" id="extraDishesHint" style="margin-bottom: 1rem;">Add extra heritage dishes (+&#8369;30 per guest) or special seafood delicacies (quoted on request).</p>
+              <div id="extraDishesListContainer" style="display: flex; flex-direction: column; gap: 0.75rem;">
+                <!-- Extra dishes checkboxes with price notes -->
+              </div>
+            </div>
+          </details>
+
+          <!-- Missing slots warning banner -->
+          <div id="slotsMissingWarning" class="slots-missing-warning" style="display: none;">
+            <span id="slotsMissingText">Please complete the required dish slots before proceeding.</span>
+            <span id="wizardValidationLine" style="display: none;">Please complete the required dish slots before proceeding.</span>
+          </div>
+        </div>
+
+        <!-- STEP PANE: EXTRAS (Event only) -->
+        <div class="wizard-step-pane" id="paneExtras" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleExtras">Add extras</h2>
+          </div>
+
+          <!-- Package Inclusions with Skip Toggles -->
+          <div class="inclusions-checklist-card">
+            <h3 class="step-subheading">Included in Your Package</h3>
+            <p class="form-hint">Items bundled with your package. You can mark any optional item as "Skip" if not needed (package total remains unchanged).</p>
+            <div class="inclusions-checklist-list" id="inclusionsChecklistList">
+              <!-- Dynamically populated inclusions -->
+            </div>
+
+            <!-- Themed Styro Board & Character Fields -->
+            <div class="styling-text-fields" id="stylingTextFields" style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed var(--color-slate-15);">
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="styroNameInput" class="form-label" id="styroNameLabel">Name on the styro board (optional)</label>
+                  <input type="text" id="styroNameInput" class="form-input" placeholder="e.g. Liam's 7th Birthday / Gabriel & Sophia">
+                </div>
+                <div class="form-group">
+                  <label for="characterThemeInput" class="form-label" id="characterThemeLabel">Character theme (optional)</label>
+                  <input type="text" id="characterThemeInput" class="form-input" placeholder="e.g. Under the Sea / Modern Sage &amp; Terracotta">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Priced Add-ons -->
+          <div class="occasion-addons-card">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; flex-wrap: wrap; gap: 0.5rem;">
+              <h3 class="step-subheading" style="margin: 0;">Priced Add-ons for <span id="currentOccasionName">Your Occasion</span></h3>
+              <span class="est-tag" style="color: var(--color-rust); background: rgba(171,75,46,0.1); padding: 2px 8px; border-radius: 4px; font-weight: 500;">Transparent rates</span>
+            </div>
+            <p class="form-hint">Enhance your celebration. Flat rates add directly, per-guest rates scale with guest count, and per-unit items include quantity steppers.</p>
+            <div class="addons-grid" id="occasionAddonsGrid">
+              <!-- Dynamically populated from pricing.json -->
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP PANE: FLOOR PLAN (Event only, optional) -->
+        <div class="wizard-step-pane" id="paneFloorplan" style="display: none; position: relative;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleFloorplan">Plan your floor</h2>
+            <div class="studio-floorplan-price-chip" id="studioFloorplanPriceChip">Total &#8369;0 &middot; Downpayment &#8369;0</div>
+          </div>
+
+          <div id="studioFloorplanMount" class="floorplan-mount-wrap">
+            <!-- TikimFloorPlanner component renders here -->
+          </div>
+
+          <!-- FLOOR PLAN CONFIRMATION BAR (Revision 17B Part 5.2) -->
+          <div class="floorplan-confirm-bar" id="floorplanConfirmBar">
+            <div class="floorplan-seat-summary" id="floorplanSeatSummary">
+              0 items, 0 seats for 100 guests
+            </div>
+            <div class="floorplan-confirm-actions">
+              <button type="button" class="btn btn-primary" id="btnConfirmLayout">Confirm layout</button>
+              <button type="button" class="btn btn-outline" id="btnEditLayout" style="display: none;">Edit layout</button>
+              <button type="button" class="btn-text-skip" id="btnSkipFloorplan">Skip floor plan</button>
+            </div>
+          </div>
+          <div class="floorplan-confirm-note" id="floorplanConfirmNote" style="display: none;">
+            Layout confirmed. It will be sent to Dack's with your booking.
+          </div>
+        </div>
+
+        <!-- STEP PANE: TRAYS (Food Trays only) -->
+        <div class="wizard-step-pane" id="paneTrays" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleTrays">Choose your trays</h2>
+          </div>
+
+          <div class="trays-editor-container">
+            <div id="traysCatalogContainer" class="trays-catalog-container">
+              <!-- Dynamically populated 6 sections with all 28 dishes -->
+            </div>
+            <div class="trays-running-total-bar" style="margin-top: 1.5rem; display: flex; justify-content: flex-end; align-items: center; gap: 0.5rem; font-size: 1.1rem; font-weight: 700; color: #212e34;">
+              <span>Trays Total:</span>
+              <span id="traysRunningTotal" style="color: var(--color-rust); font-weight: 700;">&#8369;0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP PANE: DETAILS (Shared for all 3 types) -->
+        <div class="wizard-step-pane" id="paneDetails" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleDetails">Your details</h2>
+          </div>
+
+          <form id="studioDetailsForm" class="form" onsubmit="return false;">
+            <!-- Fieldset: Your contact -->
+            <fieldset class="fieldset">
+              <legend>Your contact</legend>
+              <div class="row">
+                <div class="field">
+                  <label for="custName">Full name *</label>
+                  <input type="text" id="custName" name="custName" required placeholder="Juan Dela Cruz">
+                  <div class="hint">Your legal name for reservation documentation</div>
+                </div>
+                <div class="field">
+                  <label for="custMobile">Mobile (09XXXXXXXXX) *</label>
+                  <input type="tel" id="custMobile" name="custMobile" required placeholder="09171234567" pattern="09[0-9]{9}">
+                  <div class="hint">Format: 09XXXXXXXXX (11 digits)</div>
+                </div>
+              </div>
+
+              <fieldset class="fieldset" style="margin-top: 4px;">
+                <legend style="margin-bottom: 6px;">How should we reach you? *</legend>
+                <div class="choices" role="radiogroup" aria-label="How should we reach you?">
+                  <div class="choice">
+                    <input type="radio" name="contactMethod" id="reachPhone" value="SMS" checked>
+                    <label for="reachPhone">Phone or SMS</label>
+                  </div>
+                  <div class="choice">
+                    <input type="radio" name="contactMethod" id="reachMessenger" value="Messenger">
+                    <label for="reachMessenger">Messenger</label>
+                  </div>
+                </div>
+              </fieldset>
+
+              <div class="row row--full" id="messengerNameGroup" style="display: none;">
+                <div class="field">
+                  <label for="custMessengerName">Messenger name *</label>
+                  <input type="text" id="custMessengerName" name="custMessengerName" placeholder="e.g. Juan Dela Cruz (Messenger) or m.me/username">
+                  <div class="hint">Required so our coordinator can reach you on Facebook Messenger</div>
+                </div>
+              </div>
+            </fieldset>
+
+            <!-- Fieldset: Event details -->
+            <fieldset class="fieldset" id="fieldsetEventDetails">
+              <legend id="legendEventDetails">Event details</legend>
+              
+              <!-- Venue or address (row--full) -->
+              <div class="row row--full" id="rowVenueAddress">
+                <div class="field">
+                  <label for="custVenueAddress" id="venueAddressLabel">Venue or address *</label>
+                  <input type="text" id="custVenueAddress" name="custVenueAddress" required placeholder="Complete address, barangay, city, landmark">
+                  <div class="hint">Event celebration venue or delivery street address</div>
+                </div>
+              </div>
+
+              <!-- Trays Fulfillment Option (row--full choices) -->
+              <div class="row row--full" id="fulfillmentGroup" style="display: none;">
+                <div class="field">
+                  <label>Fulfillment option *</label>
+                  <div class="choices" role="radiogroup" aria-label="Fulfillment option">
+                    <div class="choice">
+                      <input type="radio" name="fulfillmentOption" id="fulfillDelivery" value="Delivery" checked>
+                      <label for="fulfillDelivery">Delivery to address</label>
+                    </div>
+                    <div class="choice">
+                      <input type="radio" name="fulfillmentOption" id="fulfillPickup" value="Pick-up">
+                      <label for="fulfillPickup">Pick-up at Commissary (Cruz St, San Ildefonso)</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Trays date & time -->
+              <div class="row" id="trayDateGroup" style="display: none;">
+                <div class="field">
+                  <label for="trayDeliveryDate">Delivery or pick-up date *</label>
+                  <input type="date" id="trayDeliveryDate" name="trayDeliveryDate">
+                  <div class="hint">Select the target date for your tray preparation</div>
+                </div>
+                <div class="field">
+                  <label for="trayDeliveryTime">Target time *</label>
+                  <select id="trayDeliveryTime" name="trayDeliveryTime">
+                    <option value="11:00 AM">11:00 AM (Lunch)</option>
+                    <option value="02:00 PM">02:00 PM (Afternoon)</option>
+                    <option value="05:30 PM" selected>05:30 PM (Dinner &amp; Party)</option>
+                    <option value="07:30 PM">07:30 PM (Late Dinner)</option>
+                  </select>
+                  <div class="hint">Target fulfillment schedule</div>
+                </div>
+              </div>
+
+              <!-- Event time (row--full, Revision 17B Part 4: No guests field) -->
+              <div class="row row--full" id="rowTime">
+                <div class="field" id="fieldEventTime">
+                  <label for="eventTime">Event time *</label>
+                  <select id="eventTime" name="eventTime" required>
+                    <option value="11:00 AM">11:00 AM (Lunch Banquet)</option>
+                    <option value="04:00 PM">04:00 PM (Afternoon / Sundown)</option>
+                    <option value="06:30 PM" selected>06:30 PM (Dinner &amp; Party)</option>
+                    <option value="08:00 PM">08:00 PM (Late Dinner)</option>
+                  </select>
+                  <div class="hint">Target serving or program schedule</div>
+                </div>
+              </div>
+
+              <!-- Special requests (row--full) -->
+              <div class="row row--full">
+                <div class="field">
+                  <label for="custRequests">Special requests (optional)</label>
+                  <textarea id="custRequests" name="custRequests" placeholder="e.g. Dietary preferences, gate entrance instructions, special timeline notes..."></textarea>
+                  <div class="hint">Special requests or dietary instructions for our team</div>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+
+        <!-- STEP PANE: REVIEW & RESERVE (Part 6: Centered Review Column) -->
+        <div class="wizard-step-pane pane-review-centered review" id="paneReview" style="display: none;">
+          <div class="step-pane-header">
+            <h2 class="pane-title" id="paneTitleReview">Review and reserve</h2>
+          </div>
+
+          <div class="review-summary-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+              <span class="badge badge-teal" id="reviewTypeBadge">Event</span>
+              <span id="reviewRefPlaceholder">Ref: Pending reservation</span>
+            </div>
+
+            <div class="review-grid">
+              <div class="review-item">
+                <span class="review-label">Booking &amp; Date</span>
+                <span class="review-val" id="reviewPackageAndDate">Wedding &bull; Dec 25, 2026</span>
+              </div>
+              <div class="review-item" id="reviewPaxItem">
+                <span class="review-label">Guest Count</span>
+                <span class="review-val" id="reviewPax">100 guests</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Client Contact</span>
+                <span class="review-val" id="reviewContactInfo">Valued Client</span>
+              </div>
+              <div class="review-item">
+                <span class="review-label">Venue / Schedule</span>
+                <span class="review-val" id="reviewVenueTime">Standard Venue &bull; 06:30 PM</span>
+              </div>
+              <div class="review-item" id="reviewBoardNameItem" style="display: none;">
+                <span class="review-label" id="reviewBoardNameLabel">Name on Board</span>
+                <span class="review-val" id="reviewBoardNameVal">Not provided</span>
+              </div>
+              <div class="review-item" id="reviewThemeItem" style="display: none;">
+                <span class="review-label" id="reviewThemeLabel">Theme / Palette</span>
+                <span class="review-val" id="reviewThemeVal">Not provided</span>
+              </div>
+            </div>
+
+            <!-- Floor plan preview (Part 5.1 & 6) -->
+            <div id="reviewLayoutThumbSection" style="display: none; margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px dashed rgba(33, 46, 52, 0.15);">
+              <span class="review-label" style="display: block; margin-bottom: 0.5rem;">Venue Floor Plan</span>
+              <div id="reviewLayoutPreviewMount" style="width: 100%; border-radius: 8px; overflow: hidden; border: 1.5px solid rgba(33, 46, 52, 0.2);"></div>
+            </div>
+          </div>
+
+          <!-- Itemized quotation & totals in Review step (Part 6) -->
+          <div class="review-quote-card" id="reviewQuoteCard">
+            <h3 class="step-subheading">Quotation Breakdown</h3>
+            <div class="review-quote-lines" id="reviewQuoteLines" style="margin-top: 1rem;"></div>
+            <div class="review-quote-totals" style="margin-top: 1.25rem; padding-top: 1rem; border-top: 2px solid rgba(33, 46, 52, 0.15);">
+              <div class="review-total-row" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <span style="font-weight: 500;">Total</span>
+                <strong id="reviewTotalVal" class="review-grand-total" style="font-size: var(--fs-total, 32px); color: #ab4b2e;">&#8369;0</strong>
+              </div>
+              <div class="review-total-row review-dp-row" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <span id="reviewDpLabel" style="font-weight: 500;">Downpayment (50%)</span>
+                <strong id="reviewDpVal" style="font-weight: 700; color: #212e34;">&#8369;0</strong>
+              </div>
+              <div class="review-total-row review-balance-row" style="display: flex; justify-content: space-between; align-items: baseline;">
+                <span style="font-weight: 500;">Remaining Balance</span>
+                <strong id="reviewBalanceVal" style="font-weight: 700; color: #212e34;">&#8369;0</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- AGREEMENT CHECKLIST (Type-specific) -->
+          <div class="agreement-checklist-card">
+            <h3 class="step-subheading">Reservation Agreement Checklist</h3>
+            <p class="form-hint">Please check each condition to proceed:</p>
+            
+            <div class="checklist-items" id="agreementChecklistContainer">
+              <!-- Dynamically populated based on booking type -->
+            </div>
+          </div>
+
+          <!-- RESERVE ACTIONS (Back left, Reserve date hold right) -->
+          <div class="reserve-actions-block">
+            <div class="action-row-split" style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap;">
+              <button type="button" class="btn btn-outline" id="btnReviewBack">&larr; Back</button>
+              <button type="button" class="btn btn-primary" id="btnReserveDateHold">
+                <span id="btnReserveText">Reserve My Date (Start 48-Hour Hold)</span>
+              </button>
+            </div>
+            <div class="share-tools-row" style="margin-top: 1rem;">
+              <button type="button" class="btn btn-outline" id="btnPrintStudioQuote">
+                Print / Save as PDF
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIZARD NAV FOOTER (Back / Next) -->
+        <div class="wizard-nav-footer">
+          <button type="button" class="btn btn-outline" id="btnWizardPrev" style="display: none;">&larr; Back</button>
+          <button type="button" class="btn btn-primary" id="btnWizardNext">Next Step &rarr;</button>
+        </div>
+      </section>
+
+      <!-- STICKY LIVE QUOTE SIDEBAR RIGHT (Part 1: quote-rail and quote-panel) -->
+      <aside class="wizard-quote-sidebar quote-rail" id="liveQuoteSidebar" aria-label="Live Itemized Quotation">
+        <div class="quote-sidebar-card quote-panel">
+          <div class="quote-sidebar-header">
+            <h3 class="quote-sidebar-title">Live Quotation</h3>
+            <span class="quote-pax-badge" id="quoteLivePaxBadge">100 Guests</span>
+          </div>
+
+          <div class="quote-lines-body" id="quoteLinesList" aria-live="polite">
+            <!-- Dynamic line items -->
+          </div>
+
+          <div class="quote-totals-footer">
+            <div class="quote-total-row quote-grand-total">
+              <span>Total</span>
+              <span id="quoteGrandTotalVal" class="price-countup">&#8369;0</span>
+            </div>
+            <div class="quote-dp-balance-row">
+              <span><span id="dpLabel">Downpayment (50%)</span>: <strong id="quoteDownpaymentVal">&#8369;0</strong></span>
+              <span>Balance: <strong id="quoteBalanceVal">&#8369;0</strong></span>
+            </div>
+            <div class="quote-hold-status-note" id="quoteHoldStatusNote">
+              48-Hour Free Hold (Locks date upon submission)
+            </div>
+            <div class="quote-estimate-notice" id="quoteEstimateNotice" style="display: none;">
+              Includes estimated prices, to be confirmed by Dack's
+            </div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <!-- MOBILE QUOTE BOTTOM SUMMARY BAR -->
+    <aside class="mobile-quote-bottom-bar" id="mobileQuoteBottomBar" aria-label="Mobile Quote Summary">
+      <div class="mobile-quote-inner">
+        <div class="mobile-quote-info">
+          <span class="mobile-quote-label">Total:</span>
+          <span class="mobile-quote-total" id="mobileQuoteTotalVal">&#8369;0</span>
+          <span class="mobile-quote-dp" id="mobileQuoteDpVal">(50% DP: &#8369;0)</span>
+        </div>
+        <button type="button" class="mobile-quote-details-btn" id="btnOpenMobileQuoteSheet">
+          Details &uarr;
+        </button>
+      </div>
+    </aside>
+
+    <!-- MOBILE QUOTE DETAILS BOTTOM SHEET -->
+    <div class="mobile-quote-sheet-overlay" id="mobileQuoteSheet" style="display: none;">
+      <div class="mobile-quote-sheet-backdrop" id="mobileQuoteSheetBackdrop"></div>
+      <div class="mobile-quote-sheet-card">
+        <div class="mobile-quote-sheet-header">
+          <h3 class="quote-sheet-title">Quotation Breakdown</h3>
+          <button type="button" class="quote-sheet-close" id="btnCloseMobileQuoteSheet" aria-label="Close quote details">&times;</button>
+        </div>
+        <div class="mobile-quote-sheet-body" id="mobileQuoteSheetBody">
+          <!-- Populated from live quote lines -->
+        </div>
+        <div class="mobile-quote-sheet-footer" id="mobileQuoteSheetFooter">
+          <!-- Totals, downpayment, balance -->
+        </div>
+      </div>
+    </div>
+
+    <!-- START RESERVATION CONFIRMATION MODAL -->
+    <div class="modal-backdrop" id="reservationConfirmModal" role="dialog" aria-modal="true" aria-labelledby="confirmModalTitle" style="display: none;">
+      <div class="modal-container-card confirm-reservation-card">
+        <div class="modal-card-header">
+          <div style="display: flex; align-items: center; gap: 0.65rem;">
+            <span class="badge badge-teal" id="confirmModalBadge">Event Package</span>
+            <h2 class="modal-title" id="confirmModalTitle">Start Reservation</h2>
+          </div>
+          <button type="button" class="modal-close-btn" id="btnCancelConfirmModal" aria-label="Close dialog">&times;</button>
+        </div>
+        <div class="modal-card-body">
+          <div class="confirm-pkg-summary">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <h3 id="confirmPkgName" class="confirm-pkg-name" style="color: #212e34; margin: 0;">Wedding Celebration Package</h3>
+              <span id="confirmPkgRate" style="color: #ab4b2e; font-weight: 500;">Base 100 Guests</span>
+            </div>
+            <p id="confirmPkgDesc" style="color: #2b3d41; margin: 0 0 0.75rem 0;">
+              Turnkey celebration package with full buffet catering, themed styling, sound system, photobooth, and crew.
+            </p>
+            <ul id="confirmPkgSpecs" style="color: #212e34; margin: 0; padding-left: 1.25rem; line-height: 1.6;">
+              <!-- Dynamic bullet specifications -->
+            </ul>
+          </div>
+
+          <p style="color: #212e34; line-height: 1.5; margin: 0 0 0.5rem 0;">
+            Would you like to start configuring this reservation now? You will proceed to select your celebration date and guest count.
+          </p>
+          <p id="confirmDraftNote" style="color: #2b3d41; margin: 0;">
+            Your selections will be saved automatically as you configure each step.
+          </p>
+        </div>
+        <div class="modal-card-footer">
+          <button type="button" class="btn btn-outline" id="btnDismissConfirmModal">Cancel</button>
+          <button type="button" class="btn btn-primary" id="btnProceedConfirmModal">Confirm &amp; Start Reservation &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOOKING CONFIRMATION SCREEN (Part 1: All types, shown after successful reservation) -->
+    <div id="bookingConfirmationScreen" class="booking-confirmation-screen" style="display: none;" aria-live="polite">
+      <div class="confirmation-card">
+        <button type="button" class="confirmation-back-btn" id="btnConfirmationBack" aria-label="Go back to previous page">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+          <span>Back</span>
+        </button>
+
+        <div class="confirmation-hero">
+          <div class="confirmation-success-icon-wrap" aria-hidden="true">
+            <svg class="confirmation-success-svg" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#4fa49d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" stroke="#4fa49d" fill="rgba(79,164,157,0.14)"/>
+              <polyline points="8 12 11 15 16 9" stroke="#4fa49d"/>
+            </svg>
+          </div>
+          <h2 class="confirmation-title">Booking reserved</h2>
+          <p class="confirmation-lead">Your 48-hour free date hold is active. Please complete the downpayment to confirm your celebration.</p>
+        </div>
+
+        <div class="confirmation-ref-box">
+          <span class="ref-box-label">Booking Reference Number</span>
+          <div class="ref-box-row">
+            <span class="ref-box-code" id="confirmRefCode">TK-2026-0000</span>
+            <button type="button" class="btn btn-sm btn-outline btn-copy-ref" id="btnCopyRefCode" title="Copy reference number">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="confirmation-summary-grid">
+          <div class="summary-tile">
+            <span class="summary-tile-label">Package Type</span>
+            <span class="badge badge-teal" id="confirmSummaryType">Event</span>
+          </div>
+          <div class="summary-tile">
+            <span class="summary-tile-label">Celebration Date</span>
+            <strong id="confirmSummaryDate">Dec 25, 2026</strong>
+          </div>
+          <div class="summary-tile">
+            <span class="summary-tile-label">Guests / Trays</span>
+            <strong id="confirmSummaryGuests">100 guests</strong>
+          </div>
+          <div class="summary-tile">
+            <span class="summary-tile-label">Estimated Total</span>
+            <strong id="confirmSummaryTotal">&#8369;55,000</strong>
+          </div>
+          <div class="summary-tile">
+            <span class="summary-tile-label" id="confirmSummaryDpLabel">50% Downpayment</span>
+            <strong id="confirmSummaryDownpayment" style="color: var(--color-teal);">&#8369;27,500</strong>
+          </div>
+          <div class="summary-tile">
+            <span class="summary-tile-label">Hold Deadline</span>
+            <strong id="confirmSummaryDeadline" style="color: var(--color-rust);"><span id="confirmHoldUntilText">48 Hours Remaining</span></strong>
+          </div>
+        </div>
+
+        <div class="confirmation-steps-block">
+          <h2 class="confirmation-steps-heading">Next Steps</h2>
+          <ol class="confirmation-steps-list">
+            <li>
+              <strong>Submit downpayment:</strong> Transfer 50% via GCash or BDO within 48 hours to confirm your reservation hold.
+            </li>
+            <li>
+              <strong>Track verification:</strong> Check real-time payment status and coordinator assignment on the booking tracker.
+            </li>
+            <li>
+              <strong>Finalize details:</strong> Our catering coordinator will contact you 7 days before the event to confirm timeline and final counts.
+            </li>
+          </ol>
+        </div>
+
+        <div class="confirmation-actions-row">
+          <a href="track.html" class="btn btn-lg btn-primary confirmation-btn-track" id="btnConfirmTrackBooking">Track my booking</a>
+          <a href="index.html" class="btn btn-lg btn-secondary confirmation-btn-home" id="btnConfirmBackHome">Back to home</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUOTE BREAKDOWN DIALOG MODAL (Part 2.5) -->
+    <div id="quoteBreakdownModal" class="quote-breakdown-overlay" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="breakdownModalTitle">
+      <div class="quote-breakdown-card">
+        <div class="quote-breakdown-header">
+          <h3 id="breakdownModalTitle" class="quote-breakdown-title">Itemized Quotation Breakdown</h3>
+          <button type="button" class="quote-breakdown-close" id="btnCloseBreakdownModal" aria-label="Close breakdown modal">&times;</button>
+        </div>
+        <div class="quote-breakdown-body" id="quoteBreakdownBody">
+          <!-- Itemized list rendered dynamically -->
+        </div>
+        <div class="quote-breakdown-footer">
+          <button type="button" class="btn btn-primary" id="btnDismissBreakdownModal">Close Breakdown</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RETURN TO YOUR CURRENT BOOKING MODAL (Revision 17D Part 1) -->
+    <div class="return-booking-backdrop" id="returnBookingModal" role="dialog" aria-modal="true" aria-labelledby="returnBookingTitle" style="display: none;">
+      <div class="return-booking-card" id="returnBookingCard">
+        <h2 class="return-booking-title" id="returnBookingTitle">Return to your current booking?</h2>
+        <p class="return-booking-diff-pkg" id="returnBookingDiffPkg" style="display: none;"></p>
+        <hr class="return-booking-rule">
+        <div class="return-booking-summary-box" id="returnBookingSummaryBox">
+          <p class="return-booking-summary" id="returnBookingSummary" style="display: none;"></p>
+          <div class="return-booking-pkg-name" id="returnBookingPkgName">Wedding Package</div>
+          <div class="return-booking-step-info" id="returnBookingStepInfo">Step 4 of 7: Extras</div>
+          <div class="return-booking-price-so-far" id="returnBookingPriceSoFar">&#8369;62,000 so far</div>
+        </div>
+        <hr class="return-booking-rule">
+        <div class="return-booking-footer">
+          <button type="button" class="btn btn-primary return-booking-btn" id="btnReturnContinue">Yes, continue</button>
+          <button type="button" class="btn btn-outline return-booking-btn" id="btnReturnStartNew">No, start new</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/mockApi.js"></script>
+  <script type="module" src="js/calendar.js"></script>
+  <script type="module" src="js/floorplan.js"></script>
+  <script type="module" src="js/pages/studio.js"></script>
+</body>
+</html>

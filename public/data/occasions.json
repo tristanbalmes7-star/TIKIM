@@ -1,0 +1,56 @@
+[
+  {
+    "type": "wedding",
+    "title": "WEDDINGS",
+    "description": "Elegant buffets, styled stages and every detail ready for your walk down the aisle.",
+    "href": "studio.html?event=wedding",
+    "photo": "assets/img/occasions/wedding.jpg",
+    "photoWebp": "assets/img/occasions/wedding.webp",
+    "boxImage": "assets/img/OFFICIALWEDDING.png"
+  },
+  {
+    "type": "birthday",
+    "title": "BIRTHDAYS",
+    "description": "Kiddie parties to grand celebrations, with hosts, clowns and photobooth fun.",
+    "href": "studio.html?event=birthday",
+    "photo": "assets/img/occasions/birthday.jpg",
+    "photoWebp": "assets/img/occasions/birthday.webp",
+    "boxImage": "assets/img/OFFICIALBIRTHDAY.png"
+  },
+  {
+    "type": "corporate",
+    "title": "CORPORATE",
+    "description": "Smooth, professional catering for company events, seminars and year-end parties.",
+    "href": "studio.html?event=corporate",
+    "photo": "assets/img/occasions/corporate.jpg",
+    "photoWebp": "assets/img/occasions/corporate.webp",
+    "boxImage": "assets/img/OFFICIALCORPORATE.png"
+  },
+  {
+    "type": "reunion",
+    "title": "REUNIONS",
+    "description": "Hearty Filipino spreads that bring the whole clan around one table.",
+    "href": "studio.html?event=reunion",
+    "photo": "assets/img/occasions/reunion.jpg",
+    "photoWebp": "assets/img/occasions/reunion.webp",
+    "boxImage": "assets/img/OFFICIALREUNION.png"
+  },
+  {
+    "type": "party",
+    "title": "PARTIES",
+    "description": "Casual get-togethers made easy, with flexible menus and a setup that fits your crowd.",
+    "href": "studio.html?event=party",
+    "photo": "assets/img/occasions/party.jpg",
+    "photoWebp": "assets/img/occasions/party.webp",
+    "boxImage": "assets/img/OFFICIALPARTIES.png"
+  },
+  {
+    "type": "other",
+    "title": "OTHER OCCASIONS",
+    "description": "Christenings, anniversaries, graduations and more. Tell us what you're celebrating.",
+    "href": "studio.html?event=other",
+    "photo": "assets/img/occasions/other.jpg",
+    "photoWebp": "assets/img/occasions/other.webp",
+    "boxImage": "assets/img/OFFICIALOTHEROCCASION.png"
+  }
+]

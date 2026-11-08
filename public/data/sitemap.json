@@ -1,0 +1,229 @@
+{
+  "version": "Revision 8",
+  "publicPages": [
+    {
+      "id": "home",
+      "file": "index.html",
+      "title": "Dack's Catering Services | TIKIM Event Customization & Management",
+      "navParent": null,
+      "navLabel": "Home",
+      "nextStep": {
+        "label": "See Packages",
+        "href": "packages.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "packages",
+      "file": "packages.html",
+      "title": "Turnkey Event Packages | Dack's Catering Services",
+      "navParent": "catering",
+      "navLabel": "Packages",
+      "nextStep": {
+        "label": "Book now",
+        "href": "studio.html?type=event"
+      },
+      "requires": []
+    },
+    {
+      "id": "menu",
+      "file": "menu.html",
+      "title": "Build-A-Menu | Dack's Catering Services",
+      "navParent": "catering",
+      "navLabel": "Menu",
+      "nextStep": {
+        "label": "Book now",
+        "href": "studio.html?type=food"
+      },
+      "requires": []
+    },
+    {
+      "id": "planner",
+      "file": "planner.html",
+      "title": "2D Venue Floor Planner | Dack's Catering Services",
+      "navParent": "styling",
+      "navLabel": "Floor Planner",
+      "nextStep": {
+        "label": "Save layout",
+        "href": "planner.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "studio",
+      "file": "studio.html",
+      "title": "Event Studio & Date Reservation | Dack's Catering Services",
+      "navParent": "book",
+      "navLabel": "Book your date",
+      "nextStep": {
+        "label": "Reserve my date",
+        "href": "track.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "track",
+      "file": "track.html",
+      "title": "Track Your Booking | Dack's Catering Services",
+      "navParent": "book",
+      "navLabel": "Track your booking",
+      "nextStep": {
+        "label": "View Event Details",
+        "href": "index.html"
+      },
+      "requires": ["ref", "m"]
+    },
+    {
+      "id": "food-orders",
+      "file": "food-orders.html",
+      "title": "Zhel's Food Tray Menu | Dack's Catering Services",
+      "navParent": "food-orders",
+      "navLabel": "Food Trays",
+      "nextStep": {
+        "label": "Book now",
+        "href": "studio.html?type=trays"
+      },
+      "requires": []
+    },
+    {
+      "id": "about",
+      "file": "about.html",
+      "title": "Our Story & Heritage | Dack's Catering Services",
+      "navParent": "about",
+      "navLabel": "Our Story",
+      "blank": true,
+      "nextStep": {
+        "label": "Book your date",
+        "href": "studio.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "gallery",
+      "file": "gallery.html",
+      "title": "Customer Gallery | Dack's Catering Services",
+      "navParent": "about",
+      "navLabel": "Customer Gallery",
+      "blank": true,
+      "nextStep": {
+        "label": "Book your date",
+        "href": "studio.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "contact",
+      "file": "contact.html",
+      "title": "Contact Us | Dack's Catering Services",
+      "navParent": "contact",
+      "navLabel": "Contact",
+      "nextStep": {
+        "label": "Book your date",
+        "href": "studio.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "quote",
+      "file": "quote.html",
+      "title": "Shareable Event Quotation | Dack's Catering Services",
+      "navParent": null,
+      "navLabel": "Quotation",
+      "nextStep": {
+        "label": "Book this quote",
+        "href": "studio.html"
+      },
+      "requires": ["q"]
+    },
+    {
+      "id": "privacy",
+      "file": "privacy.html",
+      "title": "Privacy Policy | Dack's Catering Services",
+      "navParent": null,
+      "navLabel": "Privacy Policy",
+      "nextStep": {
+        "label": "Back to Home",
+        "href": "index.html"
+      },
+      "requires": []
+    },
+    {
+      "id": "404",
+      "file": "404.html",
+      "title": "Page Not Found | Dack's Catering Services",
+      "navParent": null,
+      "navLabel": "404",
+      "nextStep": {
+        "label": "Back to Home",
+        "href": "index.html"
+      },
+      "requires": []
+    }
+  ],
+  "adminPages": [
+    {
+      "id": "admin-login",
+      "file": "admin/login.html",
+      "title": "Organizer Portal Login | Dack's Catering Services",
+      "navParent": null,
+      "requires": []
+    },
+    {
+      "id": "admin-dashboard",
+      "file": "admin/index.html",
+      "title": "Organizer Management Hub | Dack's Catering Services",
+      "navParent": null,
+      "requires": ["session"]
+    }
+  ],
+  "navigation": {
+    "headerLeft": [
+      {
+        "id": "catering",
+        "type": "menu",
+        "label": "Catering",
+        "dropdown": [
+          { "id": "packages", "label": "Packages", "href": "packages.html" },
+          { "id": "menu", "label": "Menu", "href": "menu.html" }
+        ]
+      },
+      {
+        "id": "styling",
+        "type": "link",
+        "label": "Event styling",
+        "href": "planner.html"
+      },
+      {
+        "id": "book",
+        "type": "menu",
+        "label": "Book",
+        "dropdown": [
+          { "id": "studio", "label": "Book your date", "href": "studio.html" },
+          { "id": "track", "label": "Track your booking", "href": "track.html" }
+        ]
+      }
+    ],
+    "headerRight": [
+      {
+        "id": "food-orders",
+        "label": "Food trays",
+        "href": "food-orders.html"
+      },
+      {
+        "id": "about",
+        "type": "menu",
+        "label": "About",
+        "dropdown": [
+          { "id": "about", "label": "Our story", "href": "about.html" },
+          { "id": "gallery", "label": "Customer Gallery", "href": "gallery.html" },
+          { "id": "faq", "label": "FAQ", "href": "about.html#faq" }
+        ]
+      },
+      {
+        "id": "contact",
+        "label": "Contact",
+        "href": "contact.html"
+      }
+    ]
+  }
+}

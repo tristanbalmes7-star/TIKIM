@@ -1,0 +1,203 @@
+[
+  {
+    "id": "tray-chicken-teriyaki",
+    "name": "Chicken Teriyaki",
+    "category": "Chicken",
+    "price": 900,
+    "description": "Pan-seared glazed chicken in sweet soy teriyaki sauce with toasted sesame."
+  },
+  {
+    "id": "tray-chicken-barbecue",
+    "name": "Chicken Barbecue",
+    "category": "Chicken",
+    "price": 900,
+    "description": "Grilled marinated chicken quarters basted with sweet and tangy barbecue sauce."
+  },
+  {
+    "id": "tray-chicken-caldareta",
+    "name": "Chicken Caldareta",
+    "category": "Chicken",
+    "price": 900,
+    "description": "Spiced chicken stew in thick tomato sauce with bell peppers and carrots."
+  },
+  {
+    "id": "tray-buttered-chicken",
+    "name": "Buttered Chicken",
+    "category": "Chicken",
+    "price": 900,
+    "description": "Crispy golden fried chicken bites tossed in rich garlic butter glaze."
+  },
+  {
+    "id": "tray-cordonbleu",
+    "name": "Cordonbleu",
+    "category": "Chicken",
+    "price": 900,
+    "description": "Tender chicken cutlets rolled with ham and cheese with rich white cream sauce."
+  },
+
+  {
+    "id": "tray-pork-broccoli",
+    "name": "Pork Broccoli",
+    "category": "Pork",
+    "price": 950,
+    "description": "Stir-fried tender pork cuts with crisp broccoli in savory ginger oyster sauce."
+  },
+  {
+    "id": "tray-pork-caldareta",
+    "name": "Pork Caldareta",
+    "category": "Pork",
+    "price": 950,
+    "description": "Tender pork stewed in savory tomato sauce with potatoes and bell peppers."
+  },
+  {
+    "id": "tray-pork-menudo",
+    "name": "Pork Menudo",
+    "category": "Pork",
+    "price": 950,
+    "description": "Classic fiesta diced pork stew with hotdogs, carrots, and sweet raisins."
+  },
+  {
+    "id": "tray-korean-pork",
+    "name": "Korean Pork",
+    "category": "Pork",
+    "price": 950,
+    "description": "Sweet soy and garlic marinated pork stir-fry with sesame and spring onions."
+  },
+  {
+    "id": "tray-pork-kare-kare",
+    "name": "Pork Kare Kare",
+    "category": "Pork",
+    "price": 950,
+    "description": "Pork belly stewed in rich peanut sauce with traditional native vegetables."
+  },
+  {
+    "id": "tray-lechon-kawali",
+    "name": "Lechon Kawali",
+    "category": "Pork",
+    "price": 950,
+    "description": "Deep-fried crispy pork belly with tender juicy center and lechon liver dip."
+  },
+  {
+    "id": "tray-pork-sisig",
+    "name": "Pork Sisig",
+    "category": "Pork",
+    "price": 950,
+    "description": "Sizzling minced savory pork seasoned with calamansi, onions, and chili."
+  },
+
+  {
+    "id": "tray-beef-broccoli",
+    "name": "Beef Broccoli",
+    "category": "Beef",
+    "price": 1000,
+    "description": "Tender beef sirloin strips stir-fried with fresh broccoli in savory garlic sauce."
+  },
+  {
+    "id": "tray-beef-caldareta",
+    "name": "Beef Caldareta",
+    "category": "Beef",
+    "price": 1000,
+    "description": "Slow-cooked beef brisket in thick spiced tomato and liver sauce with olives."
+  },
+  {
+    "id": "tray-creamy-beef",
+    "name": "Creamy Beef",
+    "category": "Beef",
+    "price": 1000,
+    "description": "Tender beef slices enveloped in rich mushroom cream sauce."
+  },
+  {
+    "id": "tray-beef-kare-kare",
+    "name": "Beef Kare Kare",
+    "category": "Beef",
+    "price": 1000,
+    "description": "Slow-braised beef shanks in golden peanut stew with bagoong alamang."
+  },
+
+  {
+    "id": "tray-palabok",
+    "name": "Palabok",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Rice noodles smothered in savory shrimp sauce, tinapa flakes, and egg slices."
+  },
+  {
+    "id": "tray-spaghetti",
+    "name": "Spaghetti",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Filipino-style sweet meat sauce spaghetti with red hotdog slices and grated cheese."
+  },
+  {
+    "id": "tray-pancit-bihon",
+    "name": "Pancit Bihon",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Stir-fried rice noodles with shredded chicken and fresh vegetables."
+  },
+  {
+    "id": "tray-sotanghon-guisado",
+    "name": "Sotanghon Guisado",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Glass noodles sautéed in annatto broth with chicken and wood ear mushrooms."
+  },
+  {
+    "id": "tray-carbonara",
+    "name": "Carbonara",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Fettuccine pasta in creamy bacon and parmesan mushroom sauce."
+  },
+  {
+    "id": "tray-dacks-japchae",
+    "name": "Dack's Japchae",
+    "category": "Pasta",
+    "price": 800,
+    "description": "Stir-fried sweet potato glass noodles with vegetables in fragrant sesame sauce."
+  },
+
+  {
+    "id": "tray-fish-fillet-tartar",
+    "name": "Fish Fillet with Tartar Sauce",
+    "category": "Fish",
+    "price": 800,
+    "description": "Crispy panko-breaded white fish fillets with rich lemon tartar dip."
+  },
+  {
+    "id": "tray-fish-fillet-sweet-sour",
+    "name": "Fish Fillet with Sweet and Sour Sauce",
+    "category": "Fish",
+    "price": 800,
+    "description": "Battered fish fillets drenched in sweet and sour pineapple sauce."
+  },
+
+  {
+    "id": "tray-mix-vegetables",
+    "name": "Mix Vegetables",
+    "category": "Veggie",
+    "price": 800,
+    "description": "Medley of cauliflower, carrots, young corn, and snow peas in butter glaze."
+  },
+  {
+    "id": "tray-sipo-egg",
+    "name": "Sipo Egg",
+    "category": "Veggie",
+    "price": 800,
+    "description": "Fiesta mixed vegetables, quail eggs, and water chestnuts in cream sauce."
+  },
+  {
+    "id": "tray-gising-gising",
+    "name": "Gising Gising",
+    "category": "Veggie",
+    "price": 800,
+    "description": "Spicy chopped green beans simmered in thick coconut cream and shrimp paste."
+  },
+  {
+    "id": "tray-chopsuey",
+    "name": "Chopsuey",
+    "category": "Veggie",
+    "price": 800,
+    "description": "Stir-fried fresh vegetables with chicken liver and quail eggs in savory sauce."
+  }
+]

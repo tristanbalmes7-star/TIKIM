@@ -1,0 +1,82 @@
+/* Design tokens for Dacks Catering Services Tikim System. */
+
+:root {
+  /* Brand primary palette */
+  --teal: #4fa49d;
+  --teal-dark: #3b847e;
+  --teal-light: #e6f4f2;
+  --teal-tint: rgba(79, 164, 157, 0.14);
+
+  /* Brand warm accent */
+  --rust: #ab4b2e;
+  --rust-dark: #8b3b22;
+  --rust-light: #faece7;
+  --rust-tint: rgba(171, 75, 46, 0.14);
+
+  /* Dark slate matching logo background */
+  --slate: #212e34;
+  --slate-dark: #192328;
+  --slate-light: #2c3c44;
+  --slate-tint: rgba(33, 46, 52, 0.08);
+
+  /* Navigation bar tokens */
+  --nav-bg: #ab4b2e;
+  --nav-h: 96px;
+  --header-h: 96px;
+  --tabs-h: 68px;
+  --chrome-h: calc(var(--nav-h) + var(--tabs-h));
+  --logo-overhang: 16px;
+  --logo-h: calc(var(--nav-h) + var(--logo-overhang));
+  --ink: #212e34;
+  --paper: #faf7f2;
+  --stone: #e4dbcf;
+  --teal-deep: #2f6f69;
+  --logo-edge: drop-shadow(0 0 1px rgba(250, 247, 242, 0.9));
+  --logo-slot: 120px;
+  --sub-h: 58px;
+
+  /* Neutrals */
+  --white: #ffffff;
+  --off-white: #faf7f2;
+  --sand: #f2ece2;
+  --border-light: rgba(33, 46, 52, 0.12);
+  --border-dark: rgba(255, 255, 255, 0.14);
+
+  /* Text hierarchy */
+  --text-dark: #212e34;
+  --text-muted: #5e6f77;
+  --text-light: #faf7f2;
+
+  /* Typography */
+  --font-hero-title: 'Knewave', 'Caveat Brush', cursive;
+  --font-heading: 'Fraunces', Georgia, serif;
+  --font-display: var(--font-heading);
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-hand: 'Caveat', cursive, sans-serif;
+  --choice-font: 17px;
+
+  /* Shadows and radii */
+  --radius-sm: 8px;
+  --radius-card: 14px;
+  --radius-pill: 9999px;
+  --shadow-sm: 0 2px 8px rgba(33, 46, 52, 0.06);
+  --shadow-card: 0 8px 24px rgba(33, 46, 52, 0.08), 0 1px 3px rgba(33, 46, 52, 0.04);
+  --shadow-float: 0 16px 36px rgba(33, 46, 52, 0.16);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Studio and track page token aliases */
+  --color-slate: #212e34;
+  --color-slate-05: rgba(33, 46, 52, 0.05);
+  --color-slate-10: rgba(33, 46, 52, 0.10);
+  --color-slate-15: rgba(33, 46, 52, 0.15);
+  --color-slate-20: rgba(33, 46, 52, 0.20);
+  --color-slate-40: rgba(33, 46, 52, 0.40);
+  --color-slate-60: rgba(33, 46, 52, 0.75);
+  --color-slate-70: rgba(33, 46, 52, 0.82);
+  --color-teal: #4fa49d;
+  --color-rust: #ab4b2e;
+  --color-bg: #faf7f2;
+}

@@ -1,0 +1,9 @@
+{
+  "mode": "auto",
+  "designerLayersPath": "assets/img/hero-layers",
+  "layers": [
+    { "file": "assets/img/hero-layers/shard0.png", "depth": 0.4 },
+    { "file": "assets/img/hero-layers/shard1.png", "depth": 0.65 },
+    { "file": "assets/img/hero-layers/shard2.png", "depth": 0.9 }
+  ]
+}

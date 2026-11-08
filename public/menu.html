@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Catering Menu | Dack's Catering Services</title>
+  <meta name="description" content="Browse Dack's heirloom catering menu. Explore nine courses: Chicken, Beef, Pork, Fish, Vegetables, Pasta, Drinks, Desserts, and Special Dishes." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400..700;1,9..40,400..700&family=Fraunces:ital,opsz,wght@0,9..144,600..900;1,9..144,600..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/menu.css" />
+  <link rel="stylesheet" href="css/print.css" media="print" />
+  <link rel="icon" type="image/png" href="assets/img/logo-main.png" />
+</head>
+<body data-page="menu" data-nav="fixed">
+  <a href="#main-content" class="skip-link">Skip to menu content</a>
+
+  <div id="tikim-header-slot"></div>
+
+  <!-- Shared component PhotoHeader (Revision 19B) -->
+  <section class="photo-header" aria-labelledby="ph-title">
+    <div class="photo-header__bg" aria-hidden="true"></div>
+    <div class="photo-header__inner"><h1 id="ph-title">Menu</h1></div>
+  </section>
+
+  <!-- Shared Subheader Component: Category Tabs, Choosing For Selector, Saved Menus Dropdown -->
+  <nav class="subheader menu-sticky-bar" id="menuSubheader" aria-label="Menu Course Categories and Controls">
+    <div class="subheader-inner menu-subheader-inner">
+      <div class="subheader-scroll" id="menuTabsScroll">
+        <button type="button" class="subheader-tab active" data-cat="chicken">Chicken</button>
+        <button type="button" class="subheader-tab" data-cat="beef">Beef</button>
+        <button type="button" class="subheader-tab" data-cat="pork">Pork</button>
+        <button type="button" class="subheader-tab" data-cat="fish">Fish</button>
+        <button type="button" class="subheader-tab" data-cat="vegetables">Vegetables</button>
+        <button type="button" class="subheader-tab" data-cat="pasta">Pasta</button>
+        <button type="button" class="subheader-tab" data-cat="drinks">Drinks</button>
+        <button type="button" class="subheader-tab" data-cat="desserts">Desserts</button>
+        <button type="button" class="subheader-tab" data-cat="special-dishes">Special Dishes</button>
+      </div>
+
+      <div class="menu-subheader-actions" id="menuSubheaderActions">
+        <div class="menu-level-picker-wrap">
+          <label for="menuLevelSelect" class="menu-level-label">Choosing for:</label>
+          <select id="menuLevelSelect" class="menu-level-select" aria-label="Choosing for Food Package">
+            <option value="1">Food Package 1</option>
+            <option value="2">Food Package 2</option>
+            <option value="3">Food Package 3</option>
+          </select>
+        </div>
+
+        <div class="saved-menus-dropdown-wrap">
+          <button type="button" class="btn-saved-menus" id="btnSavedMenus" aria-expanded="false" aria-haspopup="true">
+            <span>Saved menus</span>
+            <span class="saved-menus-count-badge" id="savedMenusCountBadge">(0)</span>
+            <span class="dropdown-caret">&#9662;</span>
+          </button>
+          <div class="saved-menus-popover" id="savedMenusPopover" style="display: none;" role="menu">
+            <div class="saved-menus-popover-header">
+              <span class="saved-menus-popover-title">Saved Menus</span>
+            </div>
+            <div class="saved-menus-list" id="savedMenusList">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="menu-page-main" id="main-content">
+
+
+    <!-- Dish Library Section (Typographic Menu Catalog) -->
+    <section class="menu-library-section" id="dishLibrary" aria-label="Dish Course Library">
+      <div class="menu-library-layout">
+        <div class="dishes-sections-wrap" id="dishesSectionsContainer">
+          <!-- Injected via JavaScript from data/menu.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Sticky Bottom Bar: Save menu, Book now -->
+    <div class="menu-sticky-bottom-bar" id="menuStickyBottomBar" style="display: none;" aria-label="Menu Actions">
+      <div class="menu-bar-inner">
+        <div class="menu-bar-info">
+          <span class="menu-bar-quota" id="menuBarQuotaText">0 of 4 dishes, Food Package 1</span>
+        </div>
+        <div class="menu-bar-actions">
+          <button type="button" class="btn btn-secondary btn-sm" id="btnSaveMenu">Save menu</button>
+          <a href="studio.html?type=food&level=1" class="btn btn-primary btn-sm" id="btnBookNowMenu">Book now</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="tikim-footer-slot"></div>
+
+  <script type="module" src="js/layout.js"></script>
+  <script type="module" src="js/search.js"></script>
+  <script type="module" src="js/pages/menu.js"></script>
+  <script type="module" src="js/test-menu-scroll.js"></script>
+</body>
+</html>

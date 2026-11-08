@@ -1,0 +1,1334 @@
+/* Landing page styles: GTA VI-style shrinking hero, Event Catering cards, Workshop Wall, packages, and editorial sections. */
+
+:root {
+  /* Tunable hero timings & shrinking distances */
+  --hero-track-height: 240vh;
+  --hero-inset-top-desktop: 15vh;
+  --hero-inset-bottom-desktop: 33vh;
+  --hero-inset-x-desktop: 18vw;
+  --hero-radius-desktop: 24px;
+
+  --hero-inset-top-mobile: 14vh;
+  --hero-inset-bottom-mobile: 36vh;
+  --hero-inset-x-mobile: 6vw;
+  --hero-radius-mobile: 16px;
+
+  --hero-dock-end: 0.55;
+  --hero-text-start: 0.40;
+  --hero-text-end: 0.85;
+}
+
+.landing-main {
+  overflow-x: clip;
+  background-color: var(--slate);
+  color: var(--text-light);
+}
+
+/* --------------------------------------------------------------------------
+   1. HERO ENGINE: ROCKSTAR GTA VI SCRUBBED TIMELINE (260vh desktop, 300vh mobile)
+   -------------------------------------------------------------------------- */
+.hero-track {
+  position: relative;
+  height: 260vh;
+  background-color: var(--slate);
+}
+
+@media (max-width: 768px) {
+  .hero-track {
+    height: 300vh;
+  }
+}
+
+.hero-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: var(--slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+
+/* Fixed transparent PNG brand logo (scales and translates into nav slot on scroll) */
+.brand-logo-dock {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 240px;
+  height: 240px;
+  transform: translate3d(-50%, -50%, 0);
+  transform-origin: center center;
+  z-index: 1003;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.brand-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  filter: var(--logo-edge, drop-shadow(0 0 1px rgba(250, 247, 242, 0.9))) drop-shadow(0 4px 20px rgba(0, 0, 0, 0.65));
+}
+
+@media (max-width: 768px) {
+  .brand-logo-dock {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* On landing page, static header logo image is transparent while #brandLogo docks into this slot */
+body[data-page="home"] #headerBrandSlot .header-logo-img {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+body[data-page="home"].logo-docked #headerBrandSlot .header-logo-img {
+  opacity: 1;
+}
+
+body[data-page="home"].logo-docked .brand-logo-dock {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* The picture card: starts full-bleed across viewport, shrinks to framed card */
+.hero-art {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--slate);
+  transform-origin: top center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 4px 16px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(79, 164, 157, 0.25);
+  z-index: 1;
+}
+
+/* 9-Photo Mosaic: 3x3 grid with 4px slate gutters on desktop, 3px on mobile */
+.hero-mosaic {
+  display: grid;
+  grid-template-columns: 1.15fr 0.95fr 1.15fr;
+  grid-template-rows: 1.1fr 0.95fr 1.1fr;
+  gap: 4px;
+  background-color: var(--slate);
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .hero-mosaic {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 3px;
+  }
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background-color: var(--slate);
+  transform-origin: center center;
+}
+
+.hero-panel picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Hero copy under the card: holds ONLY title in Abril Fatface and glowing Book Your Date button */
+/* Hero copy under the card: holds title variants and glowing Book Your Date button */
+.hero-copy {
+  position: absolute;
+  top: calc(16vh + 50vh);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  max-width: min(94vw, calc(100vw - 32px));
+  padding: clamp(8px, 1.5vh, 20px) 1rem clamp(12px, 2vh, 24px);
+  text-align: center;
+  z-index: 10;
+  opacity: 0;
+  transform: translate3d(0, 35px, 0);
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 2.2vh, 22px);
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .hero-copy {
+    top: calc(14vh + 46vh);
+    bottom: 0;
+    padding: clamp(6px, 1vh, 12px) 1rem clamp(10px, 1.5vh, 18px);
+    gap: 12px;
+  }
+}
+
+.hero-wordmark {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: clamp(6px, 1vh, 12px) 0;
+  padding: 0;
+  text-align: center;
+  max-width: 100%;
+}
+
+.hero-title-variant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Variant A: Brush stack (Knewave + Montserrat 600 + brush underline) */
+.hero-title-variant-a .hero-wordmark-brand {
+  font-family: 'Knewave', cursive;
+  font-size: clamp(30px, min(5.4vw, 7.2vh), 60px);
+  font-weight: 400;
+  color: var(--paper, #faf7f2);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-shadow: 2px 2px 0 var(--rust, #ab4b2e);
+  text-align: center;
+}
+
+.hero-title-variant-a .hero-wordmark-sub-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.hero-title-variant-a .hero-wordmark-sub {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: clamp(11px, 1.4vw, 15px);
+  color: var(--paper, #faf7f2);
+  letter-spacing: 0.32em;
+  text-indent: 0.32em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.hero-title-variant-a .hero-brush-underline {
+  width: clamp(180px, 34vw, 260px);
+  height: 10px;
+  overflow: visible;
+  margin-top: 4px;
+}
+
+.hero-title-variant-a .hero-brush-underline path {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+  animation: drawBrushUnderline 700ms ease-out forwards;
+}
+
+/* Variant B: Stamp (Fraunces 900 italic + rust label rotated -2deg) */
+.hero-title-variant-b {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero-title-variant-b .hero-stamp-brand {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(30px, min(5.4vw, 7.2vh), 60px);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--paper, #faf7f2);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  position: relative;
+  text-align: center;
+}
+
+.hero-title-variant-b .hero-stamp-badge {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: clamp(10px, 1.2vw, 13px);
+  letter-spacing: 0.16em;
+  text-indent: 0.16em;
+  text-transform: uppercase;
+  background-color: var(--rust, #ab4b2e);
+  color: var(--paper, #faf7f2);
+  padding: 4px 10px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  transform: rotate(-2deg);
+  margin-top: -10px;
+  margin-left: 24px;
+  align-self: flex-end;
+}
+
+/* Variant C: Single line (Bebas Neue between two 1px rules) */
+.hero-title-variant-c {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(10px, 2vw, 24px);
+  width: 100%;
+}
+
+.hero-title-variant-c .hero-singleline-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(24px, min(4.2vw, 5.5vh), 52px);
+  letter-spacing: 0.16em;
+  color: var(--paper, #faf7f2);
+  line-height: 1.15;
+  white-space: nowrap;
+  text-align: center;
+}
+
+.hero-title-variant-c .hero-singleline-rule {
+  flex: 1 1 20px;
+  height: 1px;
+  background-color: rgba(250, 247, 242, 0.45);
+  min-width: 16px;
+}
+
+@keyframes drawBrushUnderline {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-title-variant-a .hero-brush-underline path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
+
+/* Glowing Book Your Date button like a game pre-order button */
+.hero-book-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--teal);
+  color: var(--slate);
+  font-weight: 800;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 14px 36px;
+  border-radius: 8px;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+  box-shadow: 0 0 24px 4px rgba(79, 164, 157, 0.55), 0 0 60px 12px rgba(79, 164, 157, 0.30);
+  animation: heroBtnPulse 2.2s ease-in-out infinite;
+  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  z-index: 2;
+}
+
+@keyframes heroBtnPulse {
+  0%, 100% {
+    box-shadow: 0 0 24px 4px rgba(79, 164, 157, 0.55), 0 0 60px 12px rgba(79, 164, 157, 0.30);
+  }
+  50% {
+    box-shadow: 0 0 34px 8px rgba(79, 164, 157, 0.80), 0 0 80px 18px rgba(79, 164, 157, 0.45);
+  }
+}
+
+.hero-book-btn::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -150%;
+  width: 80%;
+  height: 200%;
+  background: linear-gradient(
+    115deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  animation: heroBtnSheen 3.5s infinite ease-in-out;
+  pointer-events: none;
+}
+
+@keyframes heroBtnSheen {
+  0% {
+    transform: translateX(0) rotate(25deg);
+  }
+  25%, 100% {
+    transform: translateX(450%) rotate(25deg);
+  }
+}
+
+.hero-book-btn:hover {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+  box-shadow: 0 0 38px 10px rgba(79, 164, 157, 0.90), 0 0 90px 22px rgba(79, 164, 157, 0.60);
+}
+
+.hero-book-btn:focus-visible {
+  outline: 3px solid #faf7f2;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-book-btn {
+    animation: none;
+    box-shadow: 0 0 30px 6px rgba(79, 164, 157, 0.60);
+  }
+  .hero-book-btn::after {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-copy {
+    padding: 0 0.75rem;
+    gap: 12px;
+  }
+  .hero-book-btn {
+    padding: 12px 28px;
+    font-size: 0.88rem;
+  }
+}
+
+/* Small available height (<700px, e.g. landscape phone): reduce gaps to 12px without hiding content */
+@media (max-height: 700px) {
+  .hero-copy {
+    bottom: 24px;
+    gap: 12px;
+  }
+  .hero-wordmark {
+    gap: 6px;
+  }
+  .hero-title-variant-a .hero-wordmark-sub-wrap {
+    margin-top: 2px;
+  }
+  .hero-book-btn {
+    padding: 10px 24px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Dev title switcher indicator badge */
+.title-dev-badge {
+  position: fixed;
+  bottom: 16px;
+  right: 16px;
+  background: var(--slate, #212e34);
+  color: var(--paper, #faf7f2);
+  border: 1.5px solid var(--teal, #4fa49d);
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-family: var(--font-body, 'DM Sans', sans-serif);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+/* Scroll Hint */
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  z-index: 4;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.hero-scroll-icon {
+  animation: heroBounce 1.8s infinite ease-in-out;
+}
+
+@keyframes heroBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. SECTION 2: EVENT CATERING SERVICES (Smooth appearance on scroll)
+   -------------------------------------------------------------------------- */
+.catering-section {
+  background-color: var(--off-white);
+  color: var(--slate);
+  padding: 5rem 1.5rem;
+  position: relative;
+  z-index: 2;
+  will-change: opacity, transform;
+  transition: opacity 0.25s ease-out, transform 0.25s ease-out;
+}
+
+.catering-section-inner {
+  max-width: 1260px;
+  margin: 0 auto;
+}
+
+.section-header-block {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 3.5rem auto;
+}
+
+.section-header-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 800;
+  color: var(--slate);
+  margin-bottom: 0.75rem;
+}
+
+.section-header-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.occasions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 992px) {
+  .occasions-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .occasions-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+/* Revision 4 "Sit Down" occasion cards: photo on top, info-box image overlapping, hover changes ONLY frame background */
+:root {
+  --occ-hover-bg: #212e34;
+}
+
+/* Revision 6 Occasion Cards: 12px frame padding, slight image enlargement on hover, centered See Packages button with stretched ::after */
+.occ-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.occ-frame {
+  padding: 12px;
+  border-radius: 18px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  transition: background-color 200ms ease;
+  height: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+@media (hover: hover) {
+  .occ-card:hover .occ-frame {
+    background-color: var(--occ-hover-bg, #212e34);
+  }
+  .occ-card:hover .occ-photo,
+  .occ-card:hover .occ-box {
+    transform: scale(1.04);
+  }
+}
+
+.occ-card:focus-within .occ-frame {
+  background-color: var(--occ-hover-bg, #212e34);
+  outline: 2px solid var(--teal);
+  outline-offset: 2px;
+}
+
+.occ-photo-wrap {
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background-color: #e9e4dc;
+}
+
+.occ-photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  transition: transform 250ms ease;
+  transform-origin: center center;
+}
+
+.occ-box {
+  width: 90%;
+  height: auto;
+  aspect-ratio: 782 / 594;
+  border-radius: 14px;
+  display: block;
+  margin-top: -14%;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  object-fit: contain;
+  transition: transform 250ms ease;
+  transform-origin: center center;
+}
+
+.occ-btn-wrap {
+  margin-top: 14px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 3;
+}
+
+.occ-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--teal);
+  color: var(--slate);
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 28px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.occ-btn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.occ-btn:hover {
+  background-color: #5ec0b8;
+}
+
+.occ-btn:focus-visible {
+  outline: 3px solid var(--teal);
+  outline-offset: 3px;
+}
+
+/* Fallback coded box if box image is missing for any occasion */
+.occ-box-fallback {
+  width: 92%;
+  margin-top: -12%;
+  position: relative;
+  z-index: 2;
+  background-color: #2f6f69;
+  color: #faf7f2;
+  border-radius: 12px;
+  padding: 1.4rem 1.25rem;
+  text-align: center;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.22);
+}
+
+.occ-fallback-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #faf7f2;
+  margin: 0 0 0.4rem 0;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.occ-fallback-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 0.6rem 0;
+  color: #faf7f2;
+}
+
+.occ-fallback-line {
+  flex: 1;
+  height: 1px;
+  background-color: rgba(250, 247, 242, 0.45);
+}
+
+.occ-fallback-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.95;
+  stroke: #faf7f2;
+}
+
+.occ-fallback-desc {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: rgba(250, 247, 242, 0.92);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   3. SECTION 3: EVENT STYLING (Workshop Wall + Mini Floor Planner)
+   -------------------------------------------------------------------------- */
+.workshop-section {
+  position: relative;
+  background-color: var(--slate);
+  color: var(--text-light);
+  padding: 6.5rem 1.5rem;
+  background-image: 
+    linear-gradient(rgba(79, 164, 157, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 164, 157, 0.08) 1px, transparent 1px);
+  background-size: 28px 28px;
+  overflow: hidden;
+}
+
+.workshop-inner {
+  max-width: 1360px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .workshop-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+/* Left 5 Columns: Editorial List */
+.workshop-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.workshop-eyebrow {
+  font-size: 0.85rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--teal);
+  margin-bottom: 0.5rem;
+}
+
+.workshop-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.2rem, 3.8vw, 3.4rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.workshop-desc {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2.25rem;
+}
+
+.workshop-list {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+.workshop-list-item {
+  display: flex;
+  align-items: baseline;
+  gap: 1.25rem;
+  padding: 1.1rem 0;
+  border-bottom: 1.5px dashed rgba(79, 164, 157, 0.25);
+}
+
+.workshop-item-num {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--teal);
+}
+
+.workshop-item-text {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.workshop-btn-row {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Right 7 Columns: Pinned Paper Floor Plan Sheet */
+.workshop-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.pinned-paper-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 660px;
+  background-color: #faf7f2;
+  border-radius: 4px;
+  padding: 1.5rem;
+  transform: rotate(-1.5deg);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.2);
+  color: var(--slate);
+}
+
+/* CSS Tape pieces on corners */
+.pinned-tape {
+  position: absolute;
+  width: 80px;
+  height: 24px;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  border-radius: 2px;
+  z-index: 10;
+}
+
+.pinned-tape.tape-tl {
+  top: -10px;
+  left: 20px;
+  transform: rotate(-5deg);
+}
+
+.pinned-tape.tape-tr {
+  top: -10px;
+  right: 20px;
+  transform: rotate(4deg);
+}
+
+/* Overlapping Polaroid Photos */
+.polaroid-photo {
+  position: absolute;
+  background: #ffffff;
+  padding: 8px 8px 24px 8px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+  border-radius: 2px;
+  z-index: 12;
+  transition: transform 0.25s ease;
+  pointer-events: none;
+}
+
+.polaroid-photo img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  display: block;
+}
+
+.polaroid-caption {
+  font-family: var(--font-hand);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--slate);
+  text-align: center;
+  margin-top: 6px;
+  display: block;
+}
+
+.polaroid-1 {
+  bottom: -25px;
+  left: -20px;
+  transform: rotate(3.5deg);
+}
+
+.polaroid-2 {
+  top: -25px;
+  right: -20px;
+  transform: rotate(-4deg);
+}
+
+@media (max-width: 640px) {
+  .polaroid-photo { display: none; }
+}
+
+/* Mini Floor Planner Components */
+.mini-planner-wrap {
+  width: 100%;
+}
+
+.mini-planner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(33, 46, 52, 0.1);
+}
+
+.mini-chip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.mini-chip-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-right: 0.25rem;
+}
+
+.mini-add-chip {
+  background: #ffffff;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--slate);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mini-add-chip:hover {
+  background: var(--teal);
+  color: var(--slate);
+  border-color: var(--teal);
+}
+
+.mini-seat-meter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--slate);
+  background: rgba(79, 164, 157, 0.18);
+  padding: 0.35rem 0.85rem;
+  border-radius: var(--radius-pill);
+}
+
+.seat-meter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill, 9999px);
+  background: rgba(171, 75, 46, 0.2);
+  color: #fca5a5;
+  border: 1px solid rgba(171, 75, 46, 0.4);
+}
+
+.seat-meter-badge.is-covered {
+  background: rgba(79, 164, 157, 0.2);
+  color: #5eead4;
+  border: 1px solid var(--color-teal, #4fa49d);
+}
+
+.mini-seat-icon {
+  font-weight: 900;
+  color: #2e7d32;
+}
+
+.mini-canvas-container {
+  width: 100%;
+  height: 380px;
+  background: #ffffff;
+  border: 1px solid rgba(33, 46, 52, 0.12);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mini-planner-svg {
+  width: 100%;
+  height: 100%;
+  cursor: crosshair;
+}
+
+/* --------------------------------------------------------------------------
+   4. SECTION 4: "ALREADY BOOKED?" CLAIM-TICKET BAND (A6)
+   -------------------------------------------------------------------------- */
+.claim-ticket-band {
+  background-color: var(--rust, #ab4b2e);
+  padding: 4.5rem 1.5rem;
+  width: 100%;
+}
+
+.claim-ticket-container {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.claim-ticket-stub {
+  background-color: #faf7f2;
+  color: var(--slate);
+  width: 100%;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* Left Stub */
+.ticket-stub-left {
+  padding: 2.25rem 2.5rem;
+  flex: 0 0 340px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.ticket-stub-title {
+  font-family: var(--font-hero-title, 'Abril Fatface', Georgia, serif);
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 400;
+  color: var(--slate);
+  margin: 0 0 0.5rem 0;
+  line-height: 1.15;
+}
+
+.ticket-stub-helper {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* Perforation Divider with Semicircle Notches */
+.ticket-stub-perforation {
+  width: 0;
+  position: relative;
+  border-left: 2px dashed rgba(33, 46, 52, 0.28);
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ticket-notch {
+  width: 24px;
+  height: 24px;
+  background-color: var(--rust, #ab4b2e);
+  border-radius: 50%;
+  position: absolute;
+  left: -12px;
+  z-index: 2;
+}
+
+.notch-top {
+  top: -12px;
+}
+
+.notch-bottom {
+  bottom: -12px;
+}
+
+/* Right Stub Form */
+.ticket-stub-right {
+  flex: 1;
+  padding: 2.25rem 2.5rem;
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.ticket-field-group {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ticket-field-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--slate);
+}
+
+.ticket-field-input {
+  border: none;
+  border-bottom: 2px solid var(--slate);
+  background: transparent;
+  color: var(--slate);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 6px 0;
+  border-radius: 0;
+  outline: none;
+  width: 100%;
+  transition: border-color var(--transition-fast);
+}
+
+.ticket-field-input:focus {
+  border-bottom-color: var(--rust);
+}
+
+.ticket-field-input::placeholder {
+  color: rgba(33, 46, 52, 0.40);
+  font-weight: 400;
+}
+
+.ticket-submit-wrap {
+  margin-bottom: 6px;
+}
+
+.ticket-submit-link {
+  background: transparent;
+  border: none;
+  color: var(--rust);
+  font-size: 1.05rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  white-space: nowrap;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color var(--transition-fast);
+}
+
+.ticket-submit-link:hover,
+.ticket-submit-link:focus-visible {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.ticket-error-msg {
+  margin-top: 1rem;
+  color: #faf7f2;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 0.6rem 1.25rem;
+  border-radius: 4px;
+  border-left: 3px solid #ffb4a2;
+}
+
+@media (max-width: 768px) {
+  .claim-ticket-stub {
+    flex-direction: column;
+  }
+  .ticket-stub-left {
+    flex: auto;
+    padding: 1.75rem 1.5rem;
+  }
+  .ticket-stub-perforation {
+    width: 100%;
+    height: 0;
+    border-left: none;
+    border-top: 2px dashed rgba(33, 46, 52, 0.28);
+  }
+  .ticket-notch {
+    left: auto;
+  }
+  .notch-top {
+    top: -12px;
+    left: -12px;
+  }
+  .notch-bottom {
+    top: -12px;
+    right: -12px;
+    bottom: auto;
+  }
+  .ticket-stub-right {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 1.75rem 1.5rem;
+    gap: 1.25rem;
+  }
+  .ticket-submit-wrap {
+    margin-top: 0.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   7. SECTION 7: CUSTOMER GALLERY CONTINUOUS HORIZONTAL MARQUEE (A4)
+   -------------------------------------------------------------------------- */
+.landing-gallery-strip {
+  padding: 5.5rem 0 4.5rem 0;
+  background-color: var(--slate);
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.gallery-strip-header {
+  padding: 0 1.5rem;
+  margin-bottom: 2.25rem;
+}
+
+.gallery-strip-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: var(--white);
+  margin: 0;
+}
+
+/* Marquee Scroller with Soft Edge Fade */
+.marquee-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 4%, #000 96%, transparent 100%);
+  padding: 10px 0;
+}
+
+.marquee-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marqueeScroll 45s linear infinite;
+  will-change: transform;
+}
+
+.marquee-wrapper:hover .marquee-track,
+.marquee-wrapper:focus-within .marquee-track,
+.marquee-track.is-paused {
+  animation-play-state: paused;
+}
+
+@keyframes marqueeScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-item {
+  flex: none;
+  height: 260px;
+  width: auto;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: #172126;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  outline: none;
+}
+
+.marquee-item:hover,
+.marquee-item:focus-visible {
+  transform: scale(1.03);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+.marquee-img {
+  height: 100%;
+  width: auto;
+  max-width: none;
+  object-fit: cover;
+  display: block;
+}
+
+.gallery-strip-footer {
+  margin-top: 2.5rem;
+  padding: 0 1.5rem;
+}
+
+.gallery-strip-link {
+  color: #faf7f2;
+  font-size: 1.05rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast);
+}
+
+.gallery-strip-link:hover {
+  color: var(--teal);
+}
+
+@media (max-width: 768px) {
+  .marquee-item {
+    height: 180px;
+  }
+  .marquee-track {
+    animation-duration: 35s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-wrapper {
+    overflow-x: auto;
+    mask-image: none;
+    -webkit-mask-image: none;
+    scroll-snap-type: x mandatory;
+  }
+  .marquee-item {
+    scroll-snap-align: start;
+  }
+}
